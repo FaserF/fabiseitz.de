@@ -366,6 +366,51 @@ img {
   font-size: var(--smaller-font-size);
 }
 
+/*===== DARK MODE =====*/
+body.dark-mode {
+  background-color: #121212;
+  /* Dunkler Hintergrund */
+  color: #ffffff;
+  /* Helle Schriftfarbe */
+}
+.nav__menu.dark-mode {
+  background-color: #1e1e1e;
+  /* Dunkle Navigation */
+}
+.nav__link.dark-mode {
+  color: #ffffff;
+  /* Helle Links */
+}
+.footer.dark-mode {
+  background-color: #1e1e1e;
+  /* Dunkler Footer */
+}
+/* Hier können weitere Stile für den Dark Mode hinzugefügt werden */
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  color: var(--second-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 20px;
+  /* Abstand zum Navigationsmenü */
+}
+.dark-mode-toggle:hover {
+  color: var(--first-color);
+  /* Farbänderung beim Hover */
+}
+
+/* Dark Mode Styles */
+body.dark-mode .dark-mode-icon i {
+  color: #ffffff; /* White color for dark mode */
+}
+
+/* Example of dark mode toggle */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
 /* ===== MEDIA QUERIES=====*/
 @media screen and (max-width: 320px) {
   .home {
