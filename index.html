@@ -25,34 +25,12 @@
     <link rel="manifest" href="assets/img/favicon/site.webmanifest" />
 
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="assets/js/loadContent.js" defer></script>
 </head>
 
 <body>
     <!--===== HEADER =====-->
-    <header class="l-header">
-        <nav class="nav bd-grid">
-            <div>
-                <a href="#" class="nav__logo">Fabian</a>
-            </div>
-
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
-                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-                    <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-                    <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
-                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-            </div>
-
-            <!-- Dark Mode Toggle Button -->
-            <button id="dark-mode-toggle" class="dark-mode-toggle">🌙</button>
-        </nav>
-    </header>
+    <header></header>
 
     <main class="l-main">
         <!--===== HOME =====-->
@@ -234,7 +212,8 @@
                         <input type="email" id="mail" name="mail" required class="contact__input"><br>
 
                         <label for="description">Contact reason:</label>
-                        <textarea name="description" id="description" cols="0" rows="10" class="contact__input"></textarea>
+                        <textarea name="description" id="description" cols="0" rows="10"
+                            class="contact__input"></textarea>
 
                         <div class="cf-turnstile" data-sitekey="0x4AAAAAAA9lks76dT58IBoF"></div>
                         <button type="submit" class="contact__button button">Submit</button>
@@ -244,15 +223,7 @@
         </section>
 
         <!--===== FOOTER =====-->
-        <footer class="footer">
-            <p class="footer__title">Fabian Seitz</p>
-            <p>
-                <a href="impressum.html" class="footer__link">Impressum</a> ||
-                <a href="datenschutzerklaerung.html" class="footer__link">Datenschutzerklärung</a>
-            </p>
-            <p class="footer__copy">&#169; Fabian Seitz 2025 - &#169; bedimcode, for the <a
-                    href="https://github.com/bedimcode/portfolio-responsive-complete">Website template</a></p>
-        </footer>
+        <footer></footer>
 
         <!--===== SCROLL REVEAL =====-->
         <script src="https://unpkg.com/scrollreveal"></script>
