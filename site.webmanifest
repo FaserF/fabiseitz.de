@@ -1,0 +1,21 @@
+{
+    "name": "Fabi Seitz - FaserF",
+    "short_name": "Fabi Seitz",
+    "description": "Fabi Seitz - FaserF Webapp",
+    "start_url": "https://fabiseitz.de",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#4e73df",
+    "icons": [
+        {
+            "src": "/assets/img/android-chrome-192x192",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/img/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
