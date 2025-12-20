@@ -240,11 +240,13 @@ img {
   position: relative;
   row-gap: 5rem;
   padding: 4rem 0 5rem;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .home__data {
   align-self: center;
+  max-width: 600px;
+  z-index: 1;
 }
 
 .home__title {
@@ -264,6 +266,20 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 0;
+}
+
+@media screen and (max-width: 968px) {
+  .home__img {
+    position: relative;
+    width: 100%;
+    margin-top: 2rem;
+    justify-content: center;
+  }
+
+  .home__data {
+    max-width: 100%;
+  }
 }
 
 .home__profile-container {
@@ -278,26 +294,13 @@ img {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+  background: transparent;
   padding: 8px;
-  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4),
-              0 0 0 4px rgba(255, 255, 255, 0.1),
-              inset 0 0 0 1px rgba(255, 255, 255, 0.2);
-  animation: profileGlow 3s ease-in-out infinite;
+  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3),
+              0 0 0 4px rgba(102, 126, 234, 0.1);
+  border: 3px solid var(--first-color);
 }
 
-@keyframes profileGlow {
-  0%, 100% {
-    box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4),
-                0 0 0 4px rgba(255, 255, 255, 0.1),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
-  }
-  50% {
-    box-shadow: 0 15px 50px rgba(102, 126, 234, 0.6),
-                0 0 0 4px rgba(255, 255, 255, 0.15),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.3);
-  }
-}
 
 .home__profile-img {
   width: 100%;
@@ -506,25 +509,55 @@ img {
 
 /*===== DARK MODE =====*/
 body.dark-mode {
-  background-color: #121212;
-  /* Dunkler Hintergrund */
-  color: #ffffff;
-  /* Helle Schriftfarbe */
+  background-color: #1a1a2e;
+  /* Lebendiger dunkler Hintergrund */
+  color: #e0e0e0;
+  /* Weiche helle Schriftfarbe */
 }
 
-.nav__menu.dark-mode {
-  background-color: #1e1e1e;
-  /* Dunkle Navigation */
+body.dark-mode .l-header {
+  background-color: #16213e;
+  /* Lebendiger dunkler Header */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.nav__link.dark-mode {
-  color: #ffffff;
-  /* Helle Links */
+body.dark-mode .nav__menu {
+  background-color: #16213e;
+  /* Lebendige dunkle Navigation */
 }
 
-.footer.dark-mode {
-  background-color: #1e1e1e;
-  /* Dunkler Footer */
+body.dark-mode .nav__link {
+  color: #e0e0e0;
+  /* Weiche helle Links */
+}
+
+body.dark-mode .nav__link:hover {
+  color: var(--first-color);
+}
+
+body.dark-mode .footer {
+  background-color: #16213e;
+  /* Lebendiger dunkler Footer */
+  color: #e0e0e0;
+}
+
+body.dark-mode .section-title {
+  color: var(--first-color);
+}
+
+body.dark-mode .about__text,
+body.dark-mode .skills__text,
+body.dark-mode p {
+  color: #e0e0e0;
+}
+
+body.dark-mode .skills__name {
+  color: #e0e0e0;
+}
+
+body.dark-mode .home__subtitle,
+body.dark-mode .home__description {
+  color: #e0e0e0;
 }
 
 /* Hier können weitere Stile für den Dark Mode hinzugefügt werden */
