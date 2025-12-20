@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de" data-i18n-lang>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Die Geschichte hinter dem Namen FaserF - Ein persönlicher Spitzname aus der Kindheit">
+    <meta name="keywords" content="FaserF, Fabian Seitz, Spitzname, Geschichte">
+    <meta name="author" content="Fabian Seitz">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- =====BOX ICONS===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <title data-i18n="faserf.meta.title">FaserF - Die Geschichte</title>
+
+    <link rel="icon" type="image/png" href="assets/img/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="assets/img/android-chrome-512x512.png" />
+    <link rel="shortcut icon" href="assets/img/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png" />
+
+    <meta name="apple-mobile-web-app-title" content="Fabi Seitz" />
+    <meta name="application-name" content="Fabi Seitz" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <script src="assets/js/i18n.js" defer></script>
+</head>
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="index.html" class="nav__logo">Fabian</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <!-- Language Switcher -->
+                    <li class="nav__item" id="language-switcher">
+                        <button class="lang-switch" data-lang="de" title="Deutsch">
+                            <span class="flag-icon">🇩🇪</span>
+                        </button>
+                        <button class="lang-switch" data-lang="en" title="English">
+                            <span class="flag-icon">🇬🇧</span>
+                        </button>
+                    </li>
+                    <!-- Dark Mode Toggle Button -->
+                    <button id="dark-mode-toggle" class="dark-mode-toggle">🌙</button>
+                    <li class="nav__item"><a href="index.html#home" class="nav__link" data-i18n="nav.home">Start</a></li>
+                    <li class="nav__item"><a href="index.html#about" class="nav__link" data-i18n="nav.about">Über mich</a></li>
+                    <li class="nav__item"><a href="index.html#skills" class="nav__link" data-i18n="nav.skills">Fähigkeiten</a></li>
+                    <li class="nav__item"><a href="index.html#work" class="nav__link" data-i18n="nav.work">Projekte</a></li>
+                    <li class="nav__item"><a href="index.html#contact" class="nav__link" data-i18n="nav.contact">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== FASERF SECTION =====-->
+        <section class="about section" id="faserf" style="padding-top: 5rem;">
+            <div class="bd-grid" style="max-width: 800px; margin: 0 auto;">
+                <h1 class="section-title" data-i18n="faserf.title">Die Geschichte hinter FaserF</h1>
+                
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem; color: var(--first-color); font-weight: bold;">
+                        FaserF
+                    </div>
+                </div>
+
+                <div class="about__container" style="text-align: left;">
+                    <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); border-radius: 1rem; padding: 2rem; margin-bottom: 2rem;">
+                        <p class="about__text" style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;" data-i18n="faserf.text1">
+                            Als Kind wurde ich von meiner Familie und Freunden teilweise "Faser" genannt - ein liebevoller Spitzname, der mir gegeben wurde.
+                        </p>
+                        <p class="about__text" style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;" data-i18n="faserf.text2">
+                            Das hintere "F" steht für meinen Vornamen <strong>Fabian</strong>, wodurch der Name <strong>FaserF</strong> entstand.
+                        </p>
+                        <p class="about__text" style="font-size: 1.1rem; line-height: 1.8;" data-i18n="faserf.text3">
+                            Dieser Name begleitet mich seit meiner Kindheit und ist zu meinem Online-Identitätsnamen geworden, den ich auf GitHub, in Projekten und in der Entwickler-Community verwende.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="index.html" class="button" data-i18n="faserf.backButton">Zurück zur Startseite</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">Fabian Seitz</p>
+        <p>
+            <a href="impressum.html" class="footer__link" data-i18n="footer.imprint">Impressum</a> ||
+            <a href="datenschutzerklaerung.html" class="footer__link" data-i18n="footer.privacy">Datenschutzerklärung</a>
+        </p>
+        <p class="footer__copy">&#169; Fabian Seitz 2025 - &#169; bedimcode, for the <a
+                href="https://github.com/bedimcode/portfolio-responsive-complete">Website template</a></p>
+    </footer>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
+

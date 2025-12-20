@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "title": "Fabian Seitz - FaserF",
+    "description": "Fabian Seitz - IT-Administrator, Entwickler & Automatisierungsexperte. Spezialisiert auf Identity Management, Home Automation und Systemintegration. Entwickler von faneX-ID und weiteren innovativen Projekten.",
+    "keywords": "Fabian Seitz, IT-Administrator, Entwickler, Identity Management, Home Assistant, SAP Basis, Microsoft Administration, Python, PowerShell, faneX-ID, AegisBot"
+  },
+  "nav": {
+    "home": "Start",
+    "about": "Über mich",
+    "skills": "Fähigkeiten",
+    "work": "Projekte",
+    "contact": "Kontakt"
+  },
+  "home": {
+    "greeting": "Hallo,",
+    "name": "Ich bin",
+    "nameHighlight": "Fabian",
+    "surname": "Seitz",
+    "subtitle": "IT-Administrator, Entwickler & Automatisierungsexperte",
+    "description": "Leidenschaftlicher Entwickler mit Fokus auf Identity Management, Home Automation und Systemintegration. Ich entwickle innovative Lösungen, die HR-Daten mit IT-Infrastruktur verbinden und Prozesse automatisieren.",
+    "contactButton": "Kontakt aufnehmen",
+    "faserfLink": "Warum FaserF?"
+  },
+  "about": {
+    "title": "Über mich",
+    "subtitle": "Ich bin Fabian Seitz",
+    "text1": "Als IT-Administrator und Entwickler mit umfassender Erfahrung in Microsoft-Administration, SAP Basis und Automatisierung entwickle ich innovative Lösungen für komplexe IT-Herausforderungen.",
+    "text2": "Meine Expertise umfasst die Entwicklung von Identity-Management-Systemen, die HR-Daten (SAP R3 HCM) nahtlos mit IT-Infrastruktur (Active Directory, Microsoft Entra ID) verbinden. Mit meinem Projekt faneX-ID habe ich eine zentrale Plattform geschaffen, die den gesamten Employee Lifecycle automatisiert verwaltet.",
+    "text3": "Neben meiner professionellen Tätigkeit entwickle ich leidenschaftlich Home Assistant Integrationen und Add-ons, die Smart-Home-Systeme erweitern und automatisieren. Meine Projekte reichen von PowerShell-Automatisierungsskripten über Python-basierte Systemintegrationen bis hin zu modernen Web-Anwendungen mit React und FastAPI.",
+    "text4": "Zusätzlich engagiere ich mich als Dozent an der Volkshochschule (VHS), wo ich mein Wissen in IT-Themen und Programmierung an interessierte Lernende weitergebe. Diese Tätigkeit ermöglicht es mir, komplexe technische Konzepte verständlich zu vermitteln und gleichzeitig selbst kontinuierlich dazuzulernen.",
+    "text5": "Ich bin stets bestrebt, durchdachte, skalierbare und benutzerfreundliche Lösungen zu entwickeln, die echte Probleme lösen und Prozesse effizienter gestalten."
+  },
+  "skills": {
+    "title": "Fähigkeiten",
+    "subtitle": "Professionelle Fähigkeiten",
+    "description": "Meine Expertise umfasst IT-Administration, Systemintegration, Automatisierung und Full-Stack-Entwicklung. Ich kombiniere technisches Know-how mit praktischer Erfahrung in Enterprise-Umgebungen.",
+    "techStack": {
+      "title": "Technologie-Stack",
+      "description": "Full-Stack Entwicklung mit modernen Frameworks und bewährten Enterprise-Technologien"
+    },
+    "skills": {
+      "microsoft": "Microsoft Administration",
+      "sap": "SAP Basis",
+      "python": "Python",
+      "powershell": "PowerShell",
+      "react": "React & TypeScript",
+      "docker": "Docker & DevOps",
+      "homeassistant": "Home Assistant"
+    }
+  },
+  "work": {
+    "title": "Projekte",
+    "description": "Eine Auswahl meiner wichtigsten Projekte, die meine Expertise in verschiedenen Bereichen zeigen.",
+    "projects": {
+      "fanexid": {
+        "title": "faneX-ID",
+        "description": "Identity Management System - Verbindet HR-Daten (SAP) mit IT-Infrastruktur (AD, Entra ID)"
+      },
+      "aegisbot": {
+        "title": "AegisBot",
+        "description": "Produktionsreifer Telegram-Moderation-Bot mit KI-gestützter Spam-Erkennung"
+      },
+      "homeassistant": {
+        "title": "Home Assistant",
+        "description": "Verschiedene Custom Integrations und Add-ons für Home Assistant"
+      },
+      "more": {
+        "title": "Weitere Projekte",
+        "description": "Mehr Projekte auf GitHub entdecken"
+      }
+    }
+  },
+  "cv": {
+    "title": "Lebenslauf",
+    "description": "Laden Sie meinen aktuellen Lebenslauf herunter, um mehr über meinen beruflichen Werdegang, meine Qualifikationen und Erfahrungen zu erfahren.",
+    "download": "Lebenslauf herunterladen"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "heading": "Lassen Sie uns in Kontakt treten",
+    "description": "Ich freue mich über Anfragen zu Projekten, Kooperationen oder einfach über einen fachlichen Austausch.",
+    "name": "Fabian Seitz",
+    "role": "IT-Administrator & Entwickler",
+    "contactWays": "Kontaktmöglichkeiten:",
+    "email": "E-Mail:",
+    "alternative": "Alternativ können Sie mich auch über das Kontaktformular erreichen:",
+    "form": {
+      "firstName": "Vorname:",
+      "lastName": "Nachname:",
+      "email": "E-Mail:",
+      "reason": "Kontaktgrund:",
+      "placeholder": "Beschreiben Sie kurz, womit ich Ihnen helfen kann...",
+      "submit": "Absenden"
+    }
+  },
+  "footer": {
+    "imprint": "Impressum",
+    "privacy": "Datenschutzerklärung"
+  },
+  "faserf": {
+    "meta": {
+      "title": "FaserF - Die Geschichte | Fabian Seitz"
+    },
+    "title": "Die Geschichte hinter FaserF",
+    "text1": "Als Kind wurde ich von meiner Familie und Freunden teilweise \"Faser\" genannt - ein liebevoller Spitzname, der mir gegeben wurde.",
+    "text2": "Das hintere \"F\" steht für meinen Vornamen Fabian, wodurch der Name FaserF entstand.",
+    "text3": "Dieser Name begleitet mich seit meiner Kindheit und ist zu meinem Online-Identitätsnamen geworden, den ich auf GitHub, in Projekten und in der Entwickler-Community verwende.",
+    "backButton": "Zurück zur Startseite"
+  }
+}

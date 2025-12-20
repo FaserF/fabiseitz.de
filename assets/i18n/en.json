@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "title": "Fabian Seitz - FaserF",
+    "description": "Fabian Seitz - IT Administrator, Developer & Automation Expert. Specialized in Identity Management, Home Automation and System Integration. Developer of faneX-ID and other innovative projects.",
+    "keywords": "Fabian Seitz, IT Administrator, Developer, Identity Management, Home Assistant, SAP Basis, Microsoft Administration, Python, PowerShell, faneX-ID, AegisBot"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "work": "Projects",
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": "Hi,",
+    "name": "I'm",
+    "nameHighlight": "Fabian",
+    "surname": "Seitz",
+    "subtitle": "IT Administrator, Developer & Automation Expert",
+    "description": "Passionate developer focused on Identity Management, Home Automation and System Integration. I develop innovative solutions that connect HR data with IT infrastructure and automate processes.",
+    "contactButton": "Get in Touch",
+    "faserfLink": "Why FaserF?"
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "I'm Fabian Seitz",
+    "text1": "As an IT Administrator and Developer with extensive experience in Microsoft Administration, SAP Basis and Automation, I develop innovative solutions for complex IT challenges.",
+    "text2": "My expertise includes developing Identity Management systems that seamlessly connect HR data (SAP R3 HCM) with IT infrastructure (Active Directory, Microsoft Entra ID). With my project faneX-ID, I have created a central platform that automatically manages the entire Employee Lifecycle.",
+    "text3": "In addition to my professional work, I passionately develop Home Assistant integrations and add-ons that extend and automate smart home systems. My projects range from PowerShell automation scripts to Python-based system integrations to modern web applications with React and FastAPI.",
+    "text4": "Additionally, I am engaged as a lecturer at the Adult Education Center (VHS), where I share my knowledge in IT topics and programming with interested learners. This activity allows me to convey complex technical concepts in an understandable way while continuously learning myself.",
+    "text5": "I am always committed to developing thoughtful, scalable and user-friendly solutions that solve real problems and make processes more efficient."
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "Professional Skills",
+    "description": "My expertise includes IT Administration, System Integration, Automation and Full-Stack Development. I combine technical know-how with practical experience in enterprise environments.",
+    "techStack": {
+      "title": "Technology Stack",
+      "description": "Full-Stack development with modern frameworks and proven enterprise technologies"
+    },
+    "skills": {
+      "microsoft": "Microsoft Administration",
+      "sap": "SAP Basis",
+      "python": "Python",
+      "powershell": "PowerShell",
+      "react": "React & TypeScript",
+      "docker": "Docker & DevOps",
+      "homeassistant": "Home Assistant"
+    }
+  },
+  "work": {
+    "title": "Projects",
+    "description": "A selection of my most important projects that showcase my expertise in various areas.",
+    "projects": {
+      "fanexid": {
+        "title": "faneX-ID",
+        "description": "Identity Management System - Connects HR data (SAP) with IT infrastructure (AD, Entra ID)"
+      },
+      "aegisbot": {
+        "title": "AegisBot",
+        "description": "Production-ready Telegram Moderation Bot with AI-powered spam detection"
+      },
+      "homeassistant": {
+        "title": "Home Assistant",
+        "description": "Various Custom Integrations and Add-ons for Home Assistant"
+      },
+      "more": {
+        "title": "More Projects",
+        "description": "Discover more projects on GitHub"
+      }
+    }
+  },
+  "cv": {
+    "title": "CV",
+    "description": "Download my current CV to learn more about my professional background, qualifications and experience.",
+    "download": "Download CV"
+  },
+  "contact": {
+    "title": "Contact",
+    "heading": "Let's Get in Touch",
+    "description": "I'm happy to receive inquiries about projects, collaborations or simply a professional exchange.",
+    "name": "Fabian Seitz",
+    "role": "IT Administrator & Developer",
+    "contactWays": "Contact ways:",
+    "email": "E-Mail:",
+    "alternative": "Alternatively, you can also reach me here using a contact form:",
+    "form": {
+      "firstName": "First Name:",
+      "lastName": "Last Name:",
+      "email": "E-Mail:",
+      "reason": "Contact reason:",
+      "placeholder": "Please describe briefly how I can help you...",
+      "submit": "Submit"
+    }
+  },
+  "footer": {
+    "imprint": "Imprint",
+    "privacy": "Privacy Policy"
+  },
+  "faserf": {
+    "meta": {
+      "title": "FaserF - The Story | Fabian Seitz"
+    },
+    "title": "The Story Behind FaserF",
+    "text1": "As a child, I was sometimes called \"Faser\" by my family and friends - a loving nickname that was given to me.",
+    "text2": "The trailing \"F\" stands for my first name Fabian, which is how the name FaserF came about.",
+    "text3": "This name has accompanied me since my childhood and has become my online identity name, which I use on GitHub, in projects and in the developer community.",
+    "backButton": "Back to Homepage"
+  }
+}
