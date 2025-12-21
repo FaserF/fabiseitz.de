@@ -41,28 +41,35 @@
      */
     const loadCalendarEvents = async () => {
         try {
-            // Use a CORS proxy for Google Calendar iCal feeds
             // Google Calendar iCal endpoints don't support CORS from browsers
-            // Option 1: Use a public CORS proxy (not recommended for production)
-            // Option 2: Use a Cloudflare Worker as proxy (recommended)
+            // Use a CORS proxy to fetch the calendar
+            // Option 1: Use Cloudflare Worker (recommended for production)
+            // Option 2: Use a public CORS proxy (fallback, not recommended for production)
             // Option 3: Fetch from backend server
-
-            // Try direct fetch first (works if calendar is public and CORS allows)
+            
+            // Try using a CORS proxy
+            // Using allorigins.win as a fallback CORS proxy
+            const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+            const proxiedUrl = CORS_PROXY + encodeURIComponent(CALENDAR_ICAL_URL);
+            
             let response;
             try {
-                response = await fetch(CALENDAR_ICAL_URL, {
+                response = await fetch(proxiedUrl, {
                     method: 'GET',
                     mode: 'cors',
-                    credentials: 'omit'
+                    credentials: 'omit',
+                    headers: {
+                        'Accept': 'text/calendar, text/plain, */*'
+                    }
                 });
-            } catch (corsError) {
-                // CORS error - try using a proxy
-                // For now, we'll show an error message suggesting backend solution
-                console.warn('CORS error when fetching calendar. A backend proxy is required.');
+            } catch (fetchError) {
+                console.warn('Error fetching calendar via proxy:', fetchError);
                 throw new Error('CORS_ERROR: Calendar requires backend proxy');
             }
 
-            if (!response.ok) throw new Error('Failed to fetch calendar');
+            if (!response.ok) {
+                throw new Error(`Failed to fetch calendar: ${response.status} ${response.statusText}`);
+            }
 
             const icalText = await response.text();
             calendarEvents = parseICal(icalText);

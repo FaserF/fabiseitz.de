@@ -684,12 +684,16 @@
             const script = document.createElement('script');
             script.src = 'assets/js/no-cookie-banner.js';
             script.onerror = function () {
-                // Silently fail if blocked by ad blocker
-                console.debug('No-cookie banner script could not be loaded (possibly blocked by ad blocker)');
+                // Silently fail if blocked by ad blocker - don't log to console
+                // This is expected behavior when ad blockers are active
             };
+            // Suppress network errors in console
+            script.addEventListener('error', function (e) {
+                e.stopPropagation();
+            }, true);
             document.body.appendChild(script);
         } catch (e) {
-            console.debug('No-cookie banner script could not be loaded:', e);
+            // Silently fail - expected when ad blockers interfere
         }
     </script>
     <script src="assets/js/serviceWorker.js"></script>
@@ -710,15 +714,29 @@
             const telegramGroupFallback = document.getElementById('telegram-group-fallback');
 
             if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
-                // Load Telegram Channel Widget
+                // Load Telegram Channel Widget with error handling
                 if (telegramChannelWidget && telegramChannelFallback) {
+                    telegramChannelWidget.onerror = function () {
+                        // CSP violations are expected - Telegram widgets have restrictions
+                        this.style.display = 'none';
+                        if (telegramChannelFallback) {
+                            telegramChannelFallback.style.display = 'flex';
+                        }
+                    };
                     telegramChannelWidget.src = 'https://t.me/widget/widgetchannel?username=tclupdates';
                     telegramChannelWidget.style.display = 'block';
                     telegramChannelFallback.style.display = 'none';
                 }
 
-                // Load Telegram Group Widget
+                // Load Telegram Group Widget with error handling
                 if (telegramGroupWidget && telegramGroupFallback) {
+                    telegramGroupWidget.onerror = function () {
+                        // CSP violations are expected - Telegram widgets have restrictions
+                        this.style.display = 'none';
+                        if (telegramGroupFallback) {
+                            telegramGroupFallback.style.display = 'flex';
+                        }
+                    };
                     telegramGroupWidget.src = 'https://t.me/widget/widgetgroup?username=tclupdates_discussion';
                     telegramGroupWidget.style.display = 'block';
                     telegramGroupFallback.style.display = 'none';

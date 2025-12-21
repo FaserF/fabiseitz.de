@@ -77,11 +77,18 @@ if (typeof window.I18n === 'undefined') {
                 throw new Error(`Failed to load ${lang}.json: ${response.status} ${response.statusText}`);
             }
             const text = await response.text();
+            // Trim whitespace and check if empty
+            const trimmedText = text.trim();
+            if (!trimmedText) {
+                throw new Error(`Empty response for ${lang}.json`);
+            }
+            
             let data;
             try {
-                data = JSON.parse(text);
+                data = JSON.parse(trimmedText);
             } catch (parseError) {
                 console.error(`Failed to parse ${lang}.json:`, parseError);
+                console.error(`JSON content (first 500 chars):`, trimmedText.substring(0, 500));
                 throw new Error(`Invalid JSON in ${lang}.json: ${parseError.message}`);
             }
             if (!data || typeof data !== 'object') {
