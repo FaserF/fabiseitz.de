@@ -41,15 +41,31 @@
             return;
         }
 
-        loadCalendarEvents();
-        setupFormFilters();
+        // Wait for i18n to be ready before rendering
+        if (window.i18n && window.i18n.translations && Object.keys(window.i18n.translations).length > 0) {
+            loadCalendarEvents();
+            setupFormFilters();
+        } else {
+            // Listener for subsequent init
+            window.addEventListener('i18nInitialized', () => {
+                loadCalendarEvents();
+                setupFormFilters();
+            });
 
-        // Re-render when language changes or i18n initializes
+            // Also wait for DOMContentLoaded slightly longer? No, i18nInitialized should fire.
+            // If i18n fails, we might hang? i18n.js has error handling but might not fire success.
+            // Fallback init after 2 seconds if i18n doesn't show up?
+            setTimeout(() => {
+                if (!calendarEvents.length && !window.vhsCalendarFallbackMode) {
+                    console.warn('VHS Calendar: i18n timed out, forcing load');
+                    loadCalendarEvents();
+                    setupFormFilters();
+                }
+            }, 2000);
+        }
+
+        // Re-render when language changes
         window.addEventListener('languageChanged', () => {
-            renderCalendarWidget();
-            showFallbackMessageIfNeeded();
-        });
-        window.addEventListener('i18nInitialized', () => {
             renderCalendarWidget();
             showFallbackMessageIfNeeded();
         });
@@ -619,6 +635,13 @@
                         bookingAlternativesDisplay.textContent = '-';
                     }
                 }
+
+                // NEW: Update time options if in specific mode
+                const timeTypeSpecific = document.querySelector('input[name="timePreferenceType"][value="specific"]');
+                const timeSelect = document.getElementById('booking-preferred-time');
+                if (timeTypeSpecific && timeTypeSpecific.checked && timeSelect) {
+                    updateTimeOptions(primaryDate, timeSelect);
+                }
             } else {
                 // Show hint, hide selected dates
                 if (bookingHint) bookingHint.style.display = 'block';
@@ -810,7 +833,60 @@
     /**
      * Setup form filters
      */
-    const setupFormFilters = () => { };
+    /**
+     * Setup form filters
+     */
+    const setupFormFilters = () => {
+        const timeSelect = document.getElementById('booking-preferred-time');
+        const specificRadio = document.querySelector('input[name="timePreferenceType"][value="specific"]');
+        const flexibleRadio = document.querySelector('input[name="timePreferenceType"][value="flexible"]');
+
+        if (!timeSelect || !specificRadio || !flexibleRadio) return;
+
+        const handleTypeChange = () => {
+            if (specificRadio.checked) {
+                // Switch to specific: populate with calculated slots
+                const date = window.vhsCalendarSelection?.primaryDate;
+                updateTimeOptions(date, timeSelect);
+            } else {
+                // Switch to flexible: restore static options
+                timeSelect.innerHTML = '';
+                timeSelect.disabled = false;
+
+                const t = (key, def) => window.i18n?.t(key) || def;
+
+                // Add default option
+                const defaultOpt = document.createElement('option');
+                defaultOpt.value = "";
+                defaultOpt.textContent = t('vhs.booking.form.timeSelect', "Bitte wählen...");
+                timeSelect.appendChild(defaultOpt);
+
+                // Morning
+                const morn = document.createElement('option');
+                morn.value = "morning";
+                morn.textContent = t('vhs.booking.form.timeMorning', "Vormittag (10:00 - 12:00)");
+                timeSelect.appendChild(morn);
+
+                // Afternoon
+                const aft = document.createElement('option');
+                aft.value = "afternoon";
+                aft.textContent = t('vhs.booking.form.timeAfternoon', "Nachmittag (12:00 - 18:00)");
+                timeSelect.appendChild(aft);
+
+                // Evening
+                const eve = document.createElement('option');
+                eve.value = "evening";
+                eve.textContent = t('vhs.booking.form.timeEvening', "Abend (18:00 - 21:00)");
+                timeSelect.appendChild(eve);
+            }
+        };
+
+        specificRadio.addEventListener('change', handleTypeChange);
+        flexibleRadio.addEventListener('change', handleTypeChange);
+
+        // Initial run
+        handleTypeChange();
+    };
 
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);

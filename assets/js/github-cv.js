@@ -16,6 +16,10 @@ class GitHubCV {
             return;
         }
 
+        // Listen for language changes to re-render
+        window.addEventListener('languageChanged', () => this.renderAll());
+        window.addEventListener('i18nInitialized', () => this.renderAll());
+
         try {
             await this.loadData();
         } catch (error) {
@@ -37,22 +41,37 @@ class GitHubCV {
         // Filter out forks for statistics
         const ownRepos = repos.filter(repo => !repo.fork);
 
-        // Calculate statistics
+        // Pre-calculate expensive non-locale data if any (stats is async)
         const stats = await this.calculateStats(ownRepos);
-        const yearlyData = this.calculateYearlyData(ownRepos);
-        const focusChanges = this.identifyFocusChanges(ownRepos);
-        const achievements = this.calculateAchievements(ownRepos, stats);
-        const recentProjects = this.getRecentProjects(ownRepos);
 
-        // Render everything
+        // Store data for re-rendering
+        this.data = {
+            repos: ownRepos,
+            stats: stats
+        };
+
+        this.renderAll();
+
+        this.hideLoading();
+        this.showContent();
+    }
+
+    renderAll() {
+        if (!this.data || !this.data.repos) return;
+
+        const { repos, stats } = this.data;
+
+        // Re-calculate locale-dependent data
+        const yearlyData = this.calculateYearlyData(repos);
+        const focusChanges = this.identifyFocusChanges(repos);
+        const achievements = this.calculateAchievements(repos, stats);
+        const recentProjects = this.getRecentProjects(repos);
+
         this.renderStats(stats);
         this.renderYearlyData(yearlyData);
         this.renderFocusChanges(focusChanges);
         this.renderAchievements(achievements);
         this.renderRecentProjects(recentProjects);
-
-        this.hideLoading();
-        this.showContent();
     }
 
     async calculateStats(repos) {

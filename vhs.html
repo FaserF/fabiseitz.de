@@ -55,8 +55,8 @@
                         </button>
                     </li>
                     <!-- VHS Navigation Links -->
-                    <li class="nav__item"><a href="#why-me" class="nav__link" data-i18n="vhs.nav.whyMe">Warum gut
-                            geeignet</a></li>
+                    <li class="nav__item"><a href="#why-me" class="nav__link"
+                            data-i18n="vhs.nav.whyMe">Qualifikation</a></li>
                     <li class="nav__item"><a href="#availability" class="nav__link"
                             data-i18n="vhs.nav.availability">Verfügbarkeit</a></li>
                     <li class="nav__item"><a href="#faq" class="nav__link" data-i18n="vhs.nav.faq">FAQ</a></li>
@@ -82,7 +82,7 @@
 
                 <!--===== WHY ME SECTION =====-->
                 <div class="vhs__why-me" id="why-me">
-                    <h2 class="vhs__why-me-title" data-i18n="vhs.whyMe.title">Warum ich gut geeignet bin</h2>
+                    <h2 class="vhs__why-me-title" data-i18n="vhs.whyMe.title">Meine Qualifikation</h2>
                     <div class="vhs__why-me-grid">
                         <div class="vhs__why-me-card">
                             <i class='bx bx-time-five vhs__why-me-icon'></i>
@@ -256,6 +256,22 @@
                                 <input type="hidden" id="booking-preferred-date" name="preferredDate" required>
                                 <input type="hidden" id="booking-alternative-dates" name="alternativeDates">
                             </div>
+
+                            <!-- Time Preference Type -->
+                            <div class="vhs__booking-field">
+                                <label data-i18n="vhs.booking.typeLabel">Zeitpräferenz</label>
+                                <div class="vhs__booking-type-toggle">
+                                    <label class="vhs__radio-label">
+                                        <input type="radio" name="timePreferenceType" value="specific" checked>
+                                        <span data-i18n="vhs.booking.typeSpecific">Konkrete Uhrzeit (45 Min.)</span>
+                                    </label>
+                                    <label class="vhs__radio-label">
+                                        <input type="radio" name="timePreferenceType" value="flexible">
+                                        <span data-i18n="vhs.booking.typeFlexible">Flexibel (Tageszeit)</span>
+                                    </label>
+                                </div>
+                            </div>
+
                             <div class="vhs__booking-field">
                                 <label for="booking-preferred-time"
                                     data-i18n="vhs.booking.form.preferredTime">Bevorzugte Uhrzeit</label>

@@ -580,6 +580,7 @@
             "instructions": "Click to select your preferred date (dark). Click additional dates for alternatives (light). Gray dates are not available.",
             "primaryLabel": "Preferred",
             "alternativeLabel": "Alternative",
+            "loading": "Loading calendar data...",
             "blockedLabel": "Not available",
             "selectedPrimary": "Preferred date:",
             "selectedAlternatives": "Alternatives:",

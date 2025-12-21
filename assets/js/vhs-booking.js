@@ -125,6 +125,9 @@
     const calculateStartTimestamp = (dateStr, timeSlotStr) => {
         if (!dateStr || !timeSlotStr) return null;
         try {
+            // Check if format is HH:MM-HH:MM
+            if (!timeSlotStr.match(/^\d{2}:\d{2}-\d{2}:\d{2}$/)) return null;
+
             // timeSlotStr format: "HH:MM-HH:MM" -> "18:00-18:45"
             const startTime = timeSlotStr.split('-')[0]; // "18:00"
             return `${dateStr}T${startTime}:00`; // "2023-10-24T18:00:00" (Local time)
@@ -137,6 +140,9 @@
     const calculateEndTimestamp = (dateStr, timeSlotStr) => {
         if (!dateStr || !timeSlotStr) return null;
         try {
+            // Check if format is HH:MM-HH:MM
+            if (!timeSlotStr.match(/^\d{2}:\d{2}-\d{2}:\d{2}$/)) return null;
+
             // timeSlotStr format: "HH:MM-HH:MM" -> "18:00-18:45"
             const endTime = timeSlotStr.split('-')[1]; // "18:45"
             return `${dateStr}T${endTime}:00`; // "2023-10-24T18:45:00" (Local time)
