@@ -28,10 +28,11 @@
         "title": "Über mich",
         "subtitle": "Ich bin Fabian Seitz",
         "text1": "Als IT-Administrator und Entwickler mit umfassender Erfahrung in Microsoft-Administration, SAP Basis und Automatisierung entwickle ich innovative Lösungen für komplexe IT-Herausforderungen.",
-        "text2": "Meine Expertise umfasst die Entwicklung von Identity-Management-Systemen, die HR-Daten aus Enterprise-Systemen nahtlos mit IT-Infrastruktur (Active Directory, Microsoft Entra ID) verbinden. Mit meinem Projekt faneX-ID habe ich die Idee und das vollständige Konzept für eine zentrale Plattform entwickelt, die den gesamten Employee Lifecycle automatisiert verwaltet. Die Idee und Architektur stammen zu 100% von mir, während die technische Umsetzung im Team erfolgt.",
-        "text3": "Neben meiner professionellen Tätigkeit entwickle ich leidenschaftlich Home Assistant Integrationen und Add-ons, die Smart-Home-Systeme erweitern und automatisieren. Meine Projekte reichen von PowerShell-Automatisierungsskripten über Python-basierte Systemintegrationen bis hin zu modernen Web-Anwendungen. Die vollständigen Konzepte und Architekturen für Projekte mit React und FastAPI stammen zu 100% von mir, während die technische Implementierung hauptsächlich im Team erfolgt.",
+        "text2": "Meine Expertise umfasst die Entwicklung von Identity-Management-Systemen, die HR-Daten aus Enterprise-Systemen nahtlos mit IT-Infrastruktur (Active Directory, Microsoft Entra ID) verbinden. Mit meinem Projekt faneX-ID habe ich die Idee, Architektur und das Projektkonzept für eine zentrale Plattform entwickelt, die den gesamten Employee Lifecycle automatisiert verwaltet. Die technische Umsetzung erfolgt im Team.",
+        "text3": "Neben meiner professionellen Tätigkeit entwickle ich leidenschaftlich Home Assistant Integrationen und Add-ons, die Smart-Home-Systeme erweitern und automatisieren. Meine Projekte reichen von PowerShell-Automatisierungsskripten über Python-basierte Systemintegrationen bis hin zu modernen Web-Anwendungen. Die vollständigen Konzepte und Architekturen für Projekte mit React und FastAPI stammen von mir, die technische Implementierung erfolgt im Team.",
         "text4": "Zusätzlich engagiere ich mich als IT-Dozent an der Volkshochschule (VHS), wo ich mein Wissen in IT-Themen und Programmierung an interessierte Lernende weitergebe. Diese Tätigkeit ermöglicht es mir, komplexe technische Konzepte verständlich zu vermitteln und gleichzeitig selbst kontinuierlich dazuzulernen. <a href=\"vhs.html\" style=\"color: var(--first-color); text-decoration: underline;\">Mehr Informationen zu meinen VHS-Einzelstunden</a>.",
         "vhsNote": "Zusätzlich bin ich <a href=\"vhs.html\" style=\"color: var(--first-color); text-decoration: underline;\">IT-Dozent an der VHS</a>.",
+        "text5a": "Mein Interesse an Technologie begann bereits in jungen Jahren: Ich war schon früh fasziniert von Android und Custom ROMs und daher sehr aktiv auf XDA Developers. Dort habe ich mich intensiv in der Community beteiligt und viel über Android-Entwicklung, Custom ROMs und System-Modifikationen gelernt.",
         "text5": "Mein Engagement geht über die berufliche Tätigkeit hinaus: Ich habe mich einige Jahre ehrenamtlich im Jugendzentrum meiner Gemeinde engagiert, wo ich junge Menschen in IT-Themen unterstützt und gefördert habe.",
         "text6": "Die IT-Welt entwickelt sich stetig weiter, und ich halte Schritt: Ich beschäftige mich kontinuierlich mit neuen Technologien und Trends. Aktuell vertiefe ich mich intensiv in die Welt der Künstlichen Intelligenz (KI), um innovative Lösungen zu entwickeln und die Möglichkeiten dieser Technologie zu erkunden.",
         "text7": "Besonders begeistert mich die Automatisierung: Ich liebe es, repetitive Aufgaben zu identifizieren und durch intelligente Skripte und Systeme zu automatisieren. Ob es um die Automatisierung von IT-Prozessen, Home Automation oder die Optimierung von Workflows geht - ich finde große Freude daran, effiziente Lösungen zu entwickeln, die Zeit sparen und Fehler reduzieren.",
@@ -429,6 +430,274 @@
             "tagline": "Meine private Freizeit-Seite"
         },
         "backButton": "Zurück zur Startseite"
+    },
+    "noCookie": {
+        "title": "Keine Cookies hier! 🍪",
+        "description": "Wir nutzen keine Cookies. Stattdessen stimmst du zu, dass du diese Website aufmerksam liest und mir einen Stern auf GitHub gibst. Fair? (Ich wollte die Nicht-Cookie-Erfahrung nicht zu schön machen, daher dieser Banner.)",
+        "accept": "Klar, mache ich!",
+        "decline": "Nö, keine Lust"
+    },
+    "telegram": {
+        "title": "Telegram Communities",
+        "description": "Gründer und Administrator von großen IT-Communities auf Telegram",
+        "fallback": "Telegram Widget wird nur über HTTP/HTTPS angezeigt.",
+        "channel": {
+            "title": "TCL Android TV Updates",
+            "subtitle": "News Channel",
+            "members": "Über 45.000 Abonnenten",
+            "visit": "Channel besuchen"
+        },
+        "group": {
+            "title": "TCL Android TV Discussion",
+            "subtitle": "Diskussionsgruppe",
+            "members": "Über 17.000 Mitglieder",
+            "visit": "Gruppe besuchen"
+        },
+        "project": {
+            "title": "AegisBot",
+            "description": "Für die Verwaltung und Automatisierung meiner Telegram-Communities habe ich die Idee für das AegisBot-Projekt entwickelt und treibe es durch Testing, Debugging und kontinuierliche Weiterentwicklung voran. Ein leistungsstarker Bot für Community-Management, Moderation und Automatisierung.",
+            "view": "Projekt auf GitHub ansehen"
+        }
+    },
+    "vhs": {
+        "meta": {
+            "title": "VHS Kursinformationen - FAQ"
+        },
+        "title": "VHS Kursinformationen",
+        "subtitle": "Häufig gestellte Fragen zu meinen IT-Einzelstunden an der Volkshochschule",
+        "backButton": "Zurück zur Startseite",
+        "nav": {
+            "whyMe": "Warum gut geeignet",
+            "availability": "Verfügbarkeit",
+            "faq": "FAQ"
+        },
+        "faq": {
+            "price": {
+                "question": "Wie viel kostet eine Unterrichtsstunde?",
+                "answer": "Eine Unterrichtsstunde kostet 40€. Eine Unterrichtsstunde entspricht 45 Minuten."
+            },
+            "duration": {
+                "question": "Warum dauert eine Unterrichtsstunde 45 Minuten?",
+                "answer": "Eine Unterrichtsstunde von 45 Minuten ist der Standard in der Erwachsenenbildung. Diese Zeiteinheit ermöglicht es, konzentriert zu arbeiten, ohne dass die Aufmerksamkeit nachlässt. Zudem entspricht dies der üblichen Praxis an Volkshochschulen."
+            },
+            "billing": {
+                "question": "Wie funktioniert die Abrechnung?",
+                "answer": "Die Abrechnung erfolgt direkt über die Volkshochschule. Nach jedem Termin wird mein Einsatz von Ihnen unterschrieben. Für die Abrechnung benötigt die VHS eine hinterlegte IBAN. Die VHS zieht das Geld dann automatisch von Ihrem Konto ein."
+            },
+            "iban": {
+                "question": "Wo muss ich meine IBAN hinterlegen?",
+                "answer": "Die IBAN muss direkt auf dem Formular ausgefüllt werden, das Sie nach Abschluss der Unterrichtsstunde erhalten. Auf diesem Formular bestätigen Sie auch, dass mein Einsatz erfolgt ist. Die IBAN wird benötigt, damit die VHS die Kursgebühren von Ihrem Konto einziehen kann."
+            },
+            "offer": {
+                "question": "Welche Einzelstunden biete ich an?",
+                "answer": "Ich biete keine Kurse an, sondern individuelle Einzelstunden. Die Themen sind spezialisiert und personalisiert auf Ihre Bedürfnisse zugeschnitten. Ich biete alles rund um Smartphones, Tablets, Notebooks und Computer an. Meine Erfahrung umfasst: MacOS (perfekte Erfahrung), Windows (perfekte Erfahrung), Linux (gute Erfahrung), iOS (perfekte Erfahrung), iPadOS (perfekte Erfahrung) und Android (perfekte Erfahrung)."
+            }
+        },
+        "whyMe": {
+            "title": "Warum ich gut geeignet bin",
+            "experience": {
+                "title": "10+ Jahre Berufserfahrung",
+                "text": "Über ein Jahrzehnt praktische Erfahrung in der IT-Branche mit komplexen Projekten und Systemen."
+            },
+            "complex": {
+                "title": "Komplexe IT-Projekte",
+                "text": "Täglich arbeite ich mit sehr komplexen IT-Themen und Projekten in meinem Hauptberuf - diese Expertise bringe ich in den Unterricht ein."
+            },
+            "approach": {
+                "title": "Ruhige und helfende Art",
+                "text": "Ich unterrichte mit Geduld und Verständnis. Jeder lernt in seinem eigenen Tempo - das respektiere ich."
+            },
+            "solving": {
+                "title": "Gemeinsam Probleme lösen",
+                "text": "Probleme werden gemeinsam gelöst mit ausführlichen Erklärungen, sodass Sie nicht nur die Lösung erhalten, sondern auch verstehen, wie und warum sie funktioniert."
+            },
+            "platforms": {
+                "title": "Umfassende Plattform-Erfahrung",
+                "text": "Ich habe umfassende Erfahrung mit allen gängigen Betriebssystemen und Geräten: MacOS, Windows, Linux, iOS, iPadOS und Android. Egal welches Gerät Sie nutzen - ich kann Ihnen helfen.",
+                "macos": "MacOS (perfekte Erfahrung)",
+                "windows": "Windows (perfekte Erfahrung)",
+                "linux": "Linux (gute Erfahrung)",
+                "ios": "iOS (perfekte Erfahrung)",
+                "ipados": "iPadOS (perfekte Erfahrung)",
+                "android": "Android (perfekte Erfahrung)"
+            }
+        },
+        "availability": {
+            "title": "Verfügbarkeit & Buchungsanfrage",
+            "description": "Aufgrund meiner Hauptberufstätigkeit sind generell nur Zeiten in folgenden Bereichen möglich, sofern noch kein anderer Termin oder Freizeitplan existiert:",
+            "weekdays": {
+                "title": "Montag - Donnerstag",
+                "time": "18:30 - 21:00 Uhr"
+            },
+            "friday": {
+                "title": "Freitag",
+                "time": "16:30 - 19:30 Uhr"
+            },
+            "weekend": {
+                "title": "Samstag & Sonntag",
+                "time": "10:00 - 18:00 Uhr"
+            },
+            "note": "Wichtiger Hinweis: Alle Angaben sind unter Vorbehalt. Ich habe einen Vollzeithauptjob und übe auch Hobbys aus, daher können sich Termine kurzfristig ändern. Ich bitte um Verständnis dafür. Private Termine sind in meinem Kalender nicht sichtbar, daher können nicht alle freien Zeiten für Buchungen verfügbar sein."
+        },
+        "booking": {
+            "title": "Buchungsanfrage stellen",
+            "description": "Bitte füllen Sie das Formular aus, um eine Buchungsanfrage zu stellen. Ich melde mich dann bei Ihnen zurück, um einen passenden Termin zu finden.",
+            "emailBody": "VHS Buchungsanfrage\n\n",
+            "success": "Vielen Dank! Ihre Buchungsanfrage wurde erfolgreich versendet. Ich melde mich in Kürze bei Ihnen.",
+            "error": "Fehler beim Senden der Buchungsanfrage. Bitte versuchen Sie es erneut oder kontaktieren Sie mich direkt per E-Mail.",
+            "form": {
+                "name": "Name *",
+                "namePlaceholder": "Ihr Name",
+                "email": "E-Mail *",
+                "emailPlaceholder": "ihre.email@beispiel.de",
+                "phone": "Telefon (optional)",
+                "phonePlaceholder": "Ihre Telefonnummer",
+                "preferredDate": "Bevorzugtes Datum",
+                "preferredTime": "Bevorzugte Uhrzeit",
+                "timeSelect": "Bitte wählen...",
+                "timeMorning": "Vormittag (10:00 - 12:00)",
+                "timeAfternoon": "Nachmittag (12:00 - 18:00)",
+                "timeEvening": "Abend (18:00 - 21:00)",
+                "message": "Nachricht / Kurswunsch",
+                "messagePlaceholder": "Beschreiben Sie kurz Ihren Kurswunsch oder stellen Sie Fragen...",
+                "submit": "Buchungsanfrage senden",
+                "submitting": "Wird gesendet..."
+            }
+        },
+        "calendar": {
+            "title": "Verfügbare Termine",
+            "description": "Die folgenden Termine sind für VHS-Einzelstunden verfügbar. Bitte wählen Sie einen passenden Termin aus.",
+            "error": "Kalender konnte nicht geladen werden. Bitte kontaktieren Sie mich direkt.",
+            "dateNotAvailable": "Dieses Datum ist nicht verfügbar. Bitte wählen Sie ein anderes Datum.",
+            "privacyNote": "Datenschutz: Der Kalender zeigt nur verfügbare Zeiten an. Keine Termindetails, Titel oder andere sensible Informationen werden angezeigt."
+        }
+    },
+    "impressum": {
+        "meta": {
+            "title": "Impressum - Fabian Seitz"
+        },
+        "title": "Impressum",
+        "subtitle": "Angaben gemäß § 5 TMG",
+        "backButton": "Zurück zur Startseite",
+        "contact": {
+            "title": "Kontakt",
+            "name": "Fabian Seitz",
+            "address": "[Ihre Adresse]\n[PLZ Ort]",
+            "email": {
+                "label": "E-Mail:",
+                "value": "kontakt@fabiseitz.de"
+            }
+        },
+        "responsible": {
+            "title": "Verantwortlich für den Inhalt",
+            "text": "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:"
+        },
+        "disclaimer": {
+            "title": "Haftungsausschluss",
+            "content": {
+                "title": "Haftung für Inhalte",
+                "text": "Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich."
+            },
+            "links": {
+                "title": "Haftung für Links",
+                "text": "Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich."
+            }
+        }
+    },
+    "privacy": {
+        "meta": {
+            "title": "Datenschutzerklärung - Fabian Seitz"
+        },
+        "title": "Datenschutzerklärung",
+        "subtitle": "Informationen zum Datenschutz gemäß DSGVO",
+        "backButton": "Zurück zur Startseite",
+        "general": {
+            "title": "Allgemeine Hinweise",
+            "text": "Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können."
+        },
+        "dataCollection": {
+            "title": "Datenerfassung auf dieser Website",
+            "server": {
+                "title": "Server-Log-Dateien",
+                "text": "Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind: Browsertyp und Browserversion, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen."
+            },
+            "cookies": {
+                "title": "Cookies",
+                "text": "Diese Website verwendet keine Cookies. Es werden keine personenbezogenen Daten durch Cookies erfasst oder gespeichert."
+            }
+        },
+        "contact": {
+            "title": "Kontaktformular",
+            "text": "Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter."
+        },
+        "rights": {
+            "title": "Ihre Rechte",
+            "text": "Sie haben jederzeit das Recht, Auskunft über Ihre bei uns gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung zu erhalten. Außerdem haben Sie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden."
+        }
+    },
+    "systems": {
+        "meta": {
+            "title": "Systemstatus - Fabian Seitz"
+        },
+        "title": "Systemstatus",
+        "description": "Übersicht über die Server und Dienste, die ich betreibe und nutze.",
+        "backButton": "Zurück zur Startseite",
+        "statusButton": "Systemerreichbarkeit",
+        "category": {
+            "thirdParty": "Externe Dienste",
+            "myProjects": "Meine Projekte"
+        },
+        "badge": {
+            "madeByMe": "Made by me"
+        },
+        "viewGitHub": "GitHub",
+        "homeassistant": {
+            "description": "SmartHome"
+        },
+        "bitwarden": {
+            "description": "Abgesicherter Passwortmanager"
+        },
+        "paperless": {
+            "description": "DMS System"
+        },
+        "wiki": {
+            "description": "Wiki"
+        },
+        "solumati": {
+            "description": "Custom Solution"
+        },
+        "fanexid": {
+            "description": "Identity Management System"
+        },
+        "shielddns": {
+            "description": "DNS Proxy & Filter"
+        },
+        "aegis": {
+            "description": "Telegram Bot Management"
+        }
+    },
+    "status": {
+        "meta": {
+            "title": "Systemerreichbarkeit - Fabian Seitz"
+        },
+        "title": "Systemerreichbarkeit",
+        "description": "Live-Status der Server und Dienste. Die Erreichbarkeit wird regelmäßig überprüft.",
+        "lastUpdate": "Letzte Aktualisierung:",
+        "backButton": "Zurück zu Systemen",
+        "homeButton": "Zur Startseite",
+        "category": {
+            "thirdParty": "Externe Dienste",
+            "myProjects": "Meine Projekte"
+        },
+        "legend": {
+            "title": "Legende",
+            "online": "Online",
+            "offline": "Offline",
+            "checking": "Wird überprüft...",
+            "unknown": "Unbekannt"
+        },
+        "noPublicUrl": "Nicht öffentlich erreichbar",
+        "viewGitHub": "GitHub"
     },
     "noCookie": {
         "title": "Keine Cookies hier! 🍪",
