@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 
     <!-- =====BOX ICONS===== -->
-    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <title data-i18n="vhs.meta.title">VHS Kursinformationen - FAQ</title>
 
@@ -236,12 +236,12 @@
                                     data-i18n-placeholder="vhs.booking.form.phonePlaceholder">
                             </div>
                             <div class="vhs__booking-field">
-                                <label for="booking-preferred-date"
-                                    data-i18n="vhs.booking.form.preferredDate">Bevorzugtes Datum</label>
-                                <select id="booking-preferred-date" name="preferredDate" required>
-                                    <option value="" disabled selected data-i18n="vhs.booking.form.dateSelect">Bitte
-                                        Datum wählen...</option>
-                                </select>
+                                <label data-i18n="vhs.booking.form.selectedDates">Ausgewählte Termine</label>
+                                <p class="vhs__booking-hint" data-i18n="vhs.booking.form.calendarHint">
+                                    Bitte wählen Sie Ihre Termine im Kalender oben aus.
+                                </p>
+                                <input type="hidden" id="booking-preferred-date" name="preferredDate" required>
+                                <input type="hidden" id="booking-alternative-dates" name="alternativeDates">
                             </div>
                             <div class="vhs__booking-field">
                                 <label for="booking-preferred-time"

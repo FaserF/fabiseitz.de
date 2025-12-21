@@ -46,54 +46,32 @@
     };
 
     /**
-     * Show fallback message when calendar cannot be loaded
+     * Show fallback mode - display calendar with warning when data can't be loaded
      */
     const showFallbackMessage = () => {
         const getTranslation = (key, fallback) => {
             return window.i18n?.t(key) || fallback;
         };
 
-        // Update description text
+        // Set fallback mode flag
+        window.vhsCalendarFallbackMode = true;
+
+        // Update description text with warning
         const descriptionEl = document.querySelector('.vhs__calendar-description');
         if (descriptionEl) {
-            descriptionEl.innerHTML = getTranslation('vhs.calendar.errorConnection',
-                'Calendar data could not be loaded. Please submit a manual request via the form below.');
-        }
-
-        // Update calendar widget
-        const calendarContainer = document.getElementById('vhs-calendar-widget');
-        if (calendarContainer) {
-            const title = getTranslation('vhs.calendar.manualRequestTitle', 'Manual Request Required');
-            const text = getTranslation('vhs.calendar.manualRequestText',
-                'Please use the form below to request an appointment. I will get back to you.');
-
-            calendarContainer.innerHTML = `
-                <div class="vhs-calendar-fallback" style="padding: var(--space-xl); text-align: center; background: var(--glass-bg); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border);">
-                    <i class='bx bx-calendar-edit' style="font-size: 3rem; margin-bottom: var(--space-md); color: var(--color-primary);"></i>
-                    <p style="margin-bottom: var(--space-sm); font-weight: var(--font-weight-semibold);">${title}</p>
-                    <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">${text}</p>
+            descriptionEl.innerHTML = `
+                <div class="vhs-calendar-warning" style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.5); border-radius: var(--border-radius-md); padding: var(--space-md); margin-bottom: var(--space-md);">
+                    <i class='bx bx-error-circle' style="color: #f59e0b; margin-right: var(--space-xs);"></i>
+                    <span>${getTranslation('vhs.calendar.fallbackWarning', 'Live calendar data unavailable. Displayed slots may not be accurate - I will confirm availability after your request.')}</span>
                 </div>
             `;
         }
 
-        // Convert date select to date input for manual entry
-        const dateSelect = document.getElementById('booking-preferred-date');
-        if (dateSelect) {
-            const dateInput = document.createElement('input');
-            dateInput.type = 'date';
-            dateInput.id = 'booking-preferred-date';
-            dateInput.name = 'preferredDate';
-            dateInput.required = true;
-            // Set min date to today
-            const today = new Date();
-            dateInput.min = today.toISOString().split('T')[0];
-            // Set max date to 3 months from now
-            const maxDate = new Date();
-            maxDate.setMonth(maxDate.getMonth() + 3);
-            dateInput.max = maxDate.toISOString().split('T')[0];
+        // Generate slots assuming all dates are available (no events blocking)
+        availableSlots = calculateAvailableSlots([]);
 
-            dateSelect.parentNode.replaceChild(dateInput, dateSelect);
-        }
+        // Render the calendar widget
+        renderCalendarWidget();
     };
 
     /**
@@ -307,7 +285,7 @@
         const slots = [];
         const today = new Date();
         const endDate = new Date(today);
-        endDate.setDate(endDate.getDate() + 60); // Next 60 days
+        endDate.setDate(endDate.getDate() + 28); // Next 4 weeks
 
         // Helper to check if a date is blocked
         const isBlockedDate = (date) => {
@@ -390,13 +368,22 @@
     };
 
     /**
-     * Render calendar widget
+     * Render calendar widget with visual grid and multi-select
      */
+    let currentWeeks = 2; // Default 2 weeks
+    let currentFilter = { dayType: 'all', time: 'all' }; // Filter state
+
     const renderCalendarWidget = () => {
         const widgetContainer = document.getElementById('vhs-calendar-widget');
         if (!widgetContainer) return;
 
-        // Group slots by date
+        // Selection state (preserved across re-renders)
+        if (!window.vhsCalendarSelection) {
+            window.vhsCalendarSelection = { primaryDate: null, alternativeDates: [] };
+        }
+        let { primaryDate, alternativeDates } = window.vhsCalendarSelection;
+
+        // Group slots by date for availability lookup
         const slotsByDate = new Map();
         availableSlots.forEach(slot => {
             const dateKey = slot.date.toISOString().split('T')[0];
@@ -406,59 +393,242 @@
             slotsByDate.get(dateKey).push(slot);
         });
 
-        // Create calendar HTML
-        let html = '<div class="vhs-calendar-grid">';
+        // Get translation helper
+        const t = (key, fallback) => window.i18n?.t(key) || fallback;
+        const locale = window.i18n?.currentLang === 'en' ? 'en-GB' : 'de-DE';
 
-        // Show next 30 days
+        // Calculate date range based on week toggle
         const today = new Date();
+        today.setHours(0, 0, 0, 0);
         const endDate = new Date(today);
-        endDate.setDate(endDate.getDate() + 30);
+        endDate.setDate(endDate.getDate() + (currentWeeks * 7));
 
-        for (let date = new Date(today); date <= endDate; date.setDate(date.getDate() + 1)) {
+        // Build calendar HTML with controls
+        let html = `
+            <div class="vhs-calendar">
+                <div class="vhs-calendar__header">
+                    <h4 class="vhs-calendar__title">${t('vhs.calendar.selectDates', 'Select Appointment Dates')}</h4>
+                    <p class="vhs-calendar__instructions">
+                        ${t('vhs.calendar.instructions', 'Click to select your preferred date (dark). Click additional dates for alternatives (light). Gray dates are not available.')}
+                    </p>
+                </div>
+
+                <!-- Week Toggle & Filters -->
+                <div class="vhs-calendar__controls">
+                    <div class="vhs-calendar__week-toggle">
+                        <button type="button" class="vhs-calendar__btn ${currentWeeks === 2 ? 'vhs-calendar__btn--active' : ''}" data-weeks="2">
+                            ${t('vhs.calendar.weeks2', '2 Weeks')}
+                        </button>
+                        <button type="button" class="vhs-calendar__btn ${currentWeeks === 4 ? 'vhs-calendar__btn--active' : ''}" data-weeks="4">
+                            ${t('vhs.calendar.weeks4', '4 Weeks')}
+                        </button>
+                    </div>
+                    <div class="vhs-calendar__filters">
+                        <select id="vhs-filter-daytype" class="vhs-calendar__filter-select">
+                            <option value="all" ${currentFilter.dayType === 'all' ? 'selected' : ''}>${t('vhs.calendar.filter.allDays', 'All days')}</option>
+                            <option value="weekdays" ${currentFilter.dayType === 'weekdays' ? 'selected' : ''}>${t('vhs.calendar.filter.weekdays', 'Weekdays only')}</option>
+                            <option value="weekend" ${currentFilter.dayType === 'weekend' ? 'selected' : ''}>${t('vhs.calendar.filter.weekend', 'Weekend only')}</option>
+                        </select>
+                        <select id="vhs-filter-time" class="vhs-calendar__filter-select">
+                            <option value="all" ${currentFilter.time === 'all' ? 'selected' : ''}>${t('vhs.calendar.filter.allTimes', 'All times')}</option>
+                            <option value="morning" ${currentFilter.time === 'morning' ? 'selected' : ''}>${t('vhs.calendar.filter.morning', 'Morning')}</option>
+                            <option value="afternoon" ${currentFilter.time === 'afternoon' ? 'selected' : ''}>${t('vhs.calendar.filter.afternoon', 'Afternoon')}</option>
+                            <option value="evening" ${currentFilter.time === 'evening' ? 'selected' : ''}>${t('vhs.calendar.filter.evening', 'Evening')}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="vhs-calendar__legend">
+                    <span class="vhs-calendar__legend-item"><span class="vhs-calendar__legend-dot vhs-calendar__legend-dot--primary"></span>${t('vhs.calendar.primaryLabel', 'Preferred')}</span>
+                    <span class="vhs-calendar__legend-item"><span class="vhs-calendar__legend-dot vhs-calendar__legend-dot--alternative"></span>${t('vhs.calendar.alternativeLabel', 'Alternative')}</span>
+                    <span class="vhs-calendar__legend-item"><span class="vhs-calendar__legend-dot vhs-calendar__legend-dot--blocked"></span>${t('vhs.calendar.blockedLabel', 'Not available')}</span>
+                </div>
+                <div class="vhs-calendar__weekdays">
+                    <span>${t('vhs.calendar.weekdays.mon', 'Mo')}</span>
+                    <span>${t('vhs.calendar.weekdays.tue', 'Di')}</span>
+                    <span>${t('vhs.calendar.weekdays.wed', 'Mi')}</span>
+                    <span>${t('vhs.calendar.weekdays.thu', 'Do')}</span>
+                    <span>${t('vhs.calendar.weekdays.fri', 'Fr')}</span>
+                    <span>${t('vhs.calendar.weekdays.sat', 'Sa')}</span>
+                    <span>${t('vhs.calendar.weekdays.sun', 'So')}</span>
+                </div>
+                <div class="vhs-calendar__grid">`;
+
+        // Find the Monday of the week containing today
+        const startOfWeek = new Date(today);
+        const dayOfWeek = today.getDay();
+        const daysToMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+        startOfWeek.setDate(startOfWeek.getDate() - daysToMonday);
+
+        // Calculate number of days to show (add 1 extra week to fill grid)
+        const totalDays = (currentWeeks + 1) * 7;
+
+        // Generate days
+        for (let i = 0; i < totalDays; i++) {
+            const date = new Date(startOfWeek);
+            date.setDate(startOfWeek.getDate() + i);
             const dateKey = date.toISOString().split('T')[0];
-            const slots = slotsByDate.get(dateKey) || [];
-            const isAvailable = slots.length > 0;
+            const dow = date.getDay(); // 0=Sun, 1=Mon, ...
 
-            const dayName = date.toLocaleDateString(window.i18n?.currentLang || 'de-DE', { weekday: 'short' });
+            const isPast = date < today;
+            const isOutOfRange = date > endDate;
+            const isAvailable = slotsByDate.has(dateKey) && slotsByDate.get(dateKey).length > 0;
+
+            // Apply day type filter
+            let isFilteredOut = false;
+            if (currentFilter.dayType === 'weekdays' && (dow === 0 || dow === 6)) {
+                isFilteredOut = true;
+            } else if (currentFilter.dayType === 'weekend' && dow !== 0 && dow !== 6) {
+                isFilteredOut = true;
+            }
+
+            const isBlocked = !isAvailable || isPast || isOutOfRange || isFilteredOut;
+
             const dayNumber = date.getDate();
-            const month = date.toLocaleDateString(window.i18n?.currentLang || 'de-DE', { month: 'short' });
+            const isToday = date.toDateString() === today.toDateString();
+            const month = date.toLocaleDateString(locale, { month: 'short' });
+            const showMonth = dayNumber === 1 || i === 0;
+
+            let classes = 'vhs-calendar__day';
+            if (isBlocked) classes += ' vhs-calendar__day--blocked';
+            if (isPast) classes += ' vhs-calendar__day--past';
+            if (isToday) classes += ' vhs-calendar__day--today';
+            if (isFilteredOut && !isPast) classes += ' vhs-calendar__day--filtered';
+            if (primaryDate === dateKey) classes += ' vhs-calendar__day--primary';
+            if (alternativeDates.includes(dateKey)) classes += ' vhs-calendar__day--alternative';
 
             html += `
-                <div class="vhs-calendar-day ${isAvailable ? 'available' : 'unavailable'}" data-date="${dateKey}">
-                    <div class="vhs-calendar-day-header">
-                        <span class="vhs-calendar-day-name">${dayName}</span>
-                        <span class="vhs-calendar-day-number">${dayNumber}</span>
-                    </div>
-                    <div class="vhs-calendar-day-month">${month}</div>
-                    ${isAvailable ? '<div class="vhs-calendar-day-status available">Verfügbar</div>' : '<div class="vhs-calendar-day-status unavailable">Nicht verfügbar</div>'}
-                </div>
-            `;
+                <div class="${classes}" data-date="${dateKey}" ${isBlocked ? '' : 'tabindex="0"'}>
+                    <span class="vhs-calendar__day-number">${dayNumber}</span>
+                    ${showMonth ? `<span class="vhs-calendar__day-month">${month}</span>` : ''}
+                </div>`;
         }
 
-        html += '</div>';
+        html += `
+                </div>
+                <div class="vhs-calendar__selection">
+                    <div class="vhs-calendar__selection-primary">
+                        <label>${t('vhs.calendar.selectedPrimary', 'Preferred date:')}</label>
+                        <span id="vhs-primary-display">-</span>
+                    </div>
+                    <div class="vhs-calendar__selection-alternatives">
+                        <label>${t('vhs.calendar.selectedAlternatives', 'Alternatives:')}</label>
+                        <span id="vhs-alternatives-display">-</span>
+                    </div>
+                </div>
+            </div>`;
+
         widgetContainer.innerHTML = html;
 
-        // Add click listeners to available days
-        widgetContainer.querySelectorAll('.vhs-calendar-day.available').forEach(dayEl => {
+        // Add click handlers
+        const grid = widgetContainer.querySelector('.vhs-calendar__grid');
+        const primaryDisplay = document.getElementById('vhs-primary-display');
+        const alternativesDisplay = document.getElementById('vhs-alternatives-display');
+
+        const updateDisplay = () => {
+            if (primaryDate) {
+                const d = new Date(primaryDate);
+                primaryDisplay.textContent = d.toLocaleDateString(locale, { weekday: 'short', day: 'numeric', month: 'short' });
+            } else {
+                primaryDisplay.textContent = '-';
+            }
+
+            if (alternativeDates.length > 0) {
+                alternativesDisplay.textContent = alternativeDates.map(dateKey => {
+                    const d = new Date(dateKey);
+                    return d.toLocaleDateString(locale, { weekday: 'short', day: 'numeric', month: 'short' });
+                }).join(', ');
+            } else {
+                alternativesDisplay.textContent = '-';
+            }
+
+            // Update hidden form fields
+            const primaryInput = document.getElementById('booking-preferred-date');
+            const alternativesInput = document.getElementById('booking-alternative-dates');
+            if (primaryInput) primaryInput.value = primaryDate || '';
+            if (alternativesInput) alternativesInput.value = alternativeDates.join(',');
+        };
+
+        const updateDayClasses = () => {
+            grid.querySelectorAll('.vhs-calendar__day').forEach(dayEl => {
+                const dateKey = dayEl.getAttribute('data-date');
+                dayEl.classList.remove('vhs-calendar__day--primary', 'vhs-calendar__day--alternative');
+                if (dateKey === primaryDate) {
+                    dayEl.classList.add('vhs-calendar__day--primary');
+                } else if (alternativeDates.includes(dateKey)) {
+                    dayEl.classList.add('vhs-calendar__day--alternative');
+                }
+            });
+        };
+
+        grid.querySelectorAll('.vhs-calendar__day:not(.vhs-calendar__day--blocked)').forEach(dayEl => {
             dayEl.addEventListener('click', () => {
-                const date = dayEl.getAttribute('data-date');
-                const dateSelect = document.getElementById('booking-preferred-date');
-                const formSection = document.getElementById('vhs-booking-form');
+                const dateKey = dayEl.getAttribute('data-date');
 
-                if (dateSelect && formSection) {
-                    dateSelect.value = date;
-                    // Trigger change event manually to update time options
-                    dateSelect.dispatchEvent(new Event('change'));
+                if (dateKey === primaryDate) {
+                    // Clicking primary again deselects it
+                    primaryDate = null;
+                    window.vhsCalendarSelection.primaryDate = null;
+                } else if (alternativeDates.includes(dateKey)) {
+                    // Clicking alternative removes it
+                    alternativeDates = alternativeDates.filter(d => d !== dateKey);
+                    window.vhsCalendarSelection.alternativeDates = alternativeDates;
+                } else if (!primaryDate) {
+                    // No primary yet - set this as primary
+                    primaryDate = dateKey;
+                    window.vhsCalendarSelection.primaryDate = dateKey;
+                } else {
+                    // Add as alternative (max 3)
+                    if (alternativeDates.length < 3) {
+                        alternativeDates.push(dateKey);
+                        window.vhsCalendarSelection.alternativeDates = alternativeDates;
+                    }
+                }
 
-                    // Scroll to form
-                    formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                updateDayClasses();
+                updateDisplay();
+            });
 
-                    // Highlight the date input briefly
-                    dateSelect.classList.add('highlight-input');
-                    setTimeout(() => dateSelect.classList.remove('highlight-input'), 2000);
+            // Keyboard accessibility
+            dayEl.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    dayEl.click();
                 }
             });
         });
+
+        // Week toggle event listeners
+        widgetContainer.querySelectorAll('.vhs-calendar__btn[data-weeks]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const weeks = parseInt(btn.getAttribute('data-weeks'), 10);
+                if (weeks !== currentWeeks) {
+                    currentWeeks = weeks;
+                    renderCalendarWidget(); // Re-render
+                }
+            });
+        });
+
+        // Filter event listeners
+        const dayTypeFilter = document.getElementById('vhs-filter-daytype');
+        const timeFilter = document.getElementById('vhs-filter-time');
+
+        if (dayTypeFilter) {
+            dayTypeFilter.addEventListener('change', () => {
+                currentFilter.dayType = dayTypeFilter.value;
+                renderCalendarWidget(); // Re-render
+            });
+        }
+
+        if (timeFilter) {
+            timeFilter.addEventListener('change', () => {
+                currentFilter.time = timeFilter.value;
+                renderCalendarWidget(); // Re-render
+            });
+        }
+
+        // Update display on initial render
+        updateDisplay();
     };
 
     /**

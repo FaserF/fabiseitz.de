@@ -573,7 +573,35 @@
             "manualRequestTitle": "Manuelle Anfrage erforderlich",
             "manualRequestText": "Bitte nutzen Sie das Formular unten, um einen Termin anzufragen. Ich melde mich dann bei Ihnen zurück.",
             "dateNotAvailable": "Dieses Datum ist nicht verfügbar. Bitte wählen Sie ein anderes Datum.",
-            "privacyNote": "Datenschutz: Der Kalender zeigt nur verfügbare Zeiten an. Keine Termindetails, Titel oder andere sensible Informationen werden angezeigt."
+            "privacyNote": "Datenschutz: Der Kalender zeigt nur verfügbare Zeiten an. Keine Termindetails, Titel oder andere sensible Informationen werden angezeigt.",
+            "selectDates": "Terminauswahl",
+            "instructions": "Klicken Sie auf Ihren Wunschtermin (wird dunkel markiert). Weitere Klicks fügen Alternativen hinzu (heller). Graue Felder sind nicht verfügbar.",
+            "primaryLabel": "Wunschtermin",
+            "alternativeLabel": "Alternative",
+            "blockedLabel": "Nicht verfügbar",
+            "selectedPrimary": "Wunschtermin:",
+            "selectedAlternatives": "Alternativen:",
+            "weekdays": {
+                "mon": "Mo",
+                "tue": "Di",
+                "wed": "Mi",
+                "thu": "Do",
+                "fri": "Fr",
+                "sat": "Sa",
+                "sun": "So"
+            },
+            "weeks2": "2 Wochen",
+            "weeks4": "4 Wochen",
+            "fallbackWarning": "Live-Kalenderdaten nicht verfügbar. Angezeigte Termine könnten bereits belegt sein – ich bestätige die Verfügbarkeit nach Ihrer Anfrage.",
+            "filter": {
+                "allDays": "Alle Tage",
+                "weekdays": "Nur Wochentage",
+                "weekend": "Nur Wochenende",
+                "allTimes": "Alle Zeiten",
+                "morning": "Vormittag",
+                "afternoon": "Nachmittag",
+                "evening": "Abend"
+            }
         }
     },
     "impressum": {

@@ -573,7 +573,35 @@
             "manualRequestTitle": "Manual Request Required",
             "manualRequestText": "Please use the form below to request an appointment. I will get back to you.",
             "dateNotAvailable": "This date is not available. Please select another date.",
-            "privacyNote": "Privacy: The calendar only shows available times. No appointment details, titles, or other sensitive information are displayed."
+            "privacyNote": "Privacy: The calendar only shows available times. No appointment details, titles, or other sensitive information are displayed.",
+            "selectDates": "Select Appointment Dates",
+            "instructions": "Click to select your preferred date (dark). Click additional dates for alternatives (light). Gray dates are not available.",
+            "primaryLabel": "Preferred",
+            "alternativeLabel": "Alternative",
+            "blockedLabel": "Not available",
+            "selectedPrimary": "Preferred date:",
+            "selectedAlternatives": "Alternatives:",
+            "weekdays": {
+                "mon": "Mon",
+                "tue": "Tue",
+                "wed": "Wed",
+                "thu": "Thu",
+                "fri": "Fri",
+                "sat": "Sat",
+                "sun": "Sun"
+            },
+            "weeks2": "2 Weeks",
+            "weeks4": "4 Weeks",
+            "fallbackWarning": "Live calendar data unavailable. Displayed slots may not be accurate – I will confirm availability after your request.",
+            "filter": {
+                "allDays": "All days",
+                "weekdays": "Weekdays only",
+                "weekend": "Weekend only",
+                "allTimes": "All times",
+                "morning": "Morning",
+                "afternoon": "Afternoon",
+                "evening": "Evening"
+            }
         }
     },
     "impressum": {
