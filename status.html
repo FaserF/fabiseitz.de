@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de" data-i18n-lang>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Systemerreichbarkeit - Status der Server und Dienste von Fabian Seitz">
+    <meta name="keywords" content="Fabian Seitz, System Status, Server Status, Uptime, Availability">
+    <meta name="author" content="Fabian Seitz">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- =====BOX ICONS===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <title data-i18n="status.meta.title">Systemerreichbarkeit - Fabian Seitz</title>
+
+    <link rel="icon" type="image/png" href="assets/img/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="assets/img/android-chrome-512x512.png" />
+    <link rel="shortcut icon" href="assets/img/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png" />
+
+    <meta name="apple-mobile-web-app-title" content="Fabi Seitz" />
+    <meta name="application-name" content="Fabi Seitz" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <script src="assets/js/i18n.js" defer></script>
+</head>
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="index.html" class="nav__logo">Fabian</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <!-- Language Switcher -->
+                    <li class="nav__item" id="language-switcher">
+                        <button class="lang-switch" data-lang="de" title="Deutsch">
+                            <span class="flag-icon">🇩🇪</span>
+                        </button>
+                        <button class="lang-switch" data-lang="en" title="English">
+                            <span class="flag-icon">🇬🇧</span>
+                        </button>
+                    </li>
+                    <!-- Dark Mode Toggle Button -->
+                    <li class="nav__item">
+                        <button id="dark-mode-toggle" class="dark-mode-toggle">
+                            <i class='bx bx-moon' id="dark-mode-icon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== STATUS SECTION =====-->
+        <section class="status section" id="status">
+            <div class="status__container bd-grid">
+                <div class="status__header">
+                    <h1 class="section-title" data-i18n="status.title">Systemerreichbarkeit</h1>
+                    <p class="section-description" data-i18n="status.description">
+                        Live-Status der Server und Dienste. Die Erreichbarkeit wird regelmäßig überprüft.
+                    </p>
+                    <p class="status__last-update" data-i18n="status.lastUpdate">Letzte Aktualisierung: <span id="status-last-update">--</span></p>
+                </div>
+
+                <!-- Status Grid -->
+                <div class="status__grid" id="status-grid">
+                    <!-- Status items will be dynamically generated -->
+                </div>
+
+                <!-- Legend -->
+                <div class="status__legend">
+                    <h3 class="status__legend-title" data-i18n="status.legend.title">Legende</h3>
+                    <div class="status__legend-items">
+                        <div class="status__legend-item">
+                            <span class="status__indicator status__indicator--online"></span>
+                            <span data-i18n="status.legend.online">Online</span>
+                        </div>
+                        <div class="status__legend-item">
+                            <span class="status__indicator status__indicator--offline"></span>
+                            <span data-i18n="status.legend.offline">Offline</span>
+                        </div>
+                        <div class="status__legend-item">
+                            <span class="status__indicator status__indicator--checking"></span>
+                            <span data-i18n="status.legend.checking">Wird überprüft...</span>
+                        </div>
+                        <div class="status__legend-item">
+                            <span class="status__indicator status__indicator--unknown"></span>
+                            <span data-i18n="status.legend.unknown">Unbekannt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="status__back">
+                    <a href="systems.html" class="button" data-i18n="status.backButton">Zurück zu Systemen</a>
+                    <a href="index.html" class="button button--ghost" data-i18n="status.homeButton">Zur Startseite</a>
+                </div>
+            </div>
+        </section>
+
+        <!--===== FOOTER =====-->
+        <footer class="footer">
+            <div class="footer__container bd-grid">
+                <div class="footer__content">
+                    <div class="footer__brand">
+                        <h3 class="footer__title">Fabian Seitz</h3>
+                        <p class="footer__subtitle" data-i18n="footer.subtitle">IT-Infrastructure & Security Specialist</p>
+                    </div>
+
+                    <div class="footer__links">
+                        <div class="footer__links-group">
+                            <h4 class="footer__links-title" data-i18n="footer.links.legal">Rechtliches</h4>
+                            <ul class="footer__links-list">
+                                <li>
+                                    <a href="impressum.html" class="footer__link" data-i18n="footer.imprint">
+                                        <i class='bx bx-file-blank'></i>
+                                        <span>Impressum</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="datenschutzerklaerung.html" class="footer__link" data-i18n="footer.privacy">
+                                        <i class='bx bx-shield-quarter'></i>
+                                        <span>Datenschutzerklärung</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="footer__links-group">
+                            <h4 class="footer__links-title" data-i18n="footer.links.resources">Ressourcen</h4>
+                            <ul class="footer__links-list">
+                                <li>
+                                    <a href="https://github.com/FaserF/fabiseitz.de" target="_blank" rel="noopener noreferrer" class="footer__link" data-i18n="footer.sourceCode">
+                                        <i class='bx bx-code-alt'></i>
+                                        <span>Sourcecode</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer__bottom">
+                    <div class="footer__divider"></div>
+                    <p class="footer__copy">&#169; 2025 Fabian Seitz. <span data-i18n="footer.rights">Alle Rechte vorbehalten.</span></p>
+                    <div class="footer__notes">
+                        <p class="footer__ai-note" data-i18n="footer.aiNote">
+                            <i class='bx bx-bot'></i>
+                            Diese Website wurde mit KI erstellt, die Ideen stammen jedoch von mir.
+                        </p>
+                        <p class="footer__cloudflare" data-i18n="footer.cloudflare">
+                            <i class='bx bx-cloud'></i>
+                            Diese Website nutzt Cloudflare für Sicherheit, Performance und globale Verfügbarkeit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/status.js"></script>
+    <script>
+        // Load no-cookie-banner.js with error handling for ad blockers
+        try {
+            const script = document.createElement('script');
+            script.src = 'assets/js/no-cookie-banner.js';
+            script.onerror = function() {
+                // Silently fail if blocked by ad blocker
+                console.debug('No-cookie banner script could not be loaded (possibly blocked by ad blocker)');
+            };
+            document.body.appendChild(script);
+        } catch (e) {
+            console.debug('No-cookie banner script could not be loaded:', e);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "fabiseitz.de",
+  "version": "1.0.0",
+  "description": "Personal website of Fabian Seitz",
+  "scripts": {
+    "test": "node tests/i18n-test.js",
+    "test:i18n": "node tests/i18n-test.js",
+    "lint": "node tests/lint-test.js"
+  },
+  "keywords": [
+    "website",
+    "portfolio",
+    "i18n"
+  ],
+  "author": "Fabian Seitz",
+  "license": "MIT"
+}

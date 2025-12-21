@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="de" data-i18n-lang>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fabian Seitz - Profile auf Steam und Instagram">
+    <meta name="keywords" content="Fabian Seitz, FaserF, Steam, Instagram, Profile">
+    <meta name="author" content="Fabian Seitz">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- =====BOX ICONS===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <title data-i18n="profiles.meta.title">Profile - Fabian Seitz</title>
+
+    <link rel="icon" type="image/png" href="assets/img/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="assets/img/android-chrome-512x512.png" />
+    <link rel="shortcut icon" href="assets/img/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png" />
+
+    <meta name="apple-mobile-web-app-title" content="Fabi Seitz" />
+    <meta name="application-name" content="Fabi Seitz" />
+    <link rel="manifest" href="site.webmanifest" />
+</head>
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="index.html" class="nav__logo">Fabian / FaserF</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <!-- Language Switcher -->
+                    <li class="nav__item" id="language-switcher">
+                        <button class="lang-switch" data-lang="de" title="Deutsch">
+                            <span class="flag-icon">🇩🇪</span>
+                        </button>
+                        <button class="lang-switch" data-lang="en" title="English">
+                            <span class="flag-icon">🇬🇧</span>
+                        </button>
+                    </li>
+                    <!-- Dark Mode Toggle Button -->
+                    <li class="nav__item">
+                        <button id="dark-mode-toggle" class="dark-mode-toggle">
+                            <i class='bx bx-moon' id="dark-mode-icon"></i>
+                        </button>
+                    </li>
+                    <li class="nav__item"><a href="index.html#home" class="nav__link" data-i18n="nav.home">Start</a>
+                    </li>
+                    <li class="nav__item"><a href="index.html#about" class="nav__link" data-i18n="nav.about">Über mich</a></li>
+                    <li class="nav__item"><a href="index.html#skills" class="nav__link" data-i18n="nav.skills">Fähigkeiten</a>
+                    </li>
+                    <li class="nav__item"><a href="index.html#work" class="nav__link" data-i18n="nav.work">Projekte</a></li>
+                    <li class="nav__item"><a href="index.html#contact" class="nav__link" data-i18n="nav.contact">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== PROFILES SECTION =====-->
+        <section class="profiles section" id="profiles">
+            <h2 class="section-title" data-i18n="profiles.title">Profile</h2>
+            <p class="section-description" data-i18n="profiles.description">
+                Meine Profile auf verschiedenen Plattformen - Steam und Instagram.
+            </p>
+
+            <div class="profiles__container bd-grid">
+                <!-- Steam Profile Widget -->
+                <div class="profile-widget">
+                    <div class="profile-widget__header">
+                        <i class='bx bxl-steam profile-widget__icon'></i>
+                        <h3 class="profile-widget__title" data-i18n="profiles.steam.title">Steam Profil</h3>
+                    </div>
+                    <div class="profile-widget__content">
+                        <div id="steam-widget-container">
+                            <iframe id="steam-widget"
+                                    frameborder="0"
+                                    scrolling="no"
+                                    class="steam-widget"
+                                    title="Steam Profile Widget"
+                                    style="display: none;"></iframe>
+                            <div id="steam-widget-fallback" class="steam-widget-fallback">
+                                <i class='bx bxl-steam'></i>
+                                <p data-i18n="profiles.steam.fallback">Steam Widget wird nur über HTTP/HTTPS angezeigt. Bitte öffne die Seite über einen lokalen Server.</p>
+                            </div>
+                        </div>
+                        <p class="profile-widget__tagline" data-i18n="profiles.steam.tagline">Meine Gaming-Seite</p>
+                        <div class="profile-widget__link">
+                            <a href="https://steamcommunity.com/id/FaserF" target="_blank" class="button" data-i18n="profiles.steam.visit">
+                                Profil besuchen
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instagram Profile Widget -->
+                <div class="profile-widget">
+                    <div class="profile-widget__header">
+                        <i class='bx bxl-instagram profile-widget__icon'></i>
+                        <h3 class="profile-widget__title" data-i18n="profiles.instagram.title">Instagram Profil</h3>
+                    </div>
+                    <div class="profile-widget__content">
+                        <div class="instagram-widget">
+                            <div class="instagram-widget__placeholder">
+                                <i class='bx bxl-instagram'></i>
+                                <p data-i18n="profiles.instagram.description">Besuche mein Instagram Profil für aktuelle Updates und Einblicke in meine Projekte.</p>
+                            </div>
+                        </div>
+                        <p class="profile-widget__tagline" data-i18n="profiles.instagram.tagline">Meine private Freizeit-Seite</p>
+                        <div class="profile-widget__link">
+                            <a href="https://www.instagram.com/fabiseitz/" target="_blank" class="button" data-i18n="profiles.instagram.visit">
+                                Profil besuchen
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profiles__back">
+                <a href="index.html" class="button button--secondary" data-i18n="profiles.backButton">Zurück zur Startseite</a>
+            </div>
+        </section>
+
+        <!--===== FOOTER =====-->
+        <footer class="footer">
+            <div class="footer__container bd-grid">
+                <div class="footer__content">
+                    <div class="footer__brand">
+                        <h3 class="footer__title">Fabian Seitz</h3>
+                        <p class="footer__subtitle" data-i18n="footer.subtitle">IT-Infrastructure & Security Specialist</p>
+                    </div>
+
+                    <div class="footer__links">
+                        <div class="footer__links-group">
+                            <h4 class="footer__links-title" data-i18n="footer.links.legal">Rechtliches</h4>
+                            <ul class="footer__links-list">
+                                <li>
+                                    <a href="impressum.html" class="footer__link" data-i18n="footer.imprint">
+                                        <i class='bx bx-file-blank'></i>
+                                        <span>Impressum</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="datenschutzerklaerung.html" class="footer__link" data-i18n="footer.privacy">
+                                        <i class='bx bx-shield-quarter'></i>
+                                        <span>Datenschutzerklärung</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="footer__links-group">
+                            <h4 class="footer__links-title" data-i18n="footer.links.resources">Ressourcen</h4>
+                            <ul class="footer__links-list">
+                                <li>
+                                    <a href="https://github.com/FaserF/fabiseitz.de" target="_blank" rel="noopener noreferrer" class="footer__link" data-i18n="footer.sourceCode">
+                                        <i class='bx bx-code-alt'></i>
+                                        <span>Sourcecode</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer__bottom">
+                    <div class="footer__divider"></div>
+                    <p class="footer__copy">&#169; 2025 Fabian Seitz. <span data-i18n="footer.rights">Alle Rechte vorbehalten.</span></p>
+                    <div class="footer__notes">
+                        <p class="footer__ai-note" data-i18n="footer.aiNote">
+                            <i class='bx bx-bot'></i>
+                            Diese Website wurde mit KI erstellt, die Ideen stammen jedoch von mir.
+                        </p>
+                        <p class="footer__cloudflare" data-i18n="footer.cloudflare">
+                            <i class='bx bx-cloud'></i>
+                            Diese Website nutzt Cloudflare für Sicherheit, Performance und globale Verfügbarkeit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/no-cookie-banner.js"></script>
+    <script>
+        // Load Steam widget only on http/https (not file://)
+        document.addEventListener('DOMContentLoaded', function() {
+            const steamWidget = document.getElementById('steam-widget');
+            const steamFallback = document.getElementById('steam-widget-fallback');
+
+            if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+                // Only load iframe on http/https
+                if (steamWidget && steamFallback) {
+                    steamWidget.src = 'https://steamcommunity.com/id/FaserF/widget/76561199565805522/';
+                    steamWidget.style.display = 'block';
+                    steamFallback.style.display = 'none';
+                }
+            } else {
+                // Show fallback message for file://
+                if (steamWidget && steamFallback) {
+                    steamWidget.style.display = 'none';
+                    steamFallback.style.display = 'flex';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

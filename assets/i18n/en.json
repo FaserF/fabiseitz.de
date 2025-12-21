@@ -1,0 +1,701 @@
+{
+    "meta": {
+        "title": "Fabian Seitz - FaserF",
+        "description": "Fabian Seitz - IT Administrator, Developer & Automation Expert. Specialized in Identity Management, Home Automation and System Integration. Developer of faneX-ID and other innovative projects.",
+        "keywords": "Fabian Seitz, IT Administrator, Developer, Identity Management, Home Assistant, SAP Basis, Microsoft Administration, Python, PowerShell, faneX-ID, AegisBot"
+    },
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "skills": "Skills",
+        "work": "Projects",
+        "contact": "Contact"
+    },
+    "home": {
+        "greeting": "Hi,",
+        "name": "I'm",
+        "nameHighlight": "Fabian",
+        "surname": "Seitz",
+        "subtitle": "IT Administrator, Developer & Automation Expert",
+        "description": "Passionate developer focused on Identity Management, Home Automation and System Integration. I develop innovative solutions that connect HR data with IT infrastructure and automate processes.",
+        "contactButton": "Get in Touch",
+        "faserfLink": "Why FaserF?",
+        "profilesLink": "Profiles",
+        "systemsLink": "Systems",
+        "statusLink": "System Status"
+    },
+    "about": {
+        "title": "About",
+        "subtitle": "I'm Fabian Seitz",
+        "vhsNote": "Additionally, I am an <a href=\"vhs.html\" style=\"color: var(--first-color); text-decoration: underline;\">IT lecturer at the VHS</a>.",
+        "text1": "As an IT Administrator and Developer with extensive experience in Microsoft Administration, SAP Basis and Automation, I develop innovative solutions for complex IT challenges.",
+        "text2": "My expertise includes developing Identity Management systems that seamlessly connect HR data from enterprise systems with IT infrastructure (Active Directory, Microsoft Entra ID). With my project faneX-ID, I developed the idea and complete concept for a central platform that automatically manages the entire Employee Lifecycle. The idea and architecture are 100% mine, while the technical implementation is done in a team.",
+        "text3": "In addition to my professional work, I passionately develop Home Assistant integrations and add-ons that extend and automate smart home systems. My projects range from PowerShell automation scripts to Python-based system integrations to modern web applications. The complete concepts and architectures for projects with React and FastAPI are 100% mine, while the technical implementation is mainly done in teams.",
+        "text4": "Additionally, I am engaged as an IT lecturer at the <a href=\"vhs.html\" style=\"color: var(--first-color); text-decoration: underline;\">Adult Education Center (VHS)</a>, where I share my knowledge in IT topics and programming with interested learners. This activity allows me to convey complex technical concepts in an understandable way while continuously learning myself. <a href=\"vhs.html\" style=\"color: var(--first-color); text-decoration: underline;\">More information about my VHS individual lessons</a>.",
+        "text5": "My commitment extends beyond professional work: I have volunteered for several years at the youth center in my community, where I supported and promoted young people in IT topics.",
+        "text6": "The IT world is constantly evolving, and I keep pace: I continuously engage with new technologies and trends. Currently, I am diving deeper into the world of Artificial Intelligence (AI) to develop innovative solutions and explore the possibilities of this technology.",
+        "text7": "I am particularly passionate about automation: I love identifying repetitive tasks and automating them through intelligent scripts and systems. Whether it's automating IT processes, home automation, or optimizing workflows - I find great joy in developing efficient solutions that save time and reduce errors.",
+        "text8": "I am always committed to developing thoughtful, scalable and user-friendly solutions that solve real problems and make processes more efficient.",
+        "text9": "In addition to my professional work, I am the founder and administrator of popular unofficial Telegram groups and channels. My largest projects are the TCL Android TV Updates community with over 17,000 members in the discussion group and over 45,000 subscribers in the news channel. For managing and automating these communities, I developed the idea for the AegisBot project, which I advance through testing, debugging, and continuous development."
+    },
+    "skills": {
+        "title": "Skills",
+        "subtitle": "Professional Skills",
+        "description": "My expertise includes IT Administration, System Integration, Automation and Full-Stack Development. I combine technical know-how with practical experience in enterprise environments.",
+        "techStack": {
+            "title": "Technology Stack",
+            "description": "Full-Stack development with modern frameworks and proven enterprise technologies"
+        },
+        "skills": {
+            "microsoft": "Microsoft Administration",
+            "sap": "SAP Basis",
+            "python": "Python",
+            "powershell": "PowerShell",
+            "docker": "Docker & DevOps",
+            "homeassistant": "Home Assistant",
+            "cloudflare": "Cloudflare"
+        }
+    },
+    "work": {
+        "title": "Projects",
+        "description": "A selection of my most important projects that showcase my expertise in various areas.",
+        "projects": {
+            "fanexid": {
+                "title": "faneX-ID",
+                "description": "Identity Management System - Connects HR data (SAP) with IT infrastructure (AD, Entra ID)"
+            },
+            "aegisbot": {
+                "title": "AegisBot",
+                "description": "Production-ready Telegram Moderation Bot with AI-powered spam detection"
+            },
+            "homeassistant": {
+                "title": "Home Assistant",
+                "description": "Various Custom Integrations and Add-ons for Home Assistant"
+            },
+            "switchcraft": {
+                "title": "SwitchCraft",
+                "description": "Comprehensive packaging assistant for IT professionals - streamlines the entire application packaging workflow"
+            },
+            "shielddns": {
+                "title": "ShieldDNS",
+                "description": "Lightweight, efficient and privacy-focused DNS-over-TLS (DoT) proxy"
+            },
+            "more": {
+                "title": "More Projects",
+                "description": "Discover more projects on GitHub"
+            }
+        }
+    },
+    "githubPage": {
+        "meta": {
+            "title": "GitHub Projects & Activities - Fabian Seitz"
+        },
+        "title": "GitHub Projects & Activities",
+        "description": "Discover all my public GitHub projects, recent releases, and development activities.",
+        "feature1": {
+            "title": "All Projects",
+            "description": "Complete overview of all public repositories with filter and search functionality"
+        },
+        "feature2": {
+            "title": "Active Development",
+            "description": "New releases, active projects, and external contributions to open source projects"
+        },
+        "feature3": {
+            "title": "Live Data",
+            "description": "All data is loaded live from GitHub and updated regularly"
+        },
+        "viewButton": "View GitHub Projects, Statistics and More",
+        "backButton": "Back to Homepage",
+        "nav": {
+            "projects": "Projects",
+            "activities": "Activities",
+            "cv": "GitHub CV"
+        }
+    },
+    "github": {
+        "title": "All GitHub Projects",
+        "description": "A complete overview of all my public GitHub projects, loaded live and dynamically.",
+        "searchPlaceholder": "Search projects...",
+        "filterAll": "All",
+        "filterLanguage": "Language",
+        "filterUpdated": "Updated",
+        "loading": "Loading projects...",
+        "error": "Error loading projects. Please try again later.",
+        "noResults": "No projects found",
+        "noDescription": "No description available",
+        "updated": "Updated:",
+        "activity": {
+            "title": "GitHub Activities",
+            "description": "Recent releases and active projects with high development activity.",
+            "loading": "Loading activities...",
+            "error": "Error loading activities.",
+            "empty": "No current activities",
+            "recentReleases": "Recent Releases",
+            "externalPRs": "External Contributions",
+            "externalPRsDescription": "Pull requests to other developers' projects - open source contributions.",
+            "activeProjects": "Active Projects",
+            "activeDescription": "Projects with many commits - possibly a new release soon!",
+            "prerelease": "Pre-Release",
+            "release": "Release",
+            "viewRepo": "Repository",
+            "potentialRelease": "Potential first release",
+            "commits": "commits",
+            "days": "days",
+            "prOpen": "Open",
+            "prClosed": "Closed",
+            "rateLimitLow": "Rate limit low ({{remaining}} remaining). Retry after {{time}}.",
+            "rateLimitLowRemaining": "remaining"
+        },
+        "cv": {
+            "meta": {
+                "title": "GitHub Resume - Fabian Seitz"
+            },
+            "title": "GitHub Resume",
+            "description": "My GitHub statistics, achievements, and project history.",
+            "backToGitHub": "Back to GitHub Projects",
+            "backToCv": "Back to Resume",
+            "backHome": "Back to Homepage",
+            "backButton": "Back to Resume"
+        }
+    },
+    "cv": {
+        "meta": {
+            "title": "Resume - Fabian Seitz"
+        },
+        "title": "Resume",
+        "description": "My professional background, qualifications and experiences at a glance.",
+        "descriptionShort": "Learn more about my professional background, qualifications and experiences.",
+        "descriptionLong": "My complete resume with detailed information about my professional experience, education, competencies and additional activities.",
+        "view": "View Resume",
+        "githubCvLink": "View GitHub CV",
+        "backButton": "Back to Homepage",
+        "download": "Download Resume as PDF",
+        "personal": {
+            "title": "Personal Information",
+            "name": "Name:",
+            "nameValue": "Fabian Seitz",
+            "email": "Email:",
+            "website": "Website:"
+        },
+        "experience": {
+            "title": "Professional Experience",
+            "current": {
+                "title": "IT-Infrastructure & Security Specialist",
+                "period": "05/2025 – today",
+                "description": "Primary system responsibility for Microsoft Cloud systems and IT security in a medium-sized IT company.",
+                "point1": "Administration of Microsoft Cloud systems (Intune, Autopilot, Autopatch, Exchange, Teams, Azure, Azure Virtual Desktop)",
+                "point2": "Password manager administration",
+                "point3": "Client Design (Windows 11)",
+                "point4": "Development of interfaces & automations",
+                "point5": "IT security: Antivirus systems, Microsoft Defender for Cloud, Microsoft Purview, Microsoft Autopatch",
+                "point6": "Introduction of new security policies and tools",
+                "point7": "SAP Administration",
+                "point8": "Project management & participation in IT projects",
+                "point9": "Trainer for all IT specialist directions and IT merchant"
+            },
+            "previous1": {
+                "title": "IT System Specialist & SAP-Basis",
+                "period": "07/2019 – 04/2025",
+                "description": "Primary system responsibility for IT systems and SAP-Basis administration in a medium-sized IT company.",
+                "point1": "Software distribution (Heat DSM & Microsoft Intune)",
+                "point2": "Telephone system & video conferencing (OnPrem and Microsoft Teams)",
+                "point3": "Microsoft Cloud systems (Autopilot, Autopatch, Exchange, Teams, Azure Virtual Desktop, Azure)",
+                "point4": "IT security in Microsoft & SAP environment",
+                "point5": "SAP Basis: User, authorization & role management, transports, updates, security notes, system measurement, projects, SAP S/4HANA migration",
+                "point6": "SAP HR: Support of updates, contact person for the department",
+                "point7": "SAP FI/CO BW/BI: Temporary contact person for the department",
+                "point8": "Introduction & provision of new FIORI apps",
+                "point9": "Project management & participation in IT projects",
+                "point10": "Trainer for all IT specialist directions and IT merchant"
+            },
+            "previous2": {
+                "title": "2nd Level Support Specialist",
+                "period": "07/2018 – 06/2019",
+                "description": "Support and system administration in a medium-sized IT company.",
+                "point1": "1st & 2nd Level Support",
+                "point2": "Software management",
+                "point3": "User & authorization management",
+                "point4": "Participation in IT projects",
+                "point5": "Primary contact for antivirus server, telephone system, fax & video conferencing",
+                "point6": "IT production support",
+                "point7": "Trainer support"
+            }
+        },
+        "education": {
+            "title": "Education & Training",
+            "apprenticeship": {
+                "title": "IT Specialist Apprenticeship",
+                "period": "09/2015 – 06/2018",
+                "description": "Degree: IT Specialist System Integration"
+            },
+            "continuous": {
+                "title": "Continuous Training",
+                "description": "Continuous training in new technologies and trends. Currently, I am diving deeper into the world of Artificial Intelligence (AI).",
+                "cert1": "Cisco CCNA Part 1",
+                "cert2": "Trainer aptitude examination according to AEVO IHK",
+                "cert3": "Microsoft MCS70-697",
+                "cert4": "PowerShell for Admins",
+                "cert5": "Kent School of English B2",
+                "cert6": "Lateral Leadership"
+            }
+        },
+        "activities": {
+            "title": "Additional Activities",
+            "vhs": {
+                "title": "IT Lecturer (VHS)",
+                "description": "Technology courses & individual training at the adult education center (since 03/2023)."
+            },
+            "youth": {
+                "title": "Volunteer Work",
+                "description": "Multi-year volunteer work at the community youth center, supporting young people in IT topics."
+            }
+        },
+        "skills": {
+            "title": "Technical Competencies",
+            "administration": {
+                "title": "Administration",
+                "item1": "SAP Basis",
+                "item2": "SAP HR",
+                "item3": "SAP S/4HANA",
+                "item4": "Microsoft Active Directory",
+                "item5": "Microsoft Entra ID",
+                "item6": "Microsoft Intune",
+                "item7": "Microsoft Autopilot",
+                "item8": "Microsoft Exchange",
+                "item9": "Microsoft Teams",
+                "item10": "Azure & Azure Virtual Desktop",
+                "item11": "Microsoft Defender",
+                "item12": "Microsoft Purview",
+                "item13": "Microsoft Sentinel",
+                "item14": "PowerShell",
+                "item15": "Heat DSM",
+                "item16": "Linux (Debian)",
+                "item17": "Windows / Windows Server",
+                "item18": "MacOS",
+                "item19": "Cisco IOS",
+                "item20": "MDM",
+                "item21": "ELO (DMS)",
+                "item22": "Git",
+                "item23": "Antivirus Solutions",
+                "item24": "Cloudflare"
+            },
+            "development": {
+                "title": "Development",
+                "item1": "Python",
+                "item2": "JavaScript",
+                "item3": "PHP / HTML",
+                "item4": "Scripting (Bash, Batch)",
+                "item5": "Docker & DevOps",
+                "item6": "Home Assistant",
+                "item7": "MariaDB",
+                "item8": "Apache2"
+            },
+            "specializations": {
+                "title": "Specializations",
+                "item1": "Identity Management",
+                "item2": "System Integration",
+                "item3": "Process Automation",
+                "item4": "Home Automation",
+                "item5": "IT Security",
+                "item6": "Project Management",
+                "item7": "Process Optimization",
+                "item8": "User Management",
+                "item9": "Automations",
+                "item10": "System Administration & Management",
+                "item11": "IT Project Planning",
+                "item12": "SCRUM / Kanban"
+            }
+        },
+        "interests": {
+            "title": "Interests & Hobbies",
+            "smarthome": "Smart Home",
+            "automation": "Automation of Technologies",
+            "volleyball": "Volleyball",
+            "youth": "Supporting Young People",
+            "environment": "Environmentally Conscious Living",
+            "biking": "Cycling & Bouldering"
+        }
+    },
+    "contact": {
+        "title": "Contact",
+        "heading": "Let's Get in Touch",
+        "description": "I'm happy to receive inquiries about projects, collaborations or simply a professional exchange.",
+        "name": "Fabian Seitz",
+        "contactWays": "Contact ways:",
+        "email": "E-Mail:",
+        "alternative": "Alternatively, you can also reach me here using a contact form:",
+        "form": {
+            "firstName": "First Name:",
+            "lastName": "Last Name:",
+            "email": "E-Mail:",
+            "reason": "Contact reason:",
+            "placeholder": "Please describe briefly how I can help you...",
+            "submit": "Submit"
+        }
+    },
+    "footer": {
+        "subtitle": "IT-Infrastructure & Security Specialist",
+        "links": {
+            "legal": "Legal",
+            "resources": "Resources"
+        },
+        "imprint": "Imprint",
+        "privacy": "Privacy Policy",
+        "sourceCode": "Source Code",
+        "rights": "All rights reserved.",
+        "aiNote": "This website was created with AI, but the ideas are mine.",
+        "cloudflare": "This website uses Cloudflare for security, performance, and global availability."
+    },
+    "githubCv": {
+        "meta": {
+            "title": "GitHub CV - Fabian Seitz"
+        },
+        "subtitle": "My development statistics, projects, and achievements on GitHub",
+        "loading": "Loading GitHub data...",
+        "error": "Error loading GitHub data.",
+        "noDescription": "No description available",
+        "updated": "Updated",
+        "stats": {
+            "totalCommits": "Total Commits",
+            "totalRepos": "Repositories",
+            "totalStars": "Stars Received",
+            "contributions": "Contributions"
+        },
+        "yearly": {
+            "title": "Yearly Overview",
+            "newRepos": "new repos",
+            "activeRepos": "active repos"
+        },
+        "focus": {
+            "title": "Project Focus & Developments",
+            "noChanges": "No significant focus changes detected.",
+            "shift": "Focus shift",
+            "repos": "repos"
+        },
+        "achievements": {
+            "title": "Achievements",
+            "firstRepo": {
+                "title": "First Repository",
+                "description": "created"
+            },
+            "manyRepos": {
+                "title": "10+ Repositories",
+                "description": "own projects"
+            },
+            "popular": {
+                "title": "Popular Project",
+                "description": "project(s) with 10+ stars"
+            },
+            "active": {
+                "title": "Active Developer",
+                "description": "Continuous project development"
+            },
+            "multilang": {
+                "title": "Multi-Language",
+                "description": "projects in"
+            }
+        },
+        "recentProjects": {
+            "title": "Recent Projects"
+        }
+    },
+    "faserf": {
+        "meta": {
+            "title": "FaserF - The Story | Fabian Seitz"
+        },
+        "title": "The Story Behind FaserF",
+        "text1": "As a child, I was called \"Faser\" by my friends - a funny and humorous nickname that was given to me.",
+        "text2": "The trailing \"F\" stands for my first name Fabian, which is how the name FaserF came about.",
+        "text3": "The name then primarily established itself in the gaming scene and thus became a fixed part of my user tag on the internet. Today I use it on GitHub, in projects and in the developer community.",
+        "backgroundNote": "This image was my background in the past and has been preserved as a memory since then, even though it is outdated.",
+        "backButton": "Back to Homepage"
+    },
+    "profiles": {
+        "meta": {
+            "title": "Profiles - Fabian Seitz"
+        },
+        "title": "Profiles",
+        "description": "My profiles on various platforms - Steam and Instagram.",
+        "steam": {
+            "title": "Steam Profile",
+            "visit": "Visit Profile",
+            "fallback": "Steam widget is only displayed over HTTP/HTTPS. Please open the page via a local server.",
+            "tagline": "My Gaming Hub"
+        },
+        "instagram": {
+            "title": "Instagram Profile",
+            "description": "My private Instagram account for personal moments and leisure time.",
+            "visit": "Visit Profile",
+            "tagline": "My Private Life Hub"
+        },
+        "backButton": "Back to Homepage"
+    },
+    "noCookie": {
+        "title": "No Cookies Here! 🍪",
+        "description": "We don't use cookies. Instead, you agree to read this website attentively and give me a star on GitHub. Fair? (I didn't want to make the no-cookie experience too nice, hence this banner.)",
+        "accept": "Sure, I'll do it!",
+        "decline": "Nah, not interested"
+    },
+    "telegram": {
+        "title": "Telegram Communities",
+        "description": "Founder and administrator of large IT communities on Telegram",
+        "fallback": "Telegram widget is only displayed via HTTP/HTTPS.",
+        "channel": {
+            "title": "TCL Android TV Updates",
+            "subtitle": "News Channel",
+            "members": "Over 45,000 subscribers",
+            "visit": "Visit Channel"
+        },
+        "group": {
+            "title": "TCL Android TV Discussion",
+            "subtitle": "Discussion Group",
+            "members": "Over 17,000 members",
+            "visit": "Visit Group"
+        },
+        "project": {
+            "title": "AegisBot",
+            "description": "For managing and automating my Telegram communities, I developed the idea for the AegisBot project and advance it through testing, debugging, and continuous development. A powerful bot for community management, moderation, and automation.",
+            "view": "View Project on GitHub"
+        }
+    },
+    "vhs": {
+        "meta": {
+            "title": "VHS Course Information - FAQ"
+        },
+        "title": "VHS Course Information",
+        "subtitle": "Frequently asked questions about my IT individual lessons at the adult education center",
+        "backButton": "Back to Homepage",
+        "nav": {
+            "whyMe": "Why Well Suited",
+            "availability": "Availability",
+            "faq": "FAQ"
+        },
+        "faq": {
+            "price": {
+                "question": "How much does a lesson cost?",
+                "answer": "A lesson costs 40€. One lesson corresponds to 45 minutes."
+            },
+            "duration": {
+                "question": "Why does a lesson last 45 minutes?",
+                "answer": "A lesson of 45 minutes is the standard in adult education. This time unit allows for focused work without attention waning. This also corresponds to the usual practice at adult education centers."
+            },
+            "billing": {
+                "question": "How does billing work?",
+                "answer": "Billing is handled directly through the adult education center. After each session, my service is signed by you. For billing, the VHS needs a registered IBAN. The VHS then automatically debits the money from your account."
+            },
+            "iban": {
+                "question": "Where do I need to register my IBAN?",
+                "answer": "The IBAN must be filled in directly on the form you receive after completing the lesson. On this form, you also confirm that my service has been provided. The IBAN is needed so that the VHS can debit the course fees from your account."
+            },
+            "offer": {
+                "question": "What individual lessons do I offer?",
+                "answer": "I do not offer courses, but individual one-on-one lessons. The topics are specialized and personalized to your needs. I offer everything around smartphones, tablets, notebooks, and computers. My experience includes: macOS (excellent experience), Windows (excellent experience), Linux (good experience), iOS (excellent experience), iPadOS (excellent experience), and Android (excellent experience)."
+            }
+        },
+        "whyMe": {
+            "title": "Why I'm Well Suited",
+            "experience": {
+                "title": "10+ Years of Professional Experience",
+                "text": "Over a decade of practical experience in the IT industry with complex projects and systems."
+            },
+            "complex": {
+                "title": "Complex IT Projects",
+                "text": "I work daily with very complex IT topics and projects in my main job - I bring this expertise into the classroom."
+            },
+            "approach": {
+                "title": "Calm and Helpful Approach",
+                "text": "I teach with patience and understanding. Everyone learns at their own pace - I respect that."
+            },
+            "solving": {
+                "title": "Solving Problems Together",
+                "text": "Problems are solved together with detailed explanations, so you not only get the solution but also understand how and why it works."
+            },
+            "platforms": {
+                "title": "Comprehensive Platform Experience",
+                "text": "I have comprehensive experience with all common operating systems and devices: macOS, Windows, Linux, iOS, iPadOS, and Android. No matter which device you use - I can help you.",
+                "macos": "macOS (excellent experience)",
+                "windows": "Windows (excellent experience)",
+                "linux": "Linux (good experience)",
+                "ios": "iOS (excellent experience)",
+                "ipados": "iPadOS (excellent experience)",
+                "android": "Android (excellent experience)"
+            }
+        },
+        "availability": {
+            "title": "Availability & Booking Request",
+            "description": "Due to my full-time job, generally only times in the following ranges are possible, provided no other appointment or leisure plan exists:",
+            "weekdays": {
+                "title": "Monday - Thursday",
+                "time": "6:30 PM - 9:00 PM"
+            },
+            "friday": {
+                "title": "Friday",
+                "time": "4:30 PM - 7:30 PM"
+            },
+            "weekend": {
+                "title": "Saturday & Sunday",
+                "time": "10:00 AM - 6:00 PM"
+            },
+            "note": "Important Note: All information is subject to change. I have a full-time main job and also pursue hobbies, so appointments can change at short notice. I ask for your understanding. Private appointments are not visible in my calendar, so not all free times may be available for bookings."
+        },
+        "booking": {
+            "title": "Submit Booking Request",
+            "description": "Please fill out the form to submit a booking request. I will then get back to you to find a suitable appointment.",
+            "emailBody": "VHS Booking Request\n\n",
+            "success": "Thank you! Your booking request has been sent successfully. I will contact you shortly.",
+            "error": "Error sending booking request. Please try again or contact me directly by email.",
+            "form": {
+                "name": "Name *",
+                "namePlaceholder": "Your name",
+                "email": "Email *",
+                "emailPlaceholder": "your.email@example.com",
+                "phone": "Phone (optional)",
+                "phonePlaceholder": "Your phone number",
+                "preferredDate": "Preferred Date",
+                "preferredTime": "Preferred Time",
+                "timeSelect": "Please select...",
+                "timeMorning": "Morning (10:00 AM - 12:00 PM)",
+                "timeAfternoon": "Afternoon (12:00 PM - 6:00 PM)",
+                "timeEvening": "Evening (6:00 PM - 9:00 PM)",
+                "message": "Message / Course Request",
+                "messagePlaceholder": "Briefly describe your course request or ask questions...",
+                "submit": "Send Booking Request",
+                "submitting": "Sending..."
+            }
+        },
+        "calendar": {
+            "title": "Available Appointments",
+            "description": "The following appointments are available for VHS individual lessons. Please select a suitable appointment.",
+            "error": "Calendar could not be loaded. Please contact me directly.",
+            "dateNotAvailable": "This date is not available. Please select another date.",
+            "privacyNote": "Privacy: The calendar only shows available times. No appointment details, titles, or other sensitive information are displayed."
+        }
+    },
+    "impressum": {
+        "meta": {
+            "title": "Imprint - Fabian Seitz"
+        },
+        "title": "Imprint",
+        "subtitle": "Information according to § 5 TMG",
+        "backButton": "Back to Homepage",
+        "contact": {
+            "title": "Contact",
+            "name": "Fabian Seitz",
+            "address": "[Your Address]\n[ZIP City]",
+            "email": {
+                "label": "Email:",
+                "value": "kontakt@fabiseitz.de"
+            }
+        },
+        "responsible": {
+            "title": "Responsible for Content",
+            "text": "Responsible for content according to § 55 Abs. 2 RStV:"
+        },
+        "disclaimer": {
+            "title": "Disclaimer",
+            "content": {
+                "title": "Liability for Content",
+                "text": "The contents of our pages have been created with the greatest care. However, we cannot guarantee the accuracy, completeness and timeliness of the content. As a service provider, we are responsible for our own content on these pages in accordance with § 7 Abs.1 TMG under general law."
+            },
+            "links": {
+                "title": "Liability for Links",
+                "text": "Our offer contains links to external websites of third parties, on whose contents we have no influence. Therefore, we cannot assume any liability for these external contents. The respective provider or operator of the pages is always responsible for the contents of the linked pages."
+            }
+        }
+    },
+    "privacy": {
+        "meta": {
+            "title": "Privacy Policy - Fabian Seitz"
+        },
+        "title": "Privacy Policy",
+        "subtitle": "Information on data protection according to GDPR",
+        "backButton": "Back to Homepage",
+        "general": {
+            "title": "General Information",
+            "text": "The following information provides a simple overview of what happens to your personal data when you visit this website. Personal data is any data with which you can be personally identified."
+        },
+        "dataCollection": {
+            "title": "Data Collection on this Website",
+            "server": {
+                "title": "Server Log Files",
+                "text": "The provider of the pages automatically collects and stores information in so-called server log files, which your browser automatically transmits to us. These are: browser type and browser version, operating system used, referrer URL, hostname of the accessing computer, time of the server request and IP address. A combination of this data with other data sources is not carried out."
+            },
+            "cookies": {
+                "title": "Cookies",
+                "text": "This website does not use cookies. No personal data is collected or stored via cookies."
+            }
+        },
+        "contact": {
+            "title": "Contact Form",
+            "text": "If you send us inquiries via the contact form, your details from the inquiry form, including the contact details you provided there, will be stored by us for the purpose of processing the inquiry and in case of follow-up questions. We do not pass on this data without your consent."
+        },
+        "rights": {
+            "title": "Your Rights",
+            "text": "You have the right at any time to receive information about your personal data stored by us, its origin and recipient and the purpose of data processing. You also have a right to correction, blocking or deletion of this data. For this purpose and for further questions on the subject of data protection, you can contact us at any time at the address given in the imprint."
+        }
+    },
+    "systems": {
+        "meta": {
+            "title": "System Status - Fabian Seitz"
+        },
+        "title": "System Status",
+        "description": "Overview of the servers and services I operate and use.",
+        "backButton": "Back to Homepage",
+        "statusButton": "System Availability",
+        "category": {
+            "thirdParty": "Third-Party Services",
+            "myProjects": "My Projects"
+        },
+        "badge": {
+            "madeByMe": "Made by me"
+        },
+        "viewGitHub": "GitHub",
+        "homeassistant": {
+            "description": "SmartHome"
+        },
+        "bitwarden": {
+            "description": "Secure Password Manager"
+        },
+        "paperless": {
+            "description": "DMS System"
+        },
+        "wiki": {
+            "description": "Wiki"
+        },
+        "solumati": {
+            "description": "Custom Solution"
+        },
+        "fanexid": {
+            "description": "Identity Management System"
+        },
+        "shielddns": {
+            "description": "DNS Proxy & Filter"
+        },
+        "aegis": {
+            "description": "Telegram Bot Management"
+        }
+    },
+    "status": {
+        "meta": {
+            "title": "System Availability - Fabian Seitz"
+        },
+        "title": "System Availability",
+        "description": "Live status of servers and services. Availability is checked regularly.",
+        "lastUpdate": "Last update:",
+        "backButton": "Back to Systems",
+        "homeButton": "Back to Homepage",
+        "category": {
+            "thirdParty": "Third-Party Services",
+            "myProjects": "My Projects"
+        },
+        "legend": {
+            "title": "Legend",
+            "online": "Online",
+            "offline": "Offline",
+            "checking": "Checking...",
+            "unknown": "Unknown"
+        },
+        "noPublicUrl": "Not publicly accessible",
+        "viewGitHub": "GitHub"
+    }
+}

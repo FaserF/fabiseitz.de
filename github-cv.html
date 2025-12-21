@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="de" data-i18n-lang>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GitHub Lebenslauf von Fabian Seitz - Entwicklungsstatistiken, Commits, Projekte und Achievements">
+    <meta name="keywords" content="Fabian Seitz, GitHub, Lebenslauf, CV, Entwickler, Commits, Projekte, Open Source">
+    <meta name="author" content="Fabian Seitz">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- =====BOX ICONS===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <title data-i18n="githubCv.meta.title">GitHub Lebenslauf - Fabian Seitz</title>
+
+    <link rel="icon" type="image/png" href="assets/img/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="assets/img/android-chrome-512x512.png" />
+    <link rel="shortcut icon" href="assets/img/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png" />
+
+    <meta name="apple-mobile-web-app-title" content="Fabi Seitz" />
+    <meta name="application-name" content="Fabi Seitz" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <script src="assets/js/i18n.js" defer></script>
+</head>
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="index.html" class="nav__logo">Fabian</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <!-- Language Switcher -->
+                    <li class="nav__item" id="language-switcher">
+                        <button class="lang-switch" data-lang="de" title="Deutsch">
+                            <span class="flag-icon">🇩🇪</span>
+                        </button>
+                        <button class="lang-switch" data-lang="en" title="English">
+                            <span class="flag-icon">🇬🇧</span>
+                        </button>
+                    </li>
+                    <!-- Dark Mode Toggle Button -->
+                    <li class="nav__item">
+                        <button id="dark-mode-toggle" class="dark-mode-toggle">
+                            <i class='bx bx-moon' id="dark-mode-icon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <section class="github-cv section" id="github-cv">
+            <div class="github-cv__container bd-grid">
+                <div class="github-cv__header">
+                    <h2 class="section-title" data-i18n="github.cv.title">GitHub Lebenslauf</h2>
+                    <p class="section-subtitle" data-i18n="githubCv.subtitle">
+                        Meine Entwicklungsstatistiken, Projekte und Achievements auf GitHub
+                    </p>
+                </div>
+
+                <!-- Loading State -->
+                <div id="github-cv-loading" class="github-cv__loading">
+                    <i class='bx bx-loader-alt bx-spin'></i>
+                    <p data-i18n="githubCv.loading">Lade GitHub-Daten...</p>
+                </div>
+
+                <!-- Error State -->
+                <div id="github-cv-error" class="github-cv__error" style="display: none;">
+                    <i class='bx bx-error-circle'></i>
+                    <p data-i18n="githubCv.error">Fehler beim Laden der GitHub-Daten.</p>
+                </div>
+
+                <!-- Content -->
+                <div id="github-cv-content" class="github-cv__content" style="display: none;">
+                    <!-- Overview Stats -->
+                    <div class="github-cv__overview">
+                        <div class="github-cv__stat-card">
+                            <i class='bx bx-code-alt github-cv__stat-icon'></i>
+                            <div class="github-cv__stat-content">
+                                <h3 class="github-cv__stat-value" id="total-commits">-</h3>
+                                <p class="github-cv__stat-label" data-i18n="githubCv.stats.totalCommits">Gesamt Commits</p>
+                            </div>
+                        </div>
+                        <div class="github-cv__stat-card">
+                            <i class='bx bx-folder github-cv__stat-icon'></i>
+                            <div class="github-cv__stat-content">
+                                <h3 class="github-cv__stat-value" id="total-repos">-</h3>
+                                <p class="github-cv__stat-label" data-i18n="githubCv.stats.totalRepos">Repositories</p>
+                            </div>
+                        </div>
+                        <div class="github-cv__stat-card">
+                            <i class='bx bx-star github-cv__stat-icon'></i>
+                            <div class="github-cv__stat-content">
+                                <h3 class="github-cv__stat-value" id="total-stars">-</h3>
+                                <p class="github-cv__stat-label" data-i18n="githubCv.stats.totalStars">Sterne erhalten</p>
+                            </div>
+                        </div>
+                        <div class="github-cv__stat-card">
+                            <i class='bx bx-git-branch github-cv__stat-icon'></i>
+                            <div class="github-cv__stat-content">
+                                <h3 class="github-cv__stat-value" id="total-contributions">-</h3>
+                                <p class="github-cv__stat-label" data-i18n="githubCv.stats.contributions">Beiträge</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Yearly Breakdown -->
+                    <div class="github-cv__section">
+                        <h3 class="github-cv__section-title" data-i18n="githubCv.yearly.title">Jährliche Übersicht</h3>
+                        <div id="yearly-breakdown" class="github-cv__yearly-grid"></div>
+                    </div>
+
+                    <!-- Project Focus Changes -->
+                    <div class="github-cv__section">
+                        <h3 class="github-cv__section-title" data-i18n="githubCv.focus.title">Projektfokus & Entwicklungen</h3>
+                        <div id="focus-changes" class="github-cv__focus-list"></div>
+                    </div>
+
+                    <!-- Achievements -->
+                    <div class="github-cv__section">
+                        <h3 class="github-cv__section-title" data-i18n="githubCv.achievements.title">Achievements</h3>
+                        <div id="achievements" class="github-cv__achievements-grid"></div>
+                    </div>
+
+                    <!-- Recent Projects -->
+                    <div class="github-cv__section">
+                        <h3 class="github-cv__section-title" data-i18n="githubCv.recentProjects.title">Neueste Projekte</h3>
+                        <div id="recent-projects" class="github-cv__projects-grid"></div>
+                    </div>
+                </div>
+
+                <div class="github-cv__back">
+                    <a href="github.html" class="button button--ghost" data-i18n="github.cv.backToGitHub">Zurück zu GitHub Projekten</a>
+                    <a href="cv.html" class="button button--ghost" data-i18n="github.cv.backToCv">Zurück zum Lebenslauf</a>
+                    <a href="index.html" class="button button--ghost" data-i18n="github.cv.backHome">Zurück zur Startseite</a>
+                </div>
+            </div>
+        </section>
+
+        <!--===== FOOTER =====-->
+        <footer class="footer">
+            <div class="footer__container bd-grid">
+                <div class="footer__content">
+                    <div class="footer__brand">
+                        <h3 class="footer__title">Fabian Seitz</h3>
+                        <p class="footer__subtitle" data-i18n="footer.subtitle">IT-Infrastructure & Security Specialist</p>
+                    </div>
+
+                    <div class="footer__links">
+                        <div class="footer__links-group">
+                            <h4 class="footer__links-title" data-i18n="footer.links.legal">Rechtliches</h4>
+                            <ul class="footer__links-list">
+                                <li>
+                                    <a href="impressum.html" class="footer__link" data-i18n="footer.imprint">
+                                        <i class='bx bx-file-blank'></i>
+                                        <span>Impressum</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="datenschutzerklaerung.html" class="footer__link" data-i18n="footer.privacy">
+                                        <i class='bx bx-shield-quarter'></i>
+                                        <span>Datenschutzerklärung</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="footer__links-group">
+                            <h4 class="footer__links-title" data-i18n="footer.links.resources">Ressourcen</h4>
+                            <ul class="footer__links-list">
+                                <li>
+                                    <a href="https://github.com/FaserF/fabiseitz.de" target="_blank" rel="noopener noreferrer" class="footer__link" data-i18n="footer.sourceCode">
+                                        <i class='bx bx-code-alt'></i>
+                                        <span>Sourcecode</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer__bottom">
+                    <div class="footer__divider"></div>
+                    <p class="footer__copy">&#169; 2025 Fabian Seitz. <span data-i18n="footer.rights">Alle Rechte vorbehalten.</span></p>
+                    <div class="footer__notes">
+                        <p class="footer__ai-note" data-i18n="footer.aiNote">
+                            <i class='bx bx-bot'></i>
+                            Diese Website wurde mit KI erstellt, die Ideen stammen jedoch von mir.
+                        </p>
+                        <p class="footer__cloudflare" data-i18n="footer.cloudflare">
+                            <i class='bx bx-cloud'></i>
+                            Diese Website nutzt Cloudflare für Sicherheit, Performance und globale Verfügbarkeit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/github-api-service.js"></script>
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/github-cv.js"></script>
+    <script>
+        // Load no-cookie-banner.js with error handling for ad blockers
+        try {
+            const script = document.createElement('script');
+            script.src = 'assets/js/no-cookie-banner.js';
+            script.onerror = function() {
+                console.debug('No-cookie banner script could not be loaded (possibly blocked by ad blocker)');
+            };
+            document.body.appendChild(script);
+        } catch (e) {
+            console.debug('No-cookie banner script could not be loaded:', e);
+        }
+    </script>
+</body>
+
+</html>
