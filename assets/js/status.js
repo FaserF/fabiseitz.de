@@ -8,49 +8,57 @@ class SystemStatus {
         this.systems = [
             {
                 name: 'Home Assistant',
-                url: null, // Not publicly accessible
+                url: 'https://ha.fabiseitz.de',
+                isPrivate: true,
                 github: 'https://github.com/home-assistant/core',
                 category: 'thirdParty'
             },
             {
                 name: 'Bitwarden',
-                url: null, // Not publicly accessible
+                url: 'https://pw.fabiseitz.de',
+                isPrivate: true,
                 github: 'https://github.com/bitwarden/server',
                 category: 'thirdParty'
             },
             {
                 name: 'Paperless NGX',
-                url: null, // Not publicly accessible
+                url: 'https://docs.fabiseitz.de',
+                isPrivate: true,
                 github: 'https://github.com/paperless-ngx/paperless-ngx',
                 category: 'thirdParty'
             },
             {
                 name: 'Wiki.JS',
                 url: 'https://wiki.fabiseitz.de',
+                isPrivate: false,
                 github: 'https://github.com/requarks/wiki',
                 category: 'thirdParty'
             },
             {
                 name: 'Solumati',
                 url: 'https://solumati.fabiseitz.de',
+                isPrivate: false,
                 github: 'https://github.com/FaserF/Solumati',
                 category: 'myProjects'
             },
             {
                 name: 'faneX-ID',
                 url: 'https://fanex-id.fabiseitz.de',
+                isPrivate: false,
                 github: 'https://fanex-id.github.io/',
                 category: 'myProjects'
             },
             {
                 name: 'Private DNS Proxy',
-                url: null, // Not publicly accessible
+                url: 'https://doh.fabiseitz.de',
+                isPrivate: true,
                 github: 'https://github.com/FaserF/ShieldDNS',
                 category: 'myProjects'
             },
             {
                 name: 'Aegis Telegram Bot Manager',
                 url: 'https://aegis.fabiseitz.de',
+                isPrivate: false,
                 github: 'https://github.com/FaserF/aegisbot',
                 category: 'myProjects'
             }
@@ -213,12 +221,23 @@ class SystemStatus {
             ? `<span class="status__response-time">${statusInfo.responseTime}ms</span>`
             : '';
 
-        const urlHtml = system.url
-            ? `<a href="${system.url}" target="_blank" rel="noopener noreferrer" class="status__link">
+        let urlHtml;
+        if (system.isPrivate) {
+            // Private system - show text but no clickable link
+            urlHtml = `<span class="status__private-note">
+                <i class='bx bx-lock-alt'></i>
+                <span data-i18n="status.privateSystem">${this.t('status.privateSystem', 'Not intended for public access')}</span>
+            </span>`;
+        } else if (system.url) {
+            // Public system with URL
+            urlHtml = `<a href="${system.url}" target="_blank" rel="noopener noreferrer" class="status__link">
                 <i class='bx bx-link-external'></i>
                 <span>${this.escapeHtml(system.url.replace('https://', ''))}</span>
-            </a>`
-            : `<span class="status__no-url" data-i18n="status.noPublicUrl">Nicht öffentlich erreichbar</span>`;
+            </a>`;
+        } else {
+            // No URL at all
+            urlHtml = `<span class="status__no-url" data-i18n="status.noPublicUrl">${this.t('status.noPublicUrl', 'Not publicly accessible')}</span>`;
+        }
 
         const githubHtml = system.github
             ? `<a href="${system.github}" target="_blank" rel="noopener noreferrer" class="status__link">
@@ -297,7 +316,7 @@ class SystemStatus {
 }
 
 // Initialize when DOM is ready
-(function() {
+(function () {
     const init = () => {
         if (typeof window.systemStatus === 'undefined') {
             window.systemStatus = new SystemStatus();

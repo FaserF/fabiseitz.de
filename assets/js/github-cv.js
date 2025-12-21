@@ -262,11 +262,16 @@ class GitHubCV {
         container.innerHTML = '';
 
         yearlyData.forEach(year => {
-            const card = document.createElement('div');
-            card.className = 'github-cv__year-card';
+            const yearUrl = `https://github.com/${this.username}?tab=repositories&q=&type=&language=&sort=&created=${year.year}-01-01..${year.year}-12-31`;
+            const card = document.createElement('a');
+            card.href = yearUrl;
+            card.target = '_blank';
+            card.rel = 'noopener noreferrer';
+            card.className = 'github-cv__year-card github-cv__year-card--clickable';
             card.innerHTML = `
                 <div class="github-cv__year-header">
                     <h4 class="github-cv__year-title">${year.year}</h4>
+                    <i class='bx bx-link-external github-cv__link-icon'></i>
                 </div>
                 <div class="github-cv__year-stats">
                     <div class="github-cv__year-stat">
@@ -298,8 +303,12 @@ class GitHubCV {
         }
 
         focusChanges.forEach(change => {
-            const item = document.createElement('div');
-            item.className = 'github-cv__focus-item';
+            const languageUrl = `https://github.com/${this.username}?tab=repositories&q=&type=&language=${encodeURIComponent(change.to)}&sort=`;
+            const item = document.createElement('a');
+            item.href = languageUrl;
+            item.target = '_blank';
+            item.rel = 'noopener noreferrer';
+            item.className = 'github-cv__focus-item github-cv__focus-item--clickable';
             item.innerHTML = `
                 <div class="github-cv__focus-year">${change.year}</div>
                 <div class="github-cv__focus-content">
@@ -307,6 +316,7 @@ class GitHubCV {
                     <span>${this.getTranslation('githubCv.focus.shift', 'Fokuswechsel')}: <strong>${change.from}</strong> → <strong>${change.to}</strong></span>
                     <span class="github-cv__focus-repos">(${change.repos} ${this.getTranslation('githubCv.focus.repos', 'Repos')})</span>
                 </div>
+                <i class='bx bx-link-external github-cv__link-icon'></i>
             `;
             container.appendChild(item);
         });
@@ -336,18 +346,22 @@ class GitHubCV {
         container.innerHTML = '';
 
         projects.forEach(project => {
-            const card = document.createElement('div');
-            card.className = 'github-cv__project-card';
+            const card = document.createElement('a');
+            card.href = project.url;
+            card.target = '_blank';
+            card.rel = 'noopener noreferrer';
+            card.className = 'github-cv__project-card github-cv__project-card--clickable';
             card.innerHTML = `
                 <div class="github-cv__project-header">
-                    <h4 class="github-cv__project-name">
-                        <a href="${project.url}" target="_blank" rel="noopener noreferrer">${project.name}</a>
-                    </h4>
-                    ${project.stars > 0 ? `
-                        <span class="github-cv__project-stars">
-                            <i class='bx bx-star'></i> ${project.stars}
-                        </span>
-                    ` : ''}
+                    <h4 class="github-cv__project-name">${project.name}</h4>
+                    <div class="github-cv__project-meta">
+                        ${project.stars > 0 ? `
+                            <span class="github-cv__project-stars">
+                                <i class='bx bx-star'></i> ${project.stars}
+                            </span>
+                        ` : ''}
+                        <i class='bx bx-link-external github-cv__link-icon'></i>
+                    </div>
                 </div>
                 <p class="github-cv__project-description">${this.escapeHtml(project.description)}</p>
                 <div class="github-cv__project-footer">

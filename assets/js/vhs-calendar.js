@@ -20,17 +20,70 @@
         // Only initialize if calendar URL is configured
         if (!CALENDAR_ICAL_URL) {
             console.warn('VHS Calendar: No calendar URL configured');
+            showFallbackMessage();
             return;
         }
 
         // Skip calendar loading if running from file:// protocol (CORS restrictions)
         if (window.location.protocol === 'file:') {
             console.warn('VHS Calendar: Cannot load calendar from file:// protocol due to CORS restrictions.');
+            showFallbackMessage();
             return;
         }
 
         loadCalendarEvents();
         setupFormFilters();
+    };
+
+    /**
+     * Show fallback message when calendar cannot be loaded
+     */
+    const showFallbackMessage = () => {
+        const getTranslation = (key, fallback) => {
+            return window.i18n?.t(key) || fallback;
+        };
+
+        // Update description text
+        const descriptionEl = document.querySelector('.vhs__calendar-description');
+        if (descriptionEl) {
+            descriptionEl.innerHTML = getTranslation('vhs.calendar.errorConnection',
+                'Calendar data could not be loaded. Please submit a manual request via the form below.');
+        }
+
+        // Update calendar widget
+        const calendarContainer = document.getElementById('vhs-calendar-widget');
+        if (calendarContainer) {
+            const title = getTranslation('vhs.calendar.manualRequestTitle', 'Manual Request Required');
+            const text = getTranslation('vhs.calendar.manualRequestText',
+                'Please use the form below to request an appointment. I will get back to you.');
+
+            calendarContainer.innerHTML = `
+                <div class="vhs-calendar-fallback" style="padding: var(--space-xl); text-align: center; background: var(--glass-bg); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border);">
+                    <i class='bx bx-calendar-edit' style="font-size: 3rem; margin-bottom: var(--space-md); color: var(--color-primary);"></i>
+                    <p style="margin-bottom: var(--space-sm); font-weight: var(--font-weight-semibold);">${title}</p>
+                    <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">${text}</p>
+                </div>
+            `;
+        }
+
+        // Convert date select to date input for manual entry
+        const dateSelect = document.getElementById('booking-preferred-date');
+        if (dateSelect) {
+            const dateInput = document.createElement('input');
+            dateInput.type = 'date';
+            dateInput.id = 'booking-preferred-date';
+            dateInput.name = 'preferredDate';
+            dateInput.required = true;
+            // Set min date to today
+            const today = new Date();
+            dateInput.min = today.toISOString().split('T')[0];
+            // Set max date to 3 months from now
+            const maxDate = new Date();
+            maxDate.setMonth(maxDate.getMonth() + 3);
+            dateInput.max = maxDate.toISOString().split('T')[0];
+
+            dateSelect.parentNode.replaceChild(dateInput, dateSelect);
+        }
     };
 
     /**
@@ -128,23 +181,8 @@
             updateFormFields();
         } catch (error) {
             console.error('Error loading calendar:', error);
-
-            // Show user-friendly error message for CORS issues
-            if (error.message.includes('CORS_ERROR')) {
-                const calendarContainer = document.getElementById('vhs-calendar-widget');
-                if (calendarContainer) {
-                    calendarContainer.innerHTML = `
-                        <div class="vhs-calendar-error" style="padding: var(--space-lg); text-align: center; color: var(--color-text-secondary);">
-                            <i class='bx bx-calendar-x' style="font-size: 3rem; margin-bottom: var(--space-md); color: var(--color-primary);"></i>
-                            <p style="margin-bottom: var(--space-sm);"><strong>Kalender kann nicht geladen werden</strong></p>
-                            <p style="font-size: var(--font-size-sm);">Der Google Calendar kann aufgrund von CORS-Beschränkungen nicht direkt vom Browser geladen werden. Bitte kontaktieren Sie mich direkt für Terminanfragen.</p>
-                        </div>
-                    `;
-                }
-            } else {
-                // Show fallback message for other errors
-                showCalendarError();
-            }
+            // Show fallback message for all errors
+            showFallbackMessage();
         }
     };
 
@@ -162,6 +200,22 @@
             if (line === 'BEGIN:VEVENT') {
                 currentEvent = {};
             } else if (line === 'END:VEVENT' && currentEvent) {
+                // If DTSTART exists but DTEND missing, infer end
+                if (currentEvent.start && !currentEvent.end) {
+                    // Check if it was a full-day event (start is midnight)
+                    const isMidnight = currentEvent.start.getHours() === 0 && currentEvent.start.getMinutes() === 0;
+
+                    const endDate = new Date(currentEvent.start);
+                    if (isMidnight) {
+                        // Assume 1 day duration for full-day events
+                        endDate.setDate(endDate.getDate() + 1);
+                    } else {
+                        // Assume 1 hour for timed events
+                        endDate.setHours(endDate.getHours() + 1);
+                    }
+                    currentEvent.end = endDate;
+                }
+
                 if (currentEvent.start && currentEvent.end) {
                     events.push(currentEvent);
                 }
@@ -179,36 +233,57 @@
             }
         }
 
+        console.log('VHS Calendar: Loaded ' + events.length + ' events.');
         return events;
     };
 
     /**
      * Parse iCal date format (YYYYMMDDTHHmmss or YYYYMMDD)
+     * Supports UTC (Z suffix)
      */
     const parseICalDate = (line) => {
         const dateStr = line.split(':')[1] || line.split(';')[0].split(':')[1];
         if (!dateStr) return null;
 
+        // Clean string (remove \r)
+        const cleanDateStr = dateStr.replace('\r', '');
+
         // Handle timezone and format
         let date;
-        if (dateStr.includes('T')) {
-            // Has time: YYYYMMDDTHHmmss
-            const datePart = dateStr.substring(0, 8);
-            const timePart = dateStr.substring(9, 15);
-            date = new Date(
-                datePart.substring(0, 4),
-                parseInt(datePart.substring(4, 6)) - 1,
-                datePart.substring(6, 8),
-                timePart.substring(0, 2),
-                timePart.substring(2, 4),
-                timePart.substring(4, 6)
-            );
+        if (cleanDateStr.includes('T')) {
+            // Has time: YYYYMMDDTHHmmss[Z]
+            // Check for UTC 'Z'
+            const isUTC = cleanDateStr.endsWith('Z');
+            const raw = cleanDateStr.replace('Z', '');
+
+            const datePart = raw.substring(0, 8);
+            const timePart = raw.substring(9, 15);
+
+            if (isUTC) {
+                date = new Date(Date.UTC(
+                    datePart.substring(0, 4),
+                    parseInt(datePart.substring(4, 6)) - 1,
+                    datePart.substring(6, 8),
+                    timePart.substring(0, 2),
+                    timePart.substring(2, 4),
+                    timePart.substring(4, 6)
+                ));
+            } else {
+                date = new Date(
+                    datePart.substring(0, 4),
+                    parseInt(datePart.substring(4, 6)) - 1,
+                    datePart.substring(6, 8),
+                    timePart.substring(0, 2),
+                    timePart.substring(2, 4),
+                    timePart.substring(4, 6)
+                );
+            }
         } else {
             // Date only: YYYYMMDD
             date = new Date(
-                dateStr.substring(0, 4),
-                parseInt(dateStr.substring(4, 6)) - 1,
-                dateStr.substring(6, 8)
+                cleanDateStr.substring(0, 4),
+                parseInt(cleanDateStr.substring(4, 6)) - 1,
+                cleanDateStr.substring(6, 8)
             );
         }
 

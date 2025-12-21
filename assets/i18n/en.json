@@ -569,6 +569,9 @@
             "title": "Available Appointments",
             "description": "The following appointments are available for VHS individual lessons. Please select a suitable appointment.",
             "error": "Calendar could not be loaded. Please contact me directly.",
+            "errorConnection": "No connection to the calendar. Please submit a manual request.",
+            "manualRequestTitle": "Manual Request Required",
+            "manualRequestText": "Please use the form below to request an appointment. I will get back to you.",
             "dateNotAvailable": "This date is not available. Please select another date.",
             "privacyNote": "Privacy: The calendar only shows available times. No appointment details, titles, or other sensitive information are displayed."
         }
@@ -698,6 +701,7 @@
             "unknown": "Unknown"
         },
         "noPublicUrl": "Not publicly accessible",
+        "privateSystem": "Not intended for public access",
         "viewGitHub": "GitHub"
     }
 }
