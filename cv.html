@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="de" data-i18n-lang>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lebenslauf von Fabian Seitz - IT-Administrator, Entwickler & Automatisierungsexperte">
+    <meta name="keywords" content="Fabian Seitz, Lebenslauf, CV, IT-Administrator, Entwickler, Berufserfahrung">
+    <meta name="author" content="Fabian Seitz">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- =====BOX ICONS===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <title data-i18n="cv.meta.title">Lebenslauf - Fabian Seitz</title>
+
+    <link rel="icon" type="image/png" href="assets/img/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="assets/img/android-chrome-512x512.png" />
+    <link rel="shortcut icon" href="assets/img/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png" />
+
+    <meta name="apple-mobile-web-app-title" content="Fabi Seitz" />
+    <meta name="application-name" content="Fabi Seitz" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <script src="assets/js/i18n.js" defer></script>
+</head>
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="index.html" class="nav__logo">Fabian</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <!-- Language Switcher -->
+                    <li class="nav__item" id="language-switcher">
+                        <button class="lang-switch" data-lang="de" title="Deutsch">
+                            <span class="flag-icon">🇩🇪</span>
+                        </button>
+                        <button class="lang-switch" data-lang="en" title="English">
+                            <span class="flag-icon">🇬🇧</span>
+                        </button>
+                    </li>
+                    <!-- Dark Mode Toggle Button -->
+                    <li class="nav__item">
+                        <button id="dark-mode-toggle" class="dark-mode-toggle">
+                            <i class='bx bx-moon' id="dark-mode-icon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== CV SECTION =====-->
+        <section class="cv section" id="cv">
+            <div class="cv__container">
+                <div class="cv__header">
+                    <h1 class="section-title" data-i18n="cv.title">Lebenslauf</h1>
+                    <p class="section-description" data-i18n="cv.description">
+                        Mein beruflicher Werdegang, Qualifikationen und Erfahrungen im Überblick.
+                    </p>
+                    <div class="cv__github-link">
+                        <a href="github-cv.html" class="button button--ghost" data-i18n="cv.githubCvLink">
+                            <i class='bx bx-code-alt'></i>
+                            GitHub Lebenslauf ansehen
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Personal Information -->
+                <div class="cv__section">
+                    <h3 class="cv__section-title" data-i18n="cv.personal.title">Persönliche Angaben</h3>
+                    <div class="cv__section-content">
+                        <div class="cv__info-item">
+                            <i class='bx bx-user cv__info-icon'></i>
+                            <div class="cv__info-content">
+                                <span class="cv__info-label" data-i18n="cv.personal.name">Name:</span>
+                                <span class="cv__info-value" data-i18n="cv.personal.nameValue">Fabian Seitz</span>
+                            </div>
+                        </div>
+                        <div class="cv__info-item">
+                            <i class='bx bx-envelope cv__info-icon'></i>
+                            <div class="cv__info-content">
+                                <span class="cv__info-label" data-i18n="cv.personal.email">E-Mail:</span>
+                                <a href="mailto:kontakt@fabiseitz.de" class="cv__info-value">kontakt@fabiseitz.de</a>
+                            </div>
+                        </div>
+                        <div class="cv__info-item">
+                            <i class='bx bx-link cv__info-icon'></i>
+                            <div class="cv__info-content">
+                                <span class="cv__info-label" data-i18n="cv.personal.website">Website:</span>
+                                <a href="https://fabiseitz.de" target="_blank" rel="noopener noreferrer" class="cv__info-value">fabiseitz.de</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Experience -->
+                <div class="cv__section">
+                    <h3 class="cv__section-title" data-i18n="cv.experience.title">Berufserfahrung</h3>
+                    <div class="cv__timeline">
+                        <!-- Current Position -->
+                        <div class="cv__timeline-item">
+                            <div class="cv__timeline-marker"></div>
+                            <div class="cv__timeline-content">
+                                <h4 class="cv__timeline-title" data-i18n="cv.experience.current.title">Microsoft & Security Administrator</h4>
+                                <p class="cv__timeline-period" data-i18n="cv.experience.current.period">05/2025 – heute</p>
+                                <p class="cv__timeline-description" data-i18n="cv.experience.current.description">
+                                    Primäre Systemverantwortung für Microsoft Cloud Systeme und IT-Sicherheit in einem mittelständischen IT-Unternehmen.
+                                </p>
+                                <ul class="cv__timeline-list">
+                                    <li data-i18n="cv.experience.current.point1">Administration von Microsoft Cloud Systemen (Intune, Autopilot, Autopatch, Exchange, Teams, Azure, Azure Virtual Desktop)</li>
+                                    <li data-i18n="cv.experience.current.point2">Passwortmanager-Administration</li>
+                                    <li data-i18n="cv.experience.current.point3">Client Design (Windows 11)</li>
+                                    <li data-i18n="cv.experience.current.point4">Entwicklung von Schnittstellen & Automatisierungen</li>
+                                    <li data-i18n="cv.experience.current.point5">IT-Sicherheit: Antivirus Systeme, Microsoft Defender for Cloud, Microsoft Purview, Microsoft Autopatch</li>
+                                    <li data-i18n="cv.experience.current.point6">Einführung neuer Sicherheitsrichtlinien und Tools</li>
+                                    <li data-i18n="cv.experience.current.point7">SAP Administration</li>
+                                    <li data-i18n="cv.experience.current.point8">Projektleitung & Mitarbeit in IT-Projekten</li>
+                                    <li data-i18n="cv.experience.current.point9">Ausbilder für alle Fachinformatiker-Richtungen und IT-Kaufmann</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Previous Position 1 -->
+                        <div class="cv__timeline-item">
+                            <div class="cv__timeline-marker"></div>
+                            <div class="cv__timeline-content">
+                                <h4 class="cv__timeline-title" data-i18n="cv.experience.previous1.title">IT System Specialist & SAP-Basis</h4>
+                                <p class="cv__timeline-period" data-i18n="cv.experience.previous1.period">07/2019 – 04/2025</p>
+                                <p class="cv__timeline-description" data-i18n="cv.experience.previous1.description">
+                                    Primäre Systemverantwortung für IT-Systeme und SAP-Basis Administration in einem mittelständischen IT-Unternehmen.
+                                </p>
+                                <ul class="cv__timeline-list">
+                                    <li data-i18n="cv.experience.previous1.point1">Softwareverteilung (Heat DSM & Microsoft Intune)</li>
+                                    <li data-i18n="cv.experience.previous1.point2">Telefonanlagensystem & Videokonferenz (OnPrem und Microsoft Teams)</li>
+                                    <li data-i18n="cv.experience.previous1.point3">Microsoft Cloud Systeme (Autopilot, Autopatch, Exchange, Teams, Azure Virtual Desktop, Azure)</li>
+                                    <li data-i18n="cv.experience.previous1.point4">IT-Sicherheit im Microsoft & SAP Umfeld</li>
+                                    <li data-i18n="cv.experience.previous1.point5">SAP Basis: Benutzer-, Berechtigungs- & Rollenverwaltung, Transporte, Updates, Sicherheitshinweise, Systemvermessung, Projekte, Migration SAP S/4HANA</li>
+                                    <li data-i18n="cv.experience.previous1.point6">SAP HR: Begleitung von Updates, Ansprechpartner des Fachbereichs</li>
+                                    <li data-i18n="cv.experience.previous1.point7">SAP FI/CO BW/BI: Temporärer Ansprechpartner des Fachbereichs</li>
+                                    <li data-i18n="cv.experience.previous1.point8">Einführung & Bereitstellung neuer FIORI Apps</li>
+                                    <li data-i18n="cv.experience.previous1.point9">Projektleitung & Mitarbeit in IT-Projekten</li>
+                                    <li data-i18n="cv.experience.previous1.point10">Ausbilder für alle Fachinformatiker-Richtungen und IT-Kaufmann</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Previous Position 2 -->
+                        <div class="cv__timeline-item">
+                            <div class="cv__timeline-marker"></div>
+                            <div class="cv__timeline-content">
+                                <h4 class="cv__timeline-title" data-i18n="cv.experience.previous2.title">2nd Level Support Specialist</h4>
+                                <p class="cv__timeline-period" data-i18n="cv.experience.previous2.period">07/2018 – 06/2019</p>
+                                <p class="cv__timeline-description" data-i18n="cv.experience.previous2.description">
+                                    Support und Systemadministration in einem mittelständischen IT-Unternehmen.
+                                </p>
+                                <ul class="cv__timeline-list">
+                                    <li data-i18n="cv.experience.previous2.point1">1st & 2nd Level Support</li>
+                                    <li data-i18n="cv.experience.previous2.point2">Softwareverwaltung</li>
+                                    <li data-i18n="cv.experience.previous2.point3">Benutzer- & Berechtigungsverwaltung</li>
+                                    <li data-i18n="cv.experience.previous2.point4">Mitarbeit in IT-Projekten</li>
+                                    <li data-i18n="cv.experience.previous2.point5">Primärer Ansprechpartner für Antivirenserver, Telefonanlage, Fax & Videokonferenz</li>
+                                    <li data-i18n="cv.experience.previous2.point6">IT-Produktionssupport</li>
+                                    <li data-i18n="cv.experience.previous2.point7">Ausbilderunterstützung</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education & Training -->
+                <div class="cv__section">
+                    <h3 class="cv__section-title" data-i18n="cv.education.title">Ausbildung & Weiterbildung</h3>
+                    <div class="cv__timeline">
+                        <div class="cv__timeline-item">
+                            <div class="cv__timeline-marker"></div>
+                            <div class="cv__timeline-content">
+                                <h4 class="cv__timeline-title" data-i18n="cv.education.apprenticeship.title">Ausbildung zum Fachinformatiker</h4>
+                                <p class="cv__timeline-period" data-i18n="cv.education.apprenticeship.period">09/2015 – 06/2018</p>
+                                <p class="cv__timeline-description" data-i18n="cv.education.apprenticeship.description">
+                                    Abschluss: Fachinformatiker Systemintegration
+                                </p>
+                            </div>
+                        </div>
+                        <div class="cv__timeline-item">
+                            <div class="cv__timeline-marker"></div>
+                            <div class="cv__timeline-content">
+                                <h4 class="cv__timeline-title" data-i18n="cv.education.continuous.title">Kontinuierliche Weiterbildung</h4>
+                                <p class="cv__timeline-description" data-i18n="cv.education.continuous.description">
+                                    Stetige Weiterbildung in neuen Technologien und Trends. Aktuell vertiefe ich mich intensiv in die Welt der Künstlichen Intelligenz (KI).
+                                </p>
+                                <ul class="cv__timeline-list">
+                                    <li data-i18n="cv.education.continuous.cert1">Cisco CCNA Teil 1</li>
+                                    <li data-i18n="cv.education.continuous.cert2">Ausbildereignungsprüfung gem. AEVO IHK</li>
+                                    <li data-i18n="cv.education.continuous.cert3">Microsoft MCS70-697</li>
+                                    <li data-i18n="cv.education.continuous.cert4">Powershell für Admins</li>
+                                    <li data-i18n="cv.education.continuous.cert5">Kent School of English B2</li>
+                                    <li data-i18n="cv.education.continuous.cert6">Laterale Führung</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Activities -->
+                <div class="cv__section">
+                    <h3 class="cv__section-title" data-i18n="cv.activities.title">Zusätzliche Tätigkeiten</h3>
+                    <div class="cv__activities">
+                        <div class="cv__activity-item">
+                            <i class='bx bx-chalkboard cv__activity-icon'></i>
+                            <div class="cv__activity-content">
+                                <h4 class="cv__activity-title" data-i18n="cv.activities.vhs.title">IT-Dozent (VHS)</h4>
+                                <p class="cv__activity-description" data-i18n="cv.activities.vhs.description">
+                                    Technik Kurse & Einzelschulungen an der Volkshochschule (seit 03/2023).
+                                </p>
+                            </div>
+                        </div>
+                        <div class="cv__activity-item">
+                            <i class='bx bx-group cv__activity-icon'></i>
+                            <div class="cv__activity-content">
+                                <h4 class="cv__activity-title" data-i18n="cv.activities.youth.title">Ehrenamtliches Engagement</h4>
+                                <p class="cv__activity-description" data-i18n="cv.activities.youth.description">
+                                    Mehrjähriges ehrenamtliches Engagement im Jugendzentrum der Gemeinde, Unterstützung junger Menschen in IT-Themen.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills Summary -->
+                <div class="cv__section">
+                    <h3 class="cv__section-title" data-i18n="cv.skills.title">Technische Kompetenzen</h3>
+                    <div class="cv__skills-grid">
+                        <div class="cv__skill-category">
+                            <h4 class="cv__skill-category-title" data-i18n="cv.skills.administration.title">Administration</h4>
+                            <ul class="cv__skill-list">
+                                <li data-i18n="cv.skills.administration.item1">SAP Basis</li>
+                                <li data-i18n="cv.skills.administration.item2">SAP HR</li>
+                                <li data-i18n="cv.skills.administration.item3">SAP S/4HANA</li>
+                                <li data-i18n="cv.skills.administration.item4">Microsoft Active Directory</li>
+                                <li data-i18n="cv.skills.administration.item5">Microsoft Entra ID</li>
+                                <li data-i18n="cv.skills.administration.item6">Microsoft Intune</li>
+                                <li data-i18n="cv.skills.administration.item7">Microsoft Autopilot</li>
+                                <li data-i18n="cv.skills.administration.item8">Microsoft Exchange</li>
+                                <li data-i18n="cv.skills.administration.item9">Microsoft Teams</li>
+                                <li data-i18n="cv.skills.administration.item10">Azure & Azure Virtual Desktop</li>
+                                <li data-i18n="cv.skills.administration.item11">Microsoft Defender</li>
+                                <li data-i18n="cv.skills.administration.item12">Microsoft Purview</li>
+                                <li data-i18n="cv.skills.administration.item13">Microsoft Sentinel</li>
+                                <li data-i18n="cv.skills.administration.item14">PowerShell</li>
+                                <li data-i18n="cv.skills.administration.item15">Heat DSM</li>
+                                <li data-i18n="cv.skills.administration.item16">Linux (Debian)</li>
+                                <li data-i18n="cv.skills.administration.item17">Windows / Windows Server</li>
+                                <li data-i18n="cv.skills.administration.item18">MacOS</li>
+                                <li data-i18n="cv.skills.administration.item19">Cisco IOS</li>
+                                <li data-i18n="cv.skills.administration.item20">MDM</li>
+                                <li data-i18n="cv.skills.administration.item21">ELO (DMS)</li>
+                                <li data-i18n="cv.skills.administration.item22">Git</li>
+                                <li data-i18n="cv.skills.administration.item23">Antiviren Lösungen</li>
+                                <li data-i18n="cv.skills.administration.item24">Cloudflare</li>
+                            </ul>
+                        </div>
+                        <div class="cv__skill-category">
+                            <h4 class="cv__skill-category-title" data-i18n="cv.skills.development.title">Entwicklung</h4>
+                            <ul class="cv__skill-list">
+                                <li data-i18n="cv.skills.development.item1">Python</li>
+                                <li data-i18n="cv.skills.development.item2">JavaScript</li>
+                                <li data-i18n="cv.skills.development.item3">PHP / HTML</li>
+                                <li data-i18n="cv.skills.development.item4">Scripting (Bash, Batch)</li>
+                                <li data-i18n="cv.skills.development.item5">Docker & DevOps</li>
+                                <li data-i18n="cv.skills.development.item6">Home Assistant</li>
+                                <li data-i18n="cv.skills.development.item7">MariaDB</li>
+                                <li data-i18n="cv.skills.development.item8">Apache2</li>
+                            </ul>
+                        </div>
+                        <div class="cv__skill-category">
+                            <h4 class="cv__skill-category-title" data-i18n="cv.skills.specializations.title">Spezialisierungen</h4>
+                            <ul class="cv__skill-list">
+                                <li data-i18n="cv.skills.specializations.item1">Identity Management</li>
+                                <li data-i18n="cv.skills.specializations.item2">Systemintegration</li>
+                                <li data-i18n="cv.skills.specializations.item3">Prozessautomatisierung</li>
+                                <li data-i18n="cv.skills.specializations.item4">Home Automation</li>
+                                <li data-i18n="cv.skills.specializations.item5">IT-Sicherheit</li>
+                                <li data-i18n="cv.skills.specializations.item6">Projektleitung</li>
+                                <li data-i18n="cv.skills.specializations.item7">Prozessoptimierungen</li>
+                                <li data-i18n="cv.skills.specializations.item8">Benutzerverwaltung</li>
+                                <li data-i18n="cv.skills.specializations.item9">Automatisierungen</li>
+                                <li data-i18n="cv.skills.specializations.item10">System Administration & Verwaltung</li>
+                                <li data-i18n="cv.skills.specializations.item11">IT-Projektplanung</li>
+                                <li data-i18n="cv.skills.specializations.item12">SCRUM / Kanban</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interests & Hobbies -->
+                <div class="cv__section">
+                    <h3 class="cv__section-title" data-i18n="cv.interests.title">Interessen & Hobbys</h3>
+                    <div class="cv__interests">
+                        <div class="cv__interest-item">
+                            <i class='bx bx-home-smile cv__interest-icon'></i>
+                            <span data-i18n="cv.interests.smarthome">Smart Home</span>
+                        </div>
+                        <div class="cv__interest-item">
+                            <i class='bx bx-cog cv__interest-icon'></i>
+                            <span data-i18n="cv.interests.automation">Automatisierungen von Techniken</span>
+                        </div>
+                        <div class="cv__interest-item">
+                            <i class='bx bx-volleyball cv__interest-icon'></i>
+                            <span data-i18n="cv.interests.volleyball">Volleyball</span>
+                        </div>
+                        <div class="cv__interest-item">
+                            <i class='bx bx-group cv__interest-icon'></i>
+                            <span data-i18n="cv.interests.youth">Förderung von Jugendlichen</span>
+                        </div>
+                        <div class="cv__interest-item">
+                            <i class='bx bx-leaf cv__interest-icon'></i>
+                            <span data-i18n="cv.interests.environment">Umweltbewusstes Leben</span>
+                        </div>
+                        <div class="cv__interest-item">
+                            <i class='bx bx-cycling cv__interest-icon'></i>
+                            <span data-i18n="cv.interests.biking">Fahrradfahren & Bouldern</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cv__back">
+                    <a href="index.html" class="button" data-i18n="cv.backButton">Zurück zur Startseite</a>
+                </div>
+            </div>
+        </section>
+
+        <!--===== FOOTER =====-->
+        <footer class="footer">
+            <div class="footer__container bd-grid">
+                <div class="footer__content">
+                    <div class="footer__brand">
+                        <h3 class="footer__title">Fabian Seitz</h3>
+                        <p class="footer__subtitle" data-i18n="footer.subtitle">IT-Infrastructure & Security Specialist</p>
+                    </div>
+
+                    <div class="footer__links">
+                        <div class="footer__links-group">
+                            <h4 class="footer__links-title" data-i18n="footer.links.legal">Rechtliches</h4>
+                            <ul class="footer__links-list">
+                                <li>
+                                    <a href="impressum.html" class="footer__link" data-i18n="footer.imprint">
+                                        <i class='bx bx-file-blank'></i>
+                                        <span>Impressum</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="datenschutzerklaerung.html" class="footer__link" data-i18n="footer.privacy">
+                                        <i class='bx bx-shield-quarter'></i>
+                                        <span>Datenschutzerklärung</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="footer__links-group">
+                            <h4 class="footer__links-title" data-i18n="footer.links.resources">Ressourcen</h4>
+                            <ul class="footer__links-list">
+                                <li>
+                                    <a href="https://github.com/FaserF/fabiseitz.de" target="_blank" rel="noopener noreferrer" class="footer__link" data-i18n="footer.sourceCode">
+                                        <i class='bx bx-code-alt'></i>
+                                        <span>Sourcecode</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer__bottom">
+                    <div class="footer__divider"></div>
+                    <p class="footer__copy">&#169; 2025 Fabian Seitz. <span data-i18n="footer.rights">Alle Rechte vorbehalten.</span></p>
+                    <div class="footer__notes">
+                        <p class="footer__ai-note" data-i18n="footer.aiNote">
+                            <i class='bx bx-bot'></i>
+                            Diese Website wurde mit KI erstellt, die Ideen stammen jedoch von mir.
+                        </p>
+                        <p class="footer__cloudflare" data-i18n="footer.cloudflare">
+                            <i class='bx bx-cloud'></i>
+                            Diese Website nutzt Cloudflare für Sicherheit, Performance und globale Verfügbarkeit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Load no-cookie-banner.js with error handling for ad blockers
+        try {
+            const script = document.createElement('script');
+            script.src = 'assets/js/no-cookie-banner.js';
+            script.onerror = function() {
+                // Silently fail if blocked by ad blocker
+                console.debug('No-cookie banner script could not be loaded (possibly blocked by ad blocker)');
+            };
+            document.body.appendChild(script);
+        } catch (e) {
+            console.debug('No-cookie banner script could not be loaded:', e);
+        }
+    </script>
+</body>
+
+</html>

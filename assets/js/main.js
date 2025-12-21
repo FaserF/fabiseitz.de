@@ -32,10 +32,12 @@ const scrollActive = () => {
             sectionId = current.getAttribute('id'),
             sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']');
 
-        if (scrollDown > sectionTop && scrollDown <= sectionTop + sectionHeight) {
-            sectionsClass.classList.add('active-link');
-        } else {
-            sectionsClass.classList.remove('active-link');
+        if (sectionsClass) {
+            if (scrollDown > sectionTop && scrollDown <= sectionTop + sectionHeight) {
+                sectionsClass.classList.add('active-link');
+            } else {
+                sectionsClass.classList.remove('active-link');
+            }
         }
     });
 }
@@ -47,12 +49,60 @@ const sr = ScrollReveal({
     distance: '60px',
     duration: 2000,
     delay: 200,
+    reset: false, // Don't reset on scroll up
+    viewFactor: 0.1, // Trigger when element is 10% visible
 });
 
-sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text', {});
-sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img', { delay: 400 });
-sr.reveal('.home__social-icon', { interval: 200 });
-sr.reveal('.skills__data, .work__img, .contact__input', { interval: 200 });
+// Initialize animations - ensure they run even if page is loaded with hash or after reload
+const initScrollReveal = () => {
+    // Reset and re-reveal to ensure animations work on page reload
+    sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text', {
+        reset: false,
+        viewFactor: 0.1
+    });
+    sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img', {
+        delay: 400,
+        reset: false,
+        viewFactor: 0.1
+    });
+    sr.reveal('.home__social-icon', {
+        interval: 200,
+        reset: false,
+        viewFactor: 0.1
+    });
+    sr.reveal('.skills__data, .work__img, .contact__input', {
+        interval: 200,
+        reset: false,
+        viewFactor: 0.1
+    });
+
+    // Force reveal for home section if it's in viewport on load
+    const homeData = document.querySelector('.home__data');
+    if (homeData) {
+        const rect = homeData.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        if (isVisible) {
+            // If home section is visible on load, ensure it's readable immediately
+            // The CSS animation will handle the fade-in
+            homeData.style.opacity = '1';
+            homeData.style.transform = 'translateY(0)';
+        }
+    }
+};
+
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(initScrollReveal, 100);
+    });
+} else {
+    setTimeout(initScrollReveal, 100);
+}
+
+// Re-initialize on hash change (when navigating to anchors)
+window.addEventListener('hashchange', () => {
+    setTimeout(initScrollReveal, 100);
+});
 
 /*===== DARK MODE TOGGLE =====*/
 const darkModeToggle = document.getElementById('dark-mode-toggle');

@@ -3,7 +3,9 @@
  * Supports German (de) and English (en)
  */
 
-class I18n {
+// Prevent multiple class declarations
+if (typeof window.I18n === 'undefined') {
+    window.I18n = class I18n {
     constructor() {
         this.currentLang = this.detectLanguage();
         this.translations = {};
@@ -40,6 +42,7 @@ class I18n {
             this.updateMetaTags();
             this.updateHtmlLang();
             this.initLanguageSwitcher();
+            this.updateFooterTitle();
             console.log('i18n initialization complete');
         } catch (error) {
             console.error('Failed to initialize i18n:', error);
@@ -55,11 +58,32 @@ class I18n {
      */
     async loadTranslations(lang) {
         try {
+            // Check if we're on file:// protocol (local file)
+            if (window.location.protocol === 'file:') {
+                console.warn('Running on file:// protocol. Translations may not load due to CORS. Please use a local server (e.g., python -m http.server).');
+                // Use empty translations for file:// to prevent errors
+                this.translations = {};
+                this.currentLang = lang;
+                try {
+                    localStorage.setItem('preferred-language', lang);
+                } catch (e) {
+                    // localStorage might not be available
+                }
+                return;
+            }
+
             const response = await fetch(`assets/i18n/${lang}.json`);
             if (!response.ok) {
                 throw new Error(`Failed to load ${lang}.json: ${response.status} ${response.statusText}`);
             }
-            const data = await response.json();
+            const text = await response.text();
+            let data;
+            try {
+                data = JSON.parse(text);
+            } catch (parseError) {
+                console.error(`Failed to parse ${lang}.json:`, parseError);
+                throw new Error(`Invalid JSON in ${lang}.json: ${parseError.message}`);
+            }
             if (!data || typeof data !== 'object') {
                 throw new Error(`Invalid JSON structure in ${lang}.json`);
             }
@@ -96,7 +120,8 @@ class I18n {
             }
         }
 
-        return value || key;
+        // Only return key if value is null or undefined, allow falsy values like "" or 0
+        return value !== undefined && value !== null ? value : key;
     }
 
     /**
@@ -149,42 +174,46 @@ class I18n {
      * Update meta tags
      */
     updateMetaTags() {
-        const meta = this.t('meta');
+        const metaRaw = this.t('meta');
+        // Guard against non-object meta values
+        const meta = (typeof metaRaw === 'object' && metaRaw !== null) ? metaRaw : {};
 
-        // Update title
-        document.title = meta.title;
+        // Update title only if it exists
+        if (meta.title) {
+            document.title = meta.title;
+        }
 
-        // Update meta description
+        // Update meta description only if it exists
         const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
+        if (metaDesc && meta.description) {
             metaDesc.setAttribute('content', meta.description);
         }
 
-        // Update meta keywords
+        // Update meta keywords only if it exists
         const metaKeywords = document.querySelector('meta[name="keywords"]');
-        if (metaKeywords) {
+        if (metaKeywords && meta.keywords) {
             metaKeywords.setAttribute('content', meta.keywords);
         }
 
-        // Update Open Graph
+        // Update Open Graph only if it exists
         const ogTitle = document.querySelector('meta[property="og:title"]');
-        if (ogTitle) {
+        if (ogTitle && meta.title) {
             ogTitle.setAttribute('content', meta.title);
         }
 
         const ogDesc = document.querySelector('meta[property="og:description"]');
-        if (ogDesc) {
+        if (ogDesc && meta.description) {
             ogDesc.setAttribute('content', meta.description);
         }
 
-        // Update Twitter Card
+        // Update Twitter Card only if it exists
         const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-        if (twitterTitle) {
+        if (twitterTitle && meta.title) {
             twitterTitle.setAttribute('content', meta.title);
         }
 
         const twitterDesc = document.querySelector('meta[name="twitter:description"]');
-        if (twitterDesc) {
+        if (twitterDesc && meta.description) {
             twitterDesc.setAttribute('content', meta.description);
         }
     }
@@ -209,6 +238,7 @@ class I18n {
         this.applyTranslations();
         this.updateMetaTags();
         this.updateHtmlLang();
+        this.updateFooterTitle();
 
         // Update language switcher
         this.updateLanguageSwitcher();
@@ -261,20 +291,42 @@ class I18n {
     getCurrentLanguage() {
         return this.currentLang;
     }
-}
 
-// Initialize i18n when DOM is ready
-let i18n;
-function initI18n() {
-    if (!i18n) {
-        i18n = new I18n();
-        window.i18n = i18n; // Make it globally available
+    /**
+     * Update footer title with current job title from CV
+     */
+    updateFooterTitle() {
+        // Get current job title from CV translations
+        const currentJobTitle = this.t('cv.experience.current.title');
+
+        if (currentJobTitle && currentJobTitle !== 'cv.experience.current.title') {
+            // Find all footer subtitle elements
+            const footerSubtitles = document.querySelectorAll('.footer__subtitle');
+            footerSubtitles.forEach(element => {
+                // Only update if it has the data-i18n attribute for footer.subtitle
+                if (element.getAttribute('data-i18n') === 'footer.subtitle') {
+                    element.textContent = currentJobTitle;
+                }
+            });
+        }
     }
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initI18n);
-} else {
-    // DOM already loaded
-    initI18n();
+// Initialize i18n when DOM is ready
+// Prevent multiple initializations
+if (typeof window.i18n === 'undefined') {
+    let i18n;
+    function initI18n() {
+        if (!i18n && typeof window.I18n !== 'undefined') {
+            i18n = new window.I18n();
+            window.i18n = i18n; // Make it globally available
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initI18n);
+    } else {
+        // DOM already loaded
+        initI18n();
+    }
 }

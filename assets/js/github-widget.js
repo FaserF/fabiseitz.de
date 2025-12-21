@@ -1,6 +1,7 @@
 /**
  * GitHub Projects Widget
  * Dynamically loads and displays GitHub repositories
+ * Uses centralized GitHubAPIService for optimized API calls
  */
 
 class GitHubWidget {
@@ -10,6 +11,7 @@ class GitHubWidget {
         this.filteredRepos = [];
         this.currentFilter = 'all';
         this.searchTerm = '';
+        this.apiService = window.githubAPIService || new GitHubAPIService(username);
         this.init();
     }
 
@@ -49,14 +51,8 @@ class GitHubWidget {
             loadingEl.style.display = 'flex';
             errorEl.style.display = 'none';
 
-            // Use GitHub API (public repos, no auth needed for basic info)
-            const response = await fetch(`https://api.github.com/users/${this.username}/repos?sort=updated&per_page=100&type=all`);
-
-            if (!response.ok) {
-                throw new Error(`GitHub API error: ${response.status}`);
-            }
-
-            const data = await response.json();
+            // Use centralized API service with caching
+            const data = await this.apiService.getUserRepositories();
 
             // Filter out forks and sort by updated date
             this.repos = data
@@ -71,6 +67,12 @@ class GitHubWidget {
             console.error('Error loading GitHub repositories:', error);
             loadingEl.style.display = 'none';
             errorEl.style.display = 'flex';
+
+            // Update error message if available
+            const errorText = errorEl.querySelector('p');
+            if (errorText && error.message) {
+                errorText.textContent = error.message;
+            }
         }
     }
 
@@ -130,8 +132,30 @@ class GitHubWidget {
 
     createRepoCard(repo) {
         const language = repo.language || 'Other';
-        const description = repo.description || 'Keine Beschreibung verfügbar';
-        const updatedDate = new Date(repo.updated_at).toLocaleDateString('de-DE', {
+
+        // Get locale from i18n system or fallback to navigator.language
+        const getLocale = () => {
+            if (window.i18n && window.i18n.currentLang) {
+                return window.i18n.currentLang === 'de' ? 'de-DE' : 'en-US';
+            }
+            return navigator.language || 'en-US';
+        };
+        const locale = getLocale();
+
+        // Get translations from i18n system
+        const getTranslation = (key, fallback) => {
+            if (window.i18n && window.i18n.t) {
+                const translation = window.i18n.t(key);
+                if (translation && translation !== key) {
+                    return translation;
+                }
+            }
+            return fallback;
+        };
+
+        const description = repo.description || getTranslation('github.noDescription', 'No description available');
+        const updatedLabel = getTranslation('github.updated', 'Updated:');
+        const updatedDate = new Date(repo.updated_at).toLocaleDateString(locale, {
             year: 'numeric',
             month: 'short',
             day: 'numeric'
@@ -176,7 +200,7 @@ class GitHubWidget {
                 <div class="github-project-card__footer">
                     <span class="github-project-card__updated">
                         <i class='bx bx-time-five'></i>
-                        Aktualisiert: ${updatedDate}
+                        ${updatedLabel} ${updatedDate}
                     </span>
                     <a href="${repo.html_url}" target="_blank" class="github-project-card__link">
                         <i class='bx bx-link-external'></i>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de" data-i18n-lang>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GitHub Projekte und Aktivitäten von Fabian Seitz - Alle öffentlichen Repositories, Releases und Entwicklungsstatistiken">
+    <meta name="keywords" content="Fabian Seitz, GitHub, Projekte, Open Source, Repositories, Entwickler, Code">
+    <meta name="author" content="Fabian Seitz">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- =====BOX ICONS===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <title data-i18n="githubPage.meta.title">GitHub Projekte - Fabian Seitz</title>
+
+    <link rel="icon" type="image/png" href="assets/img/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="assets/img/android-chrome-512x512.png" />
+    <link rel="shortcut icon" href="assets/img/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png" />
+
+    <meta name="apple-mobile-web-app-title" content="Fabi Seitz" />
+    <meta name="application-name" content="Fabi Seitz" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <script src="assets/js/i18n.js" defer></script>
+</head>
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="index.html" class="nav__logo">Fabian</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <!-- Language Switcher -->
+                    <li class="nav__item" id="language-switcher">
+                        <button class="lang-switch" data-lang="de" title="Deutsch">
+                            <span class="flag-icon">🇩🇪</span>
+                        </button>
+                        <button class="lang-switch" data-lang="en" title="English">
+                            <span class="flag-icon">🇬🇧</span>
+                        </button>
+                    </li>
+                    <!-- Dark Mode Toggle Button -->
+                    <li class="nav__item">
+                        <button id="dark-mode-toggle" class="dark-mode-toggle">
+                            <i class='bx bx-moon' id="dark-mode-icon"></i>
+                        </button>
+                    </li>
+                    <!-- GitHub Navigation Links -->
+                    <li class="nav__item"><a href="#github-projects" class="nav__link" data-i18n="githubPage.nav.projects">Projekte</a></li>
+                    <li class="nav__item"><a href="#github-activity-section" class="nav__link" data-i18n="githubPage.nav.activities">Aktivitäten</a></li>
+                    <li class="nav__item"><a href="#github-cv" class="nav__link" data-i18n="githubPage.nav.cv">GitHub CV</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== GITHUB PROJECTS =====-->
+        <section class="github-projects section" id="github-projects">
+            <h2 class="section-title" data-i18n="github.title">Alle GitHub Projekte</h2>
+            <p class="section-description" data-i18n="github.description">
+                Eine vollständige Übersicht aller meiner öffentlichen GitHub-Projekte, live und dynamisch geladen.
+            </p>
+
+            <div class="github-projects__container">
+                <div class="github-projects__filter">
+                    <input type="text" id="github-search" class="github-projects__search"
+                        placeholder="Projekte durchsuchen..." data-i18n-placeholder="github.searchPlaceholder">
+                    <div class="github-projects__filter-buttons">
+                        <button class="github-filter-btn active" data-filter="all"
+                            data-i18n="github.filterAll">Alle</button>
+                        <button class="github-filter-btn" data-filter="language"
+                            data-i18n="github.filterLanguage">Sprache</button>
+                        <button class="github-filter-btn" data-filter="updated"
+                            data-i18n="github.filterUpdated">Aktualisiert</button>
+                    </div>
+                </div>
+
+                <div class="github-projects__loading" id="github-loading">
+                    <i class='bx bx-loader-alt bx-spin'></i>
+                    <span data-i18n="github.loading">Lade Projekte...</span>
+                </div>
+
+                <div class="github-projects__grid" id="github-projects-grid">
+                    <!-- Projects will be loaded here dynamically -->
+                </div>
+
+                <div class="github-projects__error" id="github-error" style="display: none;">
+                    <i class='bx bx-error-circle'></i>
+                    <p data-i18n="github.error">Fehler beim Laden der Projekte. Bitte versuche es später erneut.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!--===== GITHUB ACTIVITY =====-->
+        <section class="github-activity section" id="github-activity-section">
+            <h2 class="section-title" data-i18n="github.activity.title">GitHub Aktivitäten</h2>
+            <p class="section-description" data-i18n="github.activity.description">
+                Neue Releases und aktive Projekte mit viel Entwicklungsaktivität.
+            </p>
+            <div id="github-activity">
+                <!-- Activity will be loaded here dynamically -->
+            </div>
+        </section>
+
+        <!--===== GITHUB CV =====-->
+        <section class="github-cv section" id="github-cv">
+            <h2 class="section-title" data-i18n="github.cv.title">GitHub Lebenslauf</h2>
+            <p class="section-description" data-i18n="github.cv.description">
+                Meine GitHub-Statistiken, Achievements und Projektgeschichte.
+            </p>
+            <div id="github-cv-content">
+                <!-- Dynamic content will be loaded here by github-cv.js -->
+                <div class="github-cv__loading">
+                    <i class='bx bx-loader-alt bx-spin'></i>
+                    <p data-i18n="github.loading">Lade GitHub Lebenslauf...</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="github__back">
+            <a href="index.html" class="button button--ghost" data-i18n="githubPage.backButton">Zurück zur Startseite</a>
+        </div>
+
+        <!--===== FOOTER =====-->
+        <footer class="footer">
+            <div class="footer__container bd-grid">
+                <div class="footer__content">
+                    <div class="footer__brand">
+                        <h3 class="footer__title">Fabian Seitz</h3>
+                        <p class="footer__subtitle" data-i18n="footer.subtitle">IT-Infrastructure & Security Specialist</p>
+                    </div>
+
+                    <div class="footer__links">
+                        <div class="footer__links-group">
+                            <h4 class="footer__links-title" data-i18n="footer.links.legal">Rechtliches</h4>
+                            <ul class="footer__links-list">
+                                <li>
+                                    <a href="impressum.html" class="footer__link" data-i18n="footer.imprint">
+                                        <i class='bx bx-file-blank'></i>
+                                        <span>Impressum</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="datenschutzerklaerung.html" class="footer__link" data-i18n="footer.privacy">
+                                        <i class='bx bx-shield-quarter'></i>
+                                        <span>Datenschutzerklärung</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="footer__links-group">
+                            <h4 class="footer__links-title" data-i18n="footer.links.resources">Ressourcen</h4>
+                            <ul class="footer__links-list">
+                                <li>
+                                    <a href="https://github.com/FaserF/fabiseitz.de" target="_blank" rel="noopener noreferrer" class="footer__link" data-i18n="footer.sourceCode">
+                                        <i class='bx bx-code-alt'></i>
+                                        <span>Sourcecode</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer__bottom">
+                    <div class="footer__divider"></div>
+                    <p class="footer__copy">&#169; 2025 Fabian Seitz. <span data-i18n="footer.rights">Alle Rechte vorbehalten.</span></p>
+                    <div class="footer__notes">
+                        <p class="footer__ai-note" data-i18n="footer.aiNote">
+                            <i class='bx bx-bot'></i>
+                            Diese Website wurde mit KI erstellt, die Ideen stammen jedoch von mir.
+                        </p>
+                        <p class="footer__cloudflare" data-i18n="footer.cloudflare">
+                            <i class='bx bx-cloud'></i>
+                            Diese Website nutzt Cloudflare für Sicherheit, Performance und globale Verfügbarkeit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/github-api-service.js"></script>
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/github-widget.js"></script>
+    <script src="assets/js/github-activity.js"></script>
+    <script src="assets/js/github-cv.js"></script>
+    <script>
+        // Load no-cookie-banner.js with error handling for ad blockers
+        try {
+            const script = document.createElement('script');
+            script.src = 'assets/js/no-cookie-banner.js';
+            script.onerror = function() {
+                console.debug('No-cookie banner script could not be loaded (possibly blocked by ad blocker)');
+            };
+            document.body.appendChild(script);
+        } catch (e) {
+            console.debug('No-cookie banner script could not be loaded:', e);
+        }
+    </script>
+</body>
+
+</html>
