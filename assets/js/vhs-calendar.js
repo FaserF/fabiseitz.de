@@ -41,7 +41,27 @@
      */
     const loadCalendarEvents = async () => {
         try {
-            const response = await fetch(CALENDAR_ICAL_URL);
+            // Use a CORS proxy for Google Calendar iCal feeds
+            // Google Calendar iCal endpoints don't support CORS from browsers
+            // Option 1: Use a public CORS proxy (not recommended for production)
+            // Option 2: Use a Cloudflare Worker as proxy (recommended)
+            // Option 3: Fetch from backend server
+
+            // Try direct fetch first (works if calendar is public and CORS allows)
+            let response;
+            try {
+                response = await fetch(CALENDAR_ICAL_URL, {
+                    method: 'GET',
+                    mode: 'cors',
+                    credentials: 'omit'
+                });
+            } catch (corsError) {
+                // CORS error - try using a proxy
+                // For now, we'll show an error message suggesting backend solution
+                console.warn('CORS error when fetching calendar. A backend proxy is required.');
+                throw new Error('CORS_ERROR: Calendar requires backend proxy');
+            }
+
             if (!response.ok) throw new Error('Failed to fetch calendar');
 
             const icalText = await response.text();
@@ -57,8 +77,23 @@
             updateFormFields();
         } catch (error) {
             console.error('Error loading calendar:', error);
-            // Show fallback message
-            showCalendarError();
+
+            // Show user-friendly error message for CORS issues
+            if (error.message.includes('CORS_ERROR')) {
+                const calendarContainer = document.getElementById('vhs-calendar-widget');
+                if (calendarContainer) {
+                    calendarContainer.innerHTML = `
+                        <div class="vhs-calendar-error" style="padding: var(--space-lg); text-align: center; color: var(--color-text-secondary);">
+                            <i class='bx bx-calendar-x' style="font-size: 3rem; margin-bottom: var(--space-md); color: var(--color-primary);"></i>
+                            <p style="margin-bottom: var(--space-sm);"><strong>Kalender kann nicht geladen werden</strong></p>
+                            <p style="font-size: var(--font-size-sm);">Der Google Calendar kann aufgrund von CORS-Beschränkungen nicht direkt vom Browser geladen werden. Bitte kontaktieren Sie mich direkt für Terminanfragen.</p>
+                        </div>
+                    `;
+                }
+            } else {
+                // Show fallback message for other errors
+                showCalendarError();
+            }
         }
     };
 

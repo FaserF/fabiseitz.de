@@ -234,19 +234,28 @@ if (typeof window.I18n === 'undefined') {
             return;
         }
 
-        await this.loadTranslations(lang);
-        this.applyTranslations();
-        this.updateMetaTags();
-        this.updateHtmlLang();
-        this.updateFooterTitle();
+        console.log('Changing language to:', lang);
 
-        // Update language switcher
-        this.updateLanguageSwitcher();
+        try {
+            await this.loadTranslations(lang);
+            this.applyTranslations();
+            this.updateMetaTags();
+            this.updateHtmlLang();
+            this.updateFooterTitle();
 
-        // Trigger custom event for other scripts
-        window.dispatchEvent(new CustomEvent('languageChanged', {
-            detail: { language: lang }
-        }));
+            // Update language switcher
+            this.updateLanguageSwitcher();
+
+            // Trigger custom event for other scripts
+            window.dispatchEvent(new CustomEvent('languageChanged', {
+                detail: { language: lang }
+            }));
+
+            console.log('Language changed successfully to:', lang);
+        } catch (error) {
+            console.error('Error changing language:', error);
+            throw error;
+        }
     }
 
     /**
@@ -274,14 +283,47 @@ if (typeof window.I18n === 'undefined') {
         const switcher = document.getElementById('language-switcher');
         if (switcher) {
             const buttons = switcher.querySelectorAll('button[data-lang]');
+            console.log('Found language switcher buttons:', buttons.length);
+
+            // Store reference to this for use in event handlers
+            const self = this;
+
             buttons.forEach(btn => {
-                btn.addEventListener('click', (e) => {
+                // Remove any existing listeners by cloning the button
+                const newBtn = btn.cloneNode(true);
+                btn.parentNode.replaceChild(newBtn, btn);
+
+                newBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const lang = btn.getAttribute('data-lang');
-                    this.changeLanguage(lang);
+                    e.stopPropagation();
+                    const lang = this.getAttribute('data-lang');
+                    console.log('Language switch clicked:', lang, 'Current language:', self.currentLang);
+
+                    if (lang && (lang === 'de' || lang === 'en')) {
+                        // Only change if it's different from current language
+                        if (lang !== self.currentLang) {
+                            self.changeLanguage(lang).catch(err => {
+                                console.error('Error changing language:', err);
+                            });
+                        } else {
+                            console.log('Language already set to:', lang);
+                        }
+                    } else {
+                        console.error('Invalid language code:', lang);
+                    }
                 });
             });
             this.updateLanguageSwitcher();
+        } else {
+            console.warn('Language switcher element not found');
+            // Retry after a short delay in case DOM isn't ready yet
+            setTimeout(() => {
+                const retrySwitcher = document.getElementById('language-switcher');
+                if (retrySwitcher) {
+                    console.log('Retrying language switcher initialization...');
+                    this.initLanguageSwitcher();
+                }
+            }, 500);
         }
     }
 
@@ -320,6 +362,11 @@ if (typeof window.i18n === 'undefined') {
         if (!i18n && typeof window.I18n !== 'undefined') {
             i18n = new window.I18n();
             window.i18n = i18n; // Make it globally available
+            console.log('i18n instance created and stored globally');
+        } else if (i18n) {
+            console.log('i18n already initialized');
+        } else {
+            console.error('I18n class not available');
         }
     }
 
@@ -329,4 +376,11 @@ if (typeof window.i18n === 'undefined') {
         // DOM already loaded
         initI18n();
     }
+
+    // Also try to initialize after a short delay to ensure DOM is fully ready
+    setTimeout(() => {
+        if (!window.i18n && typeof window.I18n !== 'undefined') {
+            initI18n();
+        }
+    }, 100);
 }

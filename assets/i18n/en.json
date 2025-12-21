@@ -350,6 +350,7 @@
         "meta": {
             "title": "GitHub CV - Fabian Seitz"
         },
+        "title": "GitHub CV",
         "subtitle": "My development statistics, projects, and achievements on GitHub",
         "loading": "Loading GitHub data...",
         "error": "Error loading GitHub data.",
