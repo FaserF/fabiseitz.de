@@ -1,6 +1,25 @@
 /*===== GOOGLE FONTS =====*/
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700&display=swap");
 
+/*===== REDUCED MOTION SUPPORT =====*/
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable backdrop-filter for reduced motion */
+  * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
 /*===== DESIGN SYSTEM TOKENS =====*/
 :root {
   /* Spacing System */
@@ -367,6 +386,20 @@ body.dark-mode .l-header {
   transition: color var(--transition-fast);
 }
 
+.nav__toggle:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.nav__toggle:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.nav__toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 .nav__toggle:hover {
   color: var(--color-primary);
 }
@@ -453,6 +486,20 @@ body.dark-mode .l-header {
   border-color: var(--color-primary);
   transform: scale(1.05);
   box-shadow: var(--shadow-md), var(--shadow-colored);
+}
+
+.dark-mode-toggle:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.dark-mode-toggle:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.dark-mode-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .dark-mode-toggle i {

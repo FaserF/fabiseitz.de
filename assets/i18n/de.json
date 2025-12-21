@@ -31,6 +31,7 @@
         "text2": "Meine Expertise umfasst die Entwicklung von Identity-Management-Systemen, die HR-Daten aus Enterprise-Systemen nahtlos mit IT-Infrastruktur (Active Directory, Microsoft Entra ID) verbinden. Mit meinem Projekt faneX-ID habe ich die Idee und das vollständige Konzept für eine zentrale Plattform entwickelt, die den gesamten Employee Lifecycle automatisiert verwaltet. Die Idee und Architektur stammen zu 100% von mir, während die technische Umsetzung im Team erfolgt.",
         "text3": "Neben meiner professionellen Tätigkeit entwickle ich leidenschaftlich Home Assistant Integrationen und Add-ons, die Smart-Home-Systeme erweitern und automatisieren. Meine Projekte reichen von PowerShell-Automatisierungsskripten über Python-basierte Systemintegrationen bis hin zu modernen Web-Anwendungen. Die vollständigen Konzepte und Architekturen für Projekte mit React und FastAPI stammen zu 100% von mir, während die technische Implementierung hauptsächlich im Team erfolgt.",
         "text4": "Zusätzlich engagiere ich mich als IT-Dozent an der Volkshochschule (VHS), wo ich mein Wissen in IT-Themen und Programmierung an interessierte Lernende weitergebe. Diese Tätigkeit ermöglicht es mir, komplexe technische Konzepte verständlich zu vermitteln und gleichzeitig selbst kontinuierlich dazuzulernen. <a href=\"vhs.html\" style=\"color: var(--first-color); text-decoration: underline;\">Mehr Informationen zu meinen VHS-Einzelstunden</a>.",
+        "vhsNote": "Zusätzlich bin ich <a href=\"vhs.html\" style=\"color: var(--first-color); text-decoration: underline;\">IT-Dozent an der VHS</a>.",
         "text5": "Mein Engagement geht über die berufliche Tätigkeit hinaus: Ich habe mich einige Jahre ehrenamtlich im Jugendzentrum meiner Gemeinde engagiert, wo ich junge Menschen in IT-Themen unterstützt und gefördert habe.",
         "text6": "Die IT-Welt entwickelt sich stetig weiter, und ich halte Schritt: Ich beschäftige mich kontinuierlich mit neuen Technologien und Trends. Aktuell vertiefe ich mich intensiv in die Welt der Künstlichen Intelligenz (KI), um innovative Lösungen zu entwickeln und die Möglichkeiten dieser Technologie zu erkunden.",
         "text7": "Besonders begeistert mich die Automatisierung: Ich liebe es, repetitive Aufgaben zu identifizieren und durch intelligente Skripte und Systeme zu automatisieren. Ob es um die Automatisierung von IT-Prozessen, Home Automation oder die Optimierung von Workflows geht - ich finde große Freude daran, effiziente Lösungen zu entwickeln, die Zeit sparen und Fehler reduzieren.",
@@ -320,7 +321,6 @@
         "heading": "Lass uns in Kontakt treten",
         "description": "Ich freue mich über Anfragen zu Projekten, Kooperationen oder einfach über einen fachlichen Austausch.",
         "name": "Fabian Seitz",
-        "role": "IT-Administrator & Entwickler",
         "contactWays": "Kontaktmöglichkeiten:",
         "email": "E-Mail:",
         "alternative": "Alternativ kannst du mich auch über das Kontaktformular erreichen:",
@@ -334,7 +334,7 @@
         }
     },
     "footer": {
-        "subtitle": "",
+        "subtitle": "IT-Infrastructure & Security Specialist",
         "links": {
             "legal": "Rechtliches",
             "resources": "Ressourcen"
@@ -350,7 +350,6 @@
         "meta": {
             "title": "GitHub Lebenslauf - Fabian Seitz"
         },
-        "title": "GitHub Lebenslauf",
         "subtitle": "Meine Entwicklungsstatistiken, Projekte und Achievements auf GitHub",
         "loading": "Lade GitHub-Daten...",
         "error": "Fehler beim Laden der GitHub-Daten.",
@@ -398,9 +397,7 @@
         },
         "recentProjects": {
             "title": "Neueste Projekte"
-        },
-        "backButton": "Zurück zum Lebenslauf",
-        "backHome": "Zurück zur Startseite"
+        }
     },
     "faserf": {
         "meta": {
@@ -468,6 +465,11 @@
         "title": "VHS Kursinformationen",
         "subtitle": "Häufig gestellte Fragen zu meinen IT-Einzelstunden an der Volkshochschule",
         "backButton": "Zurück zur Startseite",
+        "nav": {
+            "whyMe": "Warum gut geeignet",
+            "availability": "Verfügbarkeit",
+            "faq": "FAQ"
+        },
         "faq": {
             "price": {
                 "question": "Wie viel kostet eine Unterrichtsstunde?",
