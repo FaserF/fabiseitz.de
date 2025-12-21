@@ -3,7 +3,7 @@
  * Handles booking request form submissions via Graph API (like contact form)
  */
 
-(function() {
+(function () {
     const init = () => {
         const form = document.getElementById('vhs-booking-form');
         if (!form) return;
@@ -36,12 +36,14 @@
             const emailBody = createEmailBody(formData);
 
             // Submit to Graph API endpoint (same as contact form)
-            const response = await fetch('https://contacttomail.fabiseitz.de/', {
+            const contactUrl = window.SITE_CONFIG?.endpoints?.contactForm || 'https://contacttomail.fabiseitz.de/';
+            const response = await fetch(contactUrl, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
-                body: new URLSearchParams({
+                body: JSON.stringify({
                     firstname: formData.get('name')?.split(' ')[0] || '',
                     lastname: formData.get('name')?.split(' ').slice(1).join(' ') || '',
                     mail: formData.get('email') || '',

@@ -44,7 +44,33 @@
             // Use CORS proxy immediately - Google Calendar doesn't support direct browser access
             // Using allorigins.win as a CORS proxy
             // TODO: Replace with your own Cloudflare Worker or backend proxy for production
-            const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+            // Use configured proxy or fallback to allorigins (public proxy)
+            // Note: The 'api' endpoint logic in config.js is prepared for your own Cloudflare worker.
+            // If you haven't set up 'api.fabiseitz.de' yet, this might fail unless you create it or change config.js.
+            // For now, we will prefer the helper IF it is in Beta mode (testing), but fallback to AllOrigins for Prod to ensure stability until you deploy the prod worker.
+            // Actually, user requested "Use beta... fallback normal".
+            // Normal was AllOrigins.
+            // So: logic below tries SITE_CONFIG endpoint if we are in Beta, but if that fails? No, we can't easily failover on fetch.
+            // We will assume if user follows instructions, they set up the worker.
+
+            // However, to be safe during transition:
+            // If on Beta/Local, use SITE_CONFIG.endpoints.calendarProxy (which points to api/beta.api)
+            // If on Prod, use SITE_CONFIG... wait, if Prod worker isn't set up yet, site breaks.
+            // Use fallback to AllOrigins for now if SITE_CONFIG isn't present or we want to force legacy.
+
+            const getProxyUrl = () => {
+                if (window.SITE_CONFIG && window.SITE_CONFIG.isBeta) {
+                    return window.SITE_CONFIG.endpoints.calendarProxy;
+                }
+                // For Production, until you confirm 'api.fabiseitz.de' is live, we stick to AllOrigins?
+                // User asked "Mach ein CNAME...". They are setting it up.
+                // But "Fallback always to how it was".
+                // "How it was" = AllOrigins.
+                // So: Prod -> AllOrigins. Beta -> Beta Worker.
+                return 'https://api.allorigins.win/raw?url=';
+            };
+
+            const CORS_PROXY = getProxyUrl();
             const proxiedUrl = CORS_PROXY + encodeURIComponent(CALENDAR_ICAL_URL);
 
             console.log('Fetching calendar via CORS proxy...');
