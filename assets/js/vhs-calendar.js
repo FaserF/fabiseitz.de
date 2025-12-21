@@ -345,21 +345,20 @@
         widgetContainer.querySelectorAll('.vhs-calendar-day.available').forEach(dayEl => {
             dayEl.addEventListener('click', () => {
                 const date = dayEl.getAttribute('data-date');
-                const dateInput = document.getElementById('booking-preferred-date');
+                const dateSelect = document.getElementById('booking-preferred-date');
                 const formSection = document.getElementById('vhs-booking-form');
 
-                if (dateInput && formSection) {
-                    dateInput.value = date;
+                if (dateSelect && formSection) {
+                    dateSelect.value = date;
                     // Trigger change event manually to update time options
-                    dateInput.dispatchEvent(new Event('change'));
-                    dateInput.dispatchEvent(new Event('input')); // Also trigger input validation
+                    dateSelect.dispatchEvent(new Event('change'));
 
                     // Scroll to form
                     formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
                     // Highlight the date input briefly
-                    dateInput.classList.add('highlight-input');
-                    setTimeout(() => dateInput.classList.remove('highlight-input'), 2000);
+                    dateSelect.classList.add('highlight-input');
+                    setTimeout(() => dateSelect.classList.remove('highlight-input'), 2000);
                 }
             });
         });
@@ -369,20 +368,49 @@
      * Update form fields based on available slots
      */
     const updateFormFields = () => {
-        const dateInput = document.getElementById('booking-preferred-date');
+        const dateSelect = document.getElementById('booking-preferred-date');
         const timeSelect = document.getElementById('booking-preferred-time');
 
-        if (!dateInput || !timeSelect) return;
+        if (!dateSelect || !timeSelect) return;
 
-        // Set min date to today
-        const today = new Date().toISOString().split('T')[0];
-        dateInput.setAttribute('min', today);
+        // Clear and populate Date Select
+        // Save current selection if valid
+        const currentValue = dateSelect.value;
+        dateSelect.innerHTML = '<option value="" disabled selected data-i18n="vhs.booking.form.dateSelect">Bitte Datum wählen...</option>';
 
-        // Update time options based on selected date
-        dateInput.addEventListener('change', (e) => {
+        // Get unique available dates
+        const uniqueDates = [...new Set(availableSlots.map(slot => slot.date.toISOString().split('T')[0]))];
+
+        uniqueDates.sort().forEach(dateStr => {
+            const dateObj = new Date(dateStr);
+            const dateLabel = dateObj.toLocaleDateString(window.i18n?.currentLang || 'de-DE', {
+                weekday: 'long',
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            });
+
+            const option = document.createElement('option');
+            option.value = dateStr;
+            option.textContent = dateLabel;
+            dateSelect.appendChild(option);
+        });
+
+        // Restore selection if still available
+        if (uniqueDates.includes(currentValue)) {
+            dateSelect.value = currentValue;
+        }
+
+        // Update time options on change
+        dateSelect.addEventListener('change', (e) => {
             const selectedDate = e.target.value;
             updateTimeOptions(selectedDate, timeSelect);
         });
+
+        // Re-apply translations for the placeholder
+        if (window.i18n && window.i18n.applyTranslations) {
+            window.i18n.applyTranslations();
+        }
     };
 
     /**
@@ -422,11 +450,11 @@
     const showCalendarError = (customMessage = null) => {
         const widgetContainer = document.getElementById('vhs-calendar-widget');
         if (widgetContainer) {
-            const message = customMessage || (window.i18n?.t('vhs.calendar.error') || 'Kalender konnte nicht geladen werden. Bitte kontaktieren Sie mich direkt.');
+            const message = customMessage || (window.i18n?.t('vhs.calendar.errorConnection') || 'Keine Verbindung zum Kalender. Bitte stellen Sie eine manuelle Anfrage.');
             widgetContainer.innerHTML = `
                 <div class="vhs-calendar-error">
                     <i class='bx bx-error-circle'></i>
-                    <p>${customMessage ? message : '<span data-i18n="vhs.calendar.error">Kalender konnte nicht geladen werden. Bitte kontaktieren Sie mich direkt.</span>'}</p>
+                    <p>${customMessage ? message : '<span data-i18n="vhs.calendar.errorConnection">Keine Verbindung zum Kalender. Bitte stellen Sie eine manuelle Anfrage.</span>'}</p>
                 </div>
             `;
             if (window.i18n) {
@@ -438,45 +466,7 @@
     /**
      * Setup form filters
      */
-    const setupFormFilters = () => {
-        const dateInput = document.getElementById('booking-preferred-date');
-        if (!dateInput) return;
-
-        // Only allow dates that have available slots
-        dateInput.addEventListener('input', (e) => {
-            const selectedDate = e.target.value;
-            const hasSlots = availableSlots.some(slot =>
-                slot.date.toISOString().split('T')[0] === selectedDate
-            );
-
-            if (!hasSlots && selectedDate) {
-                e.target.setCustomValidity(
-                    window.i18n?.t('vhs.calendar.dateNotAvailable') ||
-                    'Dieses Datum ist nicht verfügbar. Bitte wählen Sie ein anderes Datum.'
-                );
-            } else {
-                e.target.setCustomValidity('');
-            }
-        });
-
-        // Add CSS for highlight effect
-        if (!document.getElementById('booking-highlight-style')) {
-            const style = document.createElement('style');
-            style.id = 'booking-highlight-style';
-            style.textContent = `
-                @keyframes inputHighlight {
-                    0% { box-shadow: 0 0 0 0 rgba(var(--first-color-rgb, 64, 112, 244), 0.7); }
-                    70% { box-shadow: 0 0 0 10px rgba(var(--first-color-rgb, 64, 112, 244), 0); }
-                    100% { box-shadow: 0 0 0 0 rgba(var(--first-color-rgb, 64, 112, 244), 0); }
-                }
-                .highlight-input {
-                    animation: inputHighlight 1s ease-out;
-                    border-color: var(--first-color);
-                }
-            `;
-            document.head.appendChild(style);
-        }
-    };
+    const setupFormFilters = () => { };
 
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);

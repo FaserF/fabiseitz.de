@@ -47,8 +47,14 @@
                     firstname: formData.get('name')?.split(' ')[0] || '',
                     lastname: formData.get('name')?.split(' ').slice(1).join(' ') || '',
                     mail: formData.get('email') || '',
-                    description: emailBody,
-                    subject: 'VHS Buchungsanfrage'
+                    phone: formData.get('phone') || '',
+                    message: formData.get('message') || '',
+                    preferredDate: formData.get('preferredDate') || '', // Keep for email text
+                    preferredTime: formData.get('preferredTime') || '', // Keep for email text
+                    // New fields for Auto-Booking
+                    startDate: calculateStartTimestamp(formData.get('preferredDate'), formData.get('preferredTime')),
+                    endDate: calculateEndTimestamp(formData.get('preferredDate'), formData.get('preferredTime')),
+                    subject: 'VHS Booking: ' + (formData.get('name') || 'Unknown') // Booking Title
                 })
             });
 
@@ -116,4 +122,27 @@
     } else {
         init();
     }
+    const calculateStartTimestamp = (dateStr, timeSlotStr) => {
+        if (!dateStr || !timeSlotStr) return null;
+        try {
+            // timeSlotStr format: "HH:MM-HH:MM" -> "18:00-18:45"
+            const startTime = timeSlotStr.split('-')[0]; // "18:00"
+            return `${dateStr}T${startTime}:00`; // "2023-10-24T18:00:00" (Local time)
+        } catch (e) {
+            console.error('Error calculating start timestamp:', e);
+            return null;
+        }
+    };
+
+    const calculateEndTimestamp = (dateStr, timeSlotStr) => {
+        if (!dateStr || !timeSlotStr) return null;
+        try {
+            // timeSlotStr format: "HH:MM-HH:MM" -> "18:00-18:45"
+            const endTime = timeSlotStr.split('-')[1]; // "18:45"
+            return `${dateStr}T${endTime}:00`; // "2023-10-24T18:45:00" (Local time)
+        } catch (e) {
+            console.error('Error calculating end timestamp:', e);
+            return null;
+        }
+    };
 })();

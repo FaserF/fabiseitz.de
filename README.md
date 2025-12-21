@@ -231,25 +231,24 @@ GitHub Actions workflow (`.github/workflows/ci.yml`):
 - Ensures code quality
 
 ### Beta Environment Setup
-To set up the `beta.fabiseitz.de` environment which always points to the latest changes:
+To set up the `beta.domain.com` environment which always points to the latest changes:
 
 1.  **Cloudflare DNS (CNAME)**:
-    *   Add a CNAME record: `beta` -> `your-pages-project-name.pages.dev` (or the specific branch alias if using Cloudflare Pages branch deployments, e.g., `beta.fabiseitz-de.pages.dev`).
+    *   Add a CNAME record: `beta` -> `your-pages-project-name.pages.dev` (or the specific branch alias if using Cloudflare Pages branch deployments, e.g., `beta.domain-com.pages.dev`).
     *   Ideally, configure your deployment system (Cloudflare Pages) to build the `beta` branch (or `develop` branch) to a specific URL alias, and point the CNAME there.
 
 2.  **Cloudflare Workers**:
     *   The site logic (`assets/js/config.js`) differentiates between `beta` (including `localhost`) and `production`.
-    *   **Beta**: Uses `beta.contacttomail.fabiseitz.de` and `beta.api.fabiseitz.de` (for calendar).
-    *   **Production**: Uses `contacttomail.fabiseitz.de` and falls back to `api.allorigins.win` (for calendar) until you configure `api.fabiseitz.de`.
+    *   **Beta**: Uses `beta.contacttomail.domain.com` and `beta.api.domain.com` (for calendar).
+    *   **Production**: Uses `contacttomail.omain.com` and falls back to `api.allorigins.win` (for calendar) until you configure `api.omain.com`.
     *   **Action Required**:
         *   Create Cloudflare Workers for `beta` subdomains (or use Routes/Triggers in the same worker based on Host header).
-        *   Ensure `beta.api.fabiseitz.de` (or your worker choice) is handling the calendar proxy request.
-        *   Ensure `beta.contacttomail.fabiseitz.de` is handling the contact form.
+        *   Ensure `beta.api.omain.com` (or your worker choice) is handling the calendar proxy request.
+        *   Ensure `beta.contacttomail.omain.com` is handling the contact form.
 
 ### Cloudflare Integration
-... (rest of section) ...
-2
-3### Cloudflare Worker (CORS Proxy & Captcha)
+
+### Cloudflare Worker (CORS Proxy & Captcha)
 
 To enable secure access to external APIs (like Google Calendar) and provide Captcha protection without exposing API keys or running into CORS issues, this project uses a Cloudflare Worker.
 
@@ -257,7 +256,7 @@ To enable secure access to external APIs (like Google Calendar) and provide Capt
 
 1. **Create a Cloudflare Worker**:
    - Go to Cloudflare Dashboard > Workers & Pages
-   - Create a new Worker (e.g., `fabiseitz-api-proxy`)
+   - Create a new Worker (e.g., `domain-api-proxy`)
 
 2. **Deploy the Worker Code**:
    - The worker acts as a proxy for:

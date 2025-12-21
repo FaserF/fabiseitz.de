@@ -567,8 +567,9 @@
         },
         "calendar": {
             "title": "Verfügbare Termine",
-            "description": "Die folgenden Termine sind für VHS-Einzelstunden verfügbar. Bitte wählen Sie einen passenden Termin aus.",
+            "description": "Die folgenden Termine sind für VHS-Kurse verfügbar. Bitte wählen Sie einen passenden Termin aus.",
             "error": "Kalender konnte nicht geladen werden. Bitte kontaktieren Sie mich direkt.",
+            "errorConnection": "Keine Verbindung zum Kalender. Bitte stellen Sie eine manuelle Anfrage.",
             "dateNotAvailable": "Dieses Datum ist nicht verfügbar. Bitte wählen Sie ein anderes Datum.",
             "privacyNote": "Datenschutz: Der Kalender zeigt nur verfügbare Zeiten an. Keine Termindetails, Titel oder andere sensible Informationen werden angezeigt."
         }
@@ -643,7 +644,7 @@
         "title": "Systemstatus",
         "description": "Übersicht über die Server und Dienste, die ich betreibe und nutze.",
         "backButton": "Zurück zur Startseite",
-        "statusButton": "Systemerreichbarkeit",
+        "statusButton": "Systemstatus",
         "category": {
             "thirdParty": "Externe Dienste",
             "myProjects": "Meine Projekte"

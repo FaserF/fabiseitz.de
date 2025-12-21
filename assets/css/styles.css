@@ -694,12 +694,14 @@ body.dark-mode .l-header {
 }
 
 .home__faserf-link,
-.home__profiles-link {
+.home__profiles-link,
+.home__status-link {
   font-size: var(--font-size-sm);
 }
 
 .home__faserf-link a,
-.home__profiles-link a {
+.home__profiles-link a,
+.home__status-link a {
   color: var(--color-primary);
   font-weight: var(--font-weight-medium);
   transition: all var(--transition-fast);
@@ -708,7 +710,8 @@ body.dark-mode .l-header {
 }
 
 .home__faserf-link a::after,
-.home__profiles-link a::after {
+.home__profiles-link a::after,
+.home__status-link a::after {
   content: "";
   position: absolute;
   bottom: -2px;
@@ -720,12 +723,14 @@ body.dark-mode .l-header {
 }
 
 .home__faserf-link a:hover,
-.home__profiles-link a:hover {
+.home__profiles-link a:hover,
+.home__status-link a:hover {
   color: var(--color-primary-light);
 }
 
 .home__faserf-link a:hover::after,
-.home__profiles-link a:hover::after {
+.home__profiles-link a:hover::after,
+.home__status-link a:hover::after {
   width: 100%;
 }
 

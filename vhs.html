@@ -235,10 +235,14 @@
                                 <input type="tel" id="booking-phone" name="phone"
                                     data-i18n-placeholder="vhs.booking.form.phonePlaceholder">
                             </div>
-                            <div class="vhs__booking-field">
-                                <label for="booking-preferred-date"
+                            <div class="vhs-booking__content">
+                                <label for="booking-preferred-date" class="vhs-booking__label"
                                     data-i18n="vhs.booking.form.preferredDate">Bevorzugtes Datum</label>
-                                <input type="date" id="booking-preferred-date" name="preferredDate">
+                                <select id="booking-preferred-date" name="preferredDate" class="vhs-booking__input"
+                                    required>
+                                    <option value="" disabled selected data-i18n="vhs.booking.form.dateSelect">Bitte
+                                        Datum wählen...</option>
+                                </select>
                             </div>
                             <div class="vhs__booking-field">
                                 <label for="booking-preferred-time"
