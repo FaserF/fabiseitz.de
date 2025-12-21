@@ -715,11 +715,28 @@
             }
 
             // Load Telegram widgets only on http/https (not file://)
+            // NOTE: Telegram widgets have CSP restrictions (frame-ancestors https://web.telegram.org)
+            // This means they can only be embedded on web.telegram.org, not on other domains.
+            // The widgets will be blocked by the browser, so we show a fallback instead.
             const telegramChannelWidget = document.getElementById('telegram-channel-widget');
             const telegramChannelFallback = document.getElementById('telegram-channel-fallback');
             const telegramGroupWidget = document.getElementById('telegram-group-widget');
             const telegramGroupFallback = document.getElementById('telegram-group-fallback');
 
+            // Due to Telegram's CSP policy, widgets cannot be embedded on external domains.
+            // Always show fallback with link to Telegram.
+            if (telegramChannelWidget && telegramChannelFallback) {
+                telegramChannelWidget.style.display = 'none';
+                telegramChannelFallback.style.display = 'flex';
+            }
+            if (telegramGroupWidget && telegramGroupFallback) {
+                telegramGroupWidget.style.display = 'none';
+                telegramGroupFallback.style.display = 'flex';
+            }
+
+            // Optional: Try to load widgets anyway (will fail due to CSP, but might work in some browsers)
+            // This is commented out to avoid console errors. Uncomment if you want to attempt loading:
+            /*
             if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
                 // Load Telegram Channel Widget with error handling
                 if (telegramChannelWidget && telegramChannelFallback) {
@@ -748,17 +765,8 @@
                     telegramGroupWidget.style.display = 'block';
                     telegramGroupFallback.style.display = 'none';
                 }
-            } else {
-                // Show fallback messages for file://
-                if (telegramChannelWidget && telegramChannelFallback) {
-                    telegramChannelWidget.style.display = 'none';
-                    telegramChannelFallback.style.display = 'flex';
-                }
-                if (telegramGroupWidget && telegramGroupFallback) {
-                    telegramGroupWidget.style.display = 'none';
-                    telegramGroupFallback.style.display = 'flex';
-                }
             }
+            */
         });
     </script>
 </body>

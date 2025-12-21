@@ -11,9 +11,6 @@
         weekend: { start: '10:00', end: '18:00' } // Sat-Sun
     };
 
-    // Google Calendar public iCal URL
-    // IMPORTANT: This is a public calendar specifically for VHS appointments.
-    // Format: https://calendar.google.com/calendar/ical/[CALENDAR_ID]/public/basic.ics
     const CALENDAR_ICAL_URL = 'https://calendar.google.com/calendar/ical/20f927fc2cd88c728aa298e86fd00973456fd5f875e0eed0cc4e98eb6260dbad%40group.calendar.google.com/public/basic.ics';
 
     let calendarEvents = [];
@@ -38,19 +35,23 @@
 
     /**
      * Load calendar events from Google Calendar iCal feed
+     *
+     * IMPORTANT: Google Calendar iCal feeds don't support CORS from browsers.
+     * We must use a CORS proxy to fetch the calendar data.
      */
     const loadCalendarEvents = async () => {
         try {
-            // Google Calendar iCal endpoints don't support CORS from browsers
-            // Use a CORS proxy to fetch the calendar
-            // Option 1: Use Cloudflare Worker (recommended for production)
-            // Option 2: Use a public CORS proxy (fallback, not recommended for production)
-            // Option 3: Fetch from backend server
-
-            // Try using a CORS proxy
-            // Using allorigins.win as a fallback CORS proxy
+            // Use CORS proxy immediately - Google Calendar doesn't support direct browser access
+            // Using allorigins.win as a CORS proxy
+            // TODO: Replace with your own Cloudflare Worker or backend proxy for production
             const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
             const proxiedUrl = CORS_PROXY + encodeURIComponent(CALENDAR_ICAL_URL);
+
+            console.log('Fetching calendar via CORS proxy...');
+
+            // Create abort controller for timeout (fallback for browsers without AbortSignal.timeout)
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
             let response;
             try {
@@ -60,11 +61,28 @@
                     credentials: 'omit',
                     headers: {
                         'Accept': 'text/calendar, text/plain, */*'
-                    }
+                    },
+                    signal: controller.signal
                 });
+
+                clearTimeout(timeoutId);
             } catch (fetchError) {
-                console.warn('Error fetching calendar via proxy:', fetchError);
-                throw new Error('CORS_ERROR: Calendar requires backend proxy');
+                clearTimeout(timeoutId);
+                console.error('Error fetching calendar via proxy:', fetchError);
+
+                // Check if it's a timeout/abort
+                if (fetchError.name === 'AbortError' || fetchError.name === 'TimeoutError') {
+                    throw new Error('CORS_ERROR: Calendar fetch timed out. Please try again later or contact directly.');
+                }
+
+                // Check if it's a network error
+                if (fetchError.message.includes('Failed to fetch') ||
+                    fetchError.message.includes('NetworkError') ||
+                    fetchError.message.includes('CORS')) {
+                    throw new Error('CORS_ERROR: Network error. Calendar proxy may be unavailable. Please contact directly for appointments.');
+                }
+
+                throw new Error('CORS_ERROR: Calendar requires backend proxy. Please contact directly for appointments.');
             }
 
             if (!response.ok) {
