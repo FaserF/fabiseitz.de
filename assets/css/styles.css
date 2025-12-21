@@ -4838,6 +4838,12 @@ body.dark-mode .systems__category-title {
   animation: none;
 }
 
+.status__indicator--protected {
+  background: #8b5cf6;
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+  animation: none;
+}
+
 @keyframes pulse {
 
   0%,

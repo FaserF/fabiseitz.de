@@ -698,7 +698,8 @@
             "online": "Online",
             "offline": "Offline",
             "checking": "Wird überprüft...",
-            "unknown": "Unbekannt"
+            "unknown": "Unbekannt",
+            "protected": "Geschützt"
         },
         "noPublicUrl": "Nicht öffentlich erreichbar",
         "privateSystem": "Nicht für die Öffentlichkeit gedacht",

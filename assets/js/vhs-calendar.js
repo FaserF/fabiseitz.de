@@ -11,6 +11,16 @@
         weekend: { start: '10:00', end: '18:00' } // Sat-Sun
     };
 
+    // Fixed blocked dates (month-day format, always blocked every year)
+    const BLOCKED_DATES = [
+        { month: 12, day: 24 }, // Christmas Eve
+        { month: 12, day: 25 }, // Christmas Day
+        { month: 12, day: 26 }, // 2nd Christmas Day
+        { month: 12, day: 31 }, // New Year's Eve
+        { month: 1, day: 1 },   // New Year's Day
+        { month: 11, day: 26 }  // November 26
+    ];
+
     const CALENDAR_ICAL_URL = 'https://calendar.google.com/calendar/ical/20f927fc2cd88c728aa298e86fd00973456fd5f875e0eed0cc4e98eb6260dbad%40group.calendar.google.com/public/basic.ics';
 
     let calendarEvents = [];
@@ -299,8 +309,20 @@
         const endDate = new Date(today);
         endDate.setDate(endDate.getDate() + 60); // Next 60 days
 
+        // Helper to check if a date is blocked
+        const isBlockedDate = (date) => {
+            const month = date.getMonth() + 1; // getMonth() is 0-indexed
+            const day = date.getDate();
+            return BLOCKED_DATES.some(blocked => blocked.month === month && blocked.day === day);
+        };
+
         // Generate available slots
         for (let date = new Date(today); date <= endDate; date.setDate(date.getDate() + 1)) {
+            // Skip fixed blocked dates (holidays)
+            if (isBlockedDate(date)) {
+                continue;
+            }
+
             const dayOfWeek = date.getDay();
 
             let availability;

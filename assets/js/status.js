@@ -104,6 +104,43 @@ class SystemStatus {
     }
 
     async checkSystem(system) {
+        // For private systems (behind Cloudflare Access), check if CF responds
+        if (system.isPrivate && system.url) {
+            try {
+                const startTime = performance.now();
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 8000);
+
+                // Try to fetch - Cloudflare Access will return 403 if protected but running
+                const response = await fetch(system.url, {
+                    method: 'HEAD',
+                    mode: 'no-cors',
+                    signal: controller.signal,
+                    cache: 'no-store'
+                });
+
+                clearTimeout(timeoutId);
+                const responseTime = Math.round(performance.now() - startTime);
+
+                // If we got here without error, the server responded (even if CF blocks with 403)
+                this.statusData.set(system.name, {
+                    status: 'protected',
+                    responseTime: responseTime,
+                    lastCheck: new Date(),
+                    error: null
+                });
+            } catch (error) {
+                // Network error = server is actually down
+                this.statusData.set(system.name, {
+                    status: 'offline',
+                    responseTime: null,
+                    lastCheck: new Date(),
+                    error: 'Connection failed'
+                });
+            }
+            return;
+        }
+
         if (!system.url) {
             // System not publicly accessible - mark as unknown
             this.statusData.set(system.name, {
@@ -272,8 +309,9 @@ class SystemStatus {
         const texts = {
             online: this.t('status.legend.online', 'Online'),
             offline: this.t('status.legend.offline', 'Offline'),
-            checking: this.t('status.legend.checking', 'Wird überprüft...'),
-            unknown: this.t('status.legend.unknown', 'Unbekannt')
+            checking: this.t('status.legend.checking', 'Checking...'),
+            unknown: this.t('status.legend.unknown', 'Unknown'),
+            protected: this.t('status.legend.protected', 'Protected')
         };
         return texts[status] || texts.unknown;
     }
@@ -283,7 +321,8 @@ class SystemStatus {
             online: 'bx-check-circle',
             offline: 'bx-x-circle',
             checking: 'bx-loader-alt bx-spin',
-            unknown: 'bx-question-mark'
+            unknown: 'bx-question-mark',
+            protected: 'bx-shield-quarter'
         };
         return icons[status] || icons.unknown;
     }
