@@ -230,6 +230,59 @@ GitHub Actions workflow (`.github/workflows/ci.yml`):
 - Lints code
 - Ensures code quality
 
+## ☁️ Cloudflare Integration
+2
+3### Cloudflare Worker (CORS Proxy & Captcha)
+
+To enable secure access to external APIs (like Google Calendar) and provide Captcha protection without exposing API keys or running into CORS issues, this project uses a Cloudflare Worker.
+
+#### Setup Instructions
+
+1. **Create a Cloudflare Worker**:
+   - Go to Cloudflare Dashboard > Workers & Pages
+   - Create a new Worker (e.g., `fabiseitz-api-proxy`)
+
+2. **Deploy the Worker Code**:
+   - The worker acts as a proxy for:
+     - Google Calendar (iCal fetch)
+     - Telegram API (optional)
+     - Contact Form submission (Email forwarding)
+   - It also validates Cloudflare Turnstile tokens.
+
+   Basic example code structure:
+   ```javascript
+   export default {
+     async fetch(request, env) {
+       const url = new URL(request.url);
+
+       // Handle CORS preflight
+       if (request.method === "OPTIONS") {
+         return new Response(null, {
+           headers: {
+             "Access-Control-Allow-Origin": "*",
+             "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+             "Access-Control-Allow-Headers": "Content-Type",
+           },
+         });
+       }
+
+       // Proxy logic here...
+       // fetch(targetUrl, ...)
+     }
+   }
+   ```
+
+3. **Configure Calendar Proxy**:
+   - In `assets/js/vhs-calendar.js`, update the `CORS_PROXY` variable to point to your Worker URL:
+   ```javascript
+   const CORS_PROXY = 'https://your-worker.your-subdomain.workers.dev/?url=';
+   ```
+
+4. **Configure Turnstile Captcha**:
+   - Get your Site Key and Secret Key from Cloudflare Dashboard > Turnstile.
+   - Add the Site Key to the `.cf-turnstile` div in `index.html`.
+   - Use the Secret Key in your Worker to validate the token on form submission.
+
 ## 📦 Dependencies
 
 ### Runtime Dependencies

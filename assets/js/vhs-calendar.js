@@ -198,32 +198,9 @@
         const endDate = new Date(today);
         endDate.setDate(endDate.getDate() + 60); // Next 60 days
 
-        // Create a map of busy times
-        // IMPORTANT: We only use start/end times - no event details (summary, description, etc.) are used
-        const busyTimes = new Map();
-        events.forEach(event => {
-            // Only process events that have valid start and end times
-            if (!event.start || !event.end) return;
-
-            const start = new Date(event.start);
-            const end = new Date(event.end);
-
-            // Skip invalid dates
-            if (isNaN(start.getTime()) || isNaN(end.getTime())) return;
-
-            const dateKey = start.toISOString().split('T')[0];
-
-            if (!busyTimes.has(dateKey)) {
-                busyTimes.set(dateKey, []);
-            }
-            // Only store start/end times - no event details
-            busyTimes.get(dateKey).push({ start, end });
-        });
-
         // Generate available slots
         for (let date = new Date(today); date <= endDate; date.setDate(date.getDate() + 1)) {
             const dayOfWeek = date.getDay();
-            const dateKey = date.toISOString().split('T')[0];
 
             let availability;
             if (dayOfWeek >= 1 && dayOfWeek <= 4) {
@@ -239,28 +216,50 @@
                 continue; // Skip other days
             }
 
-            // Check if slot is available (not in busy times)
-            const busy = busyTimes.get(dateKey) || [];
-            const slotStart = new Date(date);
-            const [startHour, startMin] = availability.start.split(':').map(Number);
-            slotStart.setHours(startHour, startMin, 0, 0);
+            // Parse base window start/end
+            const [baseStartHour, baseStartMin] = availability.start.split(':').map(Number);
+            const [baseEndHour, baseEndMin] = availability.end.split(':').map(Number);
 
-            const slotEnd = new Date(date);
-            const [endHour, endMin] = availability.end.split(':').map(Number);
-            slotEnd.setHours(endHour, endMin, 0, 0);
+            const windowStart = new Date(date);
+            windowStart.setHours(baseStartHour, baseStartMin, 0, 0);
 
-            // Check if slot overlaps with busy times
-            const isAvailable = !busy.some(busySlot => {
-                return (slotStart < busySlot.end && slotEnd > busySlot.start);
-            });
+            const windowEnd = new Date(date);
+            windowEnd.setHours(baseEndHour, baseEndMin, 0, 0);
 
-            if (isAvailable) {
-                slots.push({
-                    date: new Date(date),
-                    start: availability.start,
-                    end: availability.end,
-                    available: true
+            // Generate 45-minute slots within the window
+            let currentSlotStart = new Date(windowStart);
+            const slotDuration = 45 * 60 * 1000; // 45 minutes in ms
+
+            while (currentSlotStart.getTime() + slotDuration <= windowEnd.getTime()) {
+                const currentSlotEnd = new Date(currentSlotStart.getTime() + slotDuration);
+
+                // Check if slot overlaps with ANY busy event
+                const isBlocked = events.some(event => {
+                    if (!event.start || !event.end) return false;
+                    const eventStart = new Date(event.start);
+                    const eventEnd = new Date(event.end);
+
+                    // Specific fix for multi-day events:
+                    // Check intersection: (SlotStart < EventEnd) && (SlotEnd > EventStart)
+                    return (currentSlotStart < eventEnd && currentSlotEnd > eventStart);
                 });
+
+                if (!isBlocked) {
+                    // Format time string HH:MM
+                    const formatTime = (d) => {
+                        return d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+                    };
+
+                    slots.push({
+                        date: new Date(date),
+                        start: formatTime(currentSlotStart),
+                        end: formatTime(currentSlotEnd),
+                        available: true
+                    });
+                }
+
+                // Move to next slot
+                currentSlotStart = new Date(currentSlotStart.getTime() + slotDuration);
             }
         }
 
@@ -315,6 +314,29 @@
 
         html += '</div>';
         widgetContainer.innerHTML = html;
+
+        // Add click listeners to available days
+        widgetContainer.querySelectorAll('.vhs-calendar-day.available').forEach(dayEl => {
+            dayEl.addEventListener('click', () => {
+                const date = dayEl.getAttribute('data-date');
+                const dateInput = document.getElementById('booking-preferred-date');
+                const formSection = document.getElementById('vhs-booking-form');
+
+                if (dateInput && formSection) {
+                    dateInput.value = date;
+                    // Trigger change event manually to update time options
+                    dateInput.dispatchEvent(new Event('change'));
+                    dateInput.dispatchEvent(new Event('input')); // Also trigger input validation
+
+                    // Scroll to form
+                    formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    // Highlight the date input briefly
+                    dateInput.classList.add('highlight-input');
+                    setTimeout(() => dateInput.classList.remove('highlight-input'), 2000);
+                }
+            });
+        });
     };
 
     /**
@@ -410,6 +432,24 @@
                 e.target.setCustomValidity('');
             }
         });
+
+        // Add CSS for highlight effect
+        if (!document.getElementById('booking-highlight-style')) {
+            const style = document.createElement('style');
+            style.id = 'booking-highlight-style';
+            style.textContent = `
+                @keyframes inputHighlight {
+                    0% { box-shadow: 0 0 0 0 rgba(var(--first-color-rgb, 64, 112, 244), 0.7); }
+                    70% { box-shadow: 0 0 0 10px rgba(var(--first-color-rgb, 64, 112, 244), 0); }
+                    100% { box-shadow: 0 0 0 0 rgba(var(--first-color-rgb, 64, 112, 244), 0); }
+                }
+                .highlight-input {
+                    animation: inputHighlight 1s ease-out;
+                    border-color: var(--first-color);
+                }
+            `;
+            document.head.appendChild(style);
+        }
     };
 
     if (document.readyState === 'loading') {

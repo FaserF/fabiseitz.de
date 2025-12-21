@@ -56,7 +56,7 @@ const sr = ScrollReveal({
 // Initialize animations - ensure they run even if page is loaded with hash or after reload
 const initScrollReveal = () => {
     // Reset and re-reveal to ensure animations work on page reload
-    sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text', {
+    sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text, .about__vhs-note', {
         reset: false,
         viewFactor: 0.1
     });
