@@ -95,7 +95,7 @@
             descriptionEl.innerHTML = `
                 <div class="vhs-calendar-warning" style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.5); border-radius: var(--border-radius-md); padding: var(--space-md); margin-bottom: var(--space-md);">
                     <i class='bx bx-error-circle' style="color: #f59e0b; margin-right: var(--space-xs);"></i>
-                    <span>${getTranslation('vhs.calendar.fallbackWarning', 'Live calendar data unavailable. Displayed slots may not be accurate - I will confirm availability after your request.')}</span>
+                    <span>${getTranslation('vhs.calendar.fallbackWarning', 'Live-Kalenderdaten nicht verfügbar. Angezeigte Termine sind eventuell nicht aktuell – ich bestätige die Verfügbarkeit nach Ihrer Anfrage.')}</span>
                 </div>
             `;
         }
@@ -459,9 +459,9 @@
         let html = `
             <div class="vhs-calendar">
                 <div class="vhs-calendar__header">
-                    <h4 class="vhs-calendar__title">${t('vhs.calendar.selectDates', 'Select Appointment Dates')}</h4>
+                    <h4 class="vhs-calendar__title">${t('vhs.calendar.selectDates', 'Terminauswahl')}</h4>
                     <p class="vhs-calendar__instructions">
-                        ${t('vhs.calendar.instructions', 'Click to select your preferred date (dark). Click additional dates for alternatives (light). Gray dates are not available.')}
+                        ${t('vhs.calendar.instructions', 'Klicken Sie auf Ihren Wunschtermin (dunkel). Weitere Klicks fügen Alternativen hinzu (heller). Graue Felder sind nicht verfügbar.')}
                     </p>
                 </div>
 
@@ -469,31 +469,31 @@
                 <div class="vhs-calendar__controls">
                     <div class="vhs-calendar__week-toggle">
                         <button type="button" class="vhs-calendar__btn ${currentWeeks === 2 ? 'vhs-calendar__btn--active' : ''}" data-weeks="2">
-                            ${t('vhs.calendar.weeks2', '2 Weeks')}
+                            ${t('vhs.calendar.weeks2', '2 Wochen')}
                         </button>
                         <button type="button" class="vhs-calendar__btn ${currentWeeks === 4 ? 'vhs-calendar__btn--active' : ''}" data-weeks="4">
-                            ${t('vhs.calendar.weeks4', '4 Weeks')}
+                            ${t('vhs.calendar.weeks4', '4 Wochen')}
                         </button>
                     </div>
                     <div class="vhs-calendar__filters">
                         <select id="vhs-filter-daytype" class="vhs-calendar__filter-select">
-                            <option value="all" ${currentFilter.dayType === 'all' ? 'selected' : ''}>${t('vhs.calendar.filter.allDays', 'All days')}</option>
-                            <option value="weekdays" ${currentFilter.dayType === 'weekdays' ? 'selected' : ''}>${t('vhs.calendar.filter.weekdays', 'Weekdays only')}</option>
-                            <option value="weekend" ${currentFilter.dayType === 'weekend' ? 'selected' : ''}>${t('vhs.calendar.filter.weekend', 'Weekend only')}</option>
+                            <option value="all" ${currentFilter.dayType === 'all' ? 'selected' : ''}>${t('vhs.calendar.filter.allDays', 'Alle Tage')}</option>
+                            <option value="weekdays" ${currentFilter.dayType === 'weekdays' ? 'selected' : ''}>${t('vhs.calendar.filter.weekdays', 'Nur Wochentage')}</option>
+                            <option value="weekend" ${currentFilter.dayType === 'weekend' ? 'selected' : ''}>${t('vhs.calendar.filter.weekend', 'Nur Wochenende')}</option>
                         </select>
                         <select id="vhs-filter-time" class="vhs-calendar__filter-select">
-                            <option value="all" ${currentFilter.time === 'all' ? 'selected' : ''}>${t('vhs.calendar.filter.allTimes', 'All times')}</option>
-                            <option value="morning" ${currentFilter.time === 'morning' ? 'selected' : ''}>${t('vhs.calendar.filter.morning', 'Morning')}</option>
-                            <option value="afternoon" ${currentFilter.time === 'afternoon' ? 'selected' : ''}>${t('vhs.calendar.filter.afternoon', 'Afternoon')}</option>
+                            <option value="all" ${currentFilter.time === 'all' ? 'selected' : ''}>${t('vhs.calendar.filter.allTimes', 'Alle Zeiten')}</option>
+                            <option value="morning" ${currentFilter.time === 'morning' ? 'selected' : ''}>${t('vhs.calendar.filter.morning', 'Vormittag')}</option>
+                            <option value="afternoon" ${currentFilter.time === 'afternoon' ? 'selected' : ''}>${t('vhs.calendar.filter.afternoon', 'Nachmittag')}</option>
                             <option value="evening" ${currentFilter.time === 'evening' ? 'selected' : ''}>${t('vhs.calendar.filter.evening', 'Evening')}</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="vhs-calendar__legend">
-                    <span class="vhs-calendar__legend-item"><span class="vhs-calendar__legend-dot vhs-calendar__legend-dot--primary"></span>${t('vhs.calendar.primaryLabel', 'Preferred')}</span>
+                    <span class="vhs-calendar__legend-item"><span class="vhs-calendar__legend-dot vhs-calendar__legend-dot--primary"></span>${t('vhs.calendar.primaryLabel', 'Wunschtermin')}</span>
                     <span class="vhs-calendar__legend-item"><span class="vhs-calendar__legend-dot vhs-calendar__legend-dot--alternative"></span>${t('vhs.calendar.alternativeLabel', 'Alternative')}</span>
-                    <span class="vhs-calendar__legend-item"><span class="vhs-calendar__legend-dot vhs-calendar__legend-dot--blocked"></span>${t('vhs.calendar.blockedLabel', 'Not available')}</span>
+                    <span class="vhs-calendar__legend-item"><span class="vhs-calendar__legend-dot vhs-calendar__legend-dot--blocked"></span>${t('vhs.calendar.blockedLabel', 'Nicht verfügbar')}</span>
                 </div>
                 <div class="vhs-calendar__weekdays">
                     <span>${t('vhs.calendar.weekdays.mon', 'Mo')}</span>
@@ -563,11 +563,11 @@
                 </div>
                 <div class="vhs-calendar__selection">
                     <div class="vhs-calendar__selection-primary">
-                        <label>${t('vhs.calendar.selectedPrimary', 'Preferred date:')}</label>
+                        <label>${t('vhs.calendar.selectedPrimary', 'Wunschtermin:')}</label>
                         <span id="vhs-primary-display">-</span>
                     </div>
                     <div class="vhs-calendar__selection-alternatives">
-                        <label>${t('vhs.calendar.selectedAlternatives', 'Alternatives:')}</label>
+                        <label>${t('vhs.calendar.selectedAlternatives', 'Alternativen:')}</label>
                         <span id="vhs-alternatives-display">-</span>
                     </div>
                 </div>
