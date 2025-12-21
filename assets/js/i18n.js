@@ -43,6 +43,12 @@ if (typeof window.I18n === 'undefined') {
                 this.updateHtmlLang();
                 this.initLanguageSwitcher();
                 this.updateFooterTitle();
+
+                // Dispatch initialization event
+                window.dispatchEvent(new CustomEvent('i18nInitialized', {
+                    detail: { language: this.currentLang }
+                }));
+
                 console.log('i18n initialization complete');
             } catch (error) {
                 console.error('Failed to initialize i18n:', error);

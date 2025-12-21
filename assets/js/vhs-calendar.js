@@ -43,6 +43,23 @@
 
         loadCalendarEvents();
         setupFormFilters();
+
+        // Re-render when language changes or i18n initializes
+        window.addEventListener('languageChanged', () => {
+            renderCalendarWidget();
+            showFallbackMessageIfNeeded();
+        });
+        window.addEventListener('i18nInitialized', () => {
+            renderCalendarWidget();
+            showFallbackMessageIfNeeded();
+        });
+    };
+
+    // Helper to re-show fallback message if we are in fallback mode
+    const showFallbackMessageIfNeeded = () => {
+        if (window.vhsCalendarFallbackMode) {
+            showFallbackMessage();
+        }
     };
 
     /**
@@ -115,6 +132,17 @@
             const proxiedUrl = CORS_PROXY + encodeURIComponent(CALENDAR_ICAL_URL);
 
             console.log('Fetching calendar via CORS proxy...');
+
+            // Show loading state
+            const widgetContainer = document.getElementById('vhs-calendar-widget');
+            if (widgetContainer) {
+                widgetContainer.innerHTML = `
+                    <div style="text-align: center; padding: 4rem; color: var(--color-text-secondary);">
+                        <i class='bx bx-loader-alt bx-spin' style="font-size: 3rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
+                        <p>${window.i18n?.t('vhs.calendar.loading', 'Lade Kalenderdaten...')}</p>
+                    </div>
+                `;
+            }
 
             // Create abort controller for timeout (fallback for browsers without AbortSignal.timeout)
             const controller = new AbortController();
@@ -384,9 +412,17 @@
         let { primaryDate, alternativeDates } = window.vhsCalendarSelection;
 
         // Group slots by date for availability lookup
+        // FIX: Use local date string generation to match the grid generation loop
+        const toLocalYMD = (d) => {
+            const year = d.getFullYear();
+            const month = String(d.getMonth() + 1).padStart(2, '0');
+            const day = String(d.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        };
+
         const slotsByDate = new Map();
         availableSlots.forEach(slot => {
-            const dateKey = slot.date.toISOString().split('T')[0];
+            const dateKey = toLocalYMD(slot.date);
             if (!slotsByDate.has(dateKey)) {
                 slotsByDate.set(dateKey, []);
             }
@@ -467,7 +503,10 @@
         for (let i = 0; i < totalDays; i++) {
             const date = new Date(startOfWeek);
             date.setDate(startOfWeek.getDate() + i);
-            const dateKey = date.toISOString().split('T')[0];
+
+            // FIX: Use manual YYYY-MM-DD generation to match slotsByDate and avoid ISO/UTC shift
+            const dateKey = toLocalYMD(date);
+
             const dow = date.getDay(); // 0=Sun, 1=Mon, ...
 
             const isPast = date < today;
