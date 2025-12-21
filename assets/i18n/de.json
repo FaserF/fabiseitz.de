@@ -351,6 +351,7 @@
         "meta": {
             "title": "GitHub Lebenslauf - Fabian Seitz"
         },
+        "title": "GitHub Lebenslauf",
         "subtitle": "Meine Entwicklungsstatistiken, Projekte und Achievements auf GitHub",
         "loading": "Lade GitHub-Daten...",
         "error": "Fehler beim Laden der GitHub-Daten.",
