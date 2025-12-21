@@ -48,7 +48,7 @@
     <header class="l-header">
         <nav class="nav bd-grid">
             <div>
-                <a href="#" class="nav__logo">Fabian</a>
+                <a href="#" class="nav__logo">Fabian / FaserF</a>
             </div>
 
             <div class="nav__menu" id="nav-menu">
@@ -63,7 +63,9 @@
                         </button>
                     </li>
                     <!-- Dark Mode Toggle Button -->
-                    <button id="dark-mode-toggle" class="dark-mode-toggle">🌙</button>
+                    <button id="dark-mode-toggle" class="dark-mode-toggle">
+                        <i class='bx bx-moon' id="dark-mode-icon"></i>
+                    </button>
                     <li class="nav__item"><a href="#home" class="nav__link active-link" data-i18n="nav.home">Start</a>
                     </li>
                     <li class="nav__item"><a href="#about" class="nav__link" data-i18n="nav.about">Über mich</a></li>
@@ -93,9 +95,8 @@
                     Identity Management, Home Automation und Systemintegration. Ich entwickle innovative Lösungen, die
                     HR-Daten mit IT-Infrastruktur verbinden und Prozesse automatisieren.</p>
                 <a href="#contact" class="button" data-i18n="home.contactButton">Kontakt aufnehmen</a>
-                <p style="margin-top: 1rem; font-size: 0.9rem;">
-                    <a href="faserf.html" style="color: var(--first-color); text-decoration: underline;"
-                        data-i18n="home.faserfLink">Warum FaserF?</a>
+                <p class="home__faserf-link">
+                    <a href="faserf.html" data-i18n="home.faserfLink">Warum FaserF?</a>
                 </p>
             </div>
 
@@ -104,6 +105,8 @@
                         class='bx bxl-linkedin'></i></a>
                 <a href="https://github.com/FaserF" class="home__social-icon dark-mode-icon"><i
                         class='bx bxl-github'></i></a>
+                <a href="https://community.home-assistant.io/u/faserf/summary"
+                    class="home__social-icon dark-mode-icon"><i class='bx bx-home-smile'></i></a>
             </div>
 
             <div class="home__img">
@@ -131,11 +134,7 @@
                         Als IT-Administrator und Entwickler mit umfassender Erfahrung in Microsoft-Administration, SAP
                         Basis und Automatisierung entwickle ich innovative Lösungen für komplexe IT-Herausforderungen.
                     </p>
-                    <p class="about__text" data-i18n-html="about.text2">
-                        Meine Expertise umfasst die Entwicklung von Identity-Management-Systemen, die HR-Daten (SAP R3
-                        HCM) nahtlos mit IT-Infrastruktur (Active Directory, Microsoft Entra ID) verbinden. Mit meinem
-                        Projekt <strong>faneX-ID</strong> habe ich eine zentrale Plattform geschaffen, die den gesamten
-                        Employee Lifecycle automatisiert verwaltet.
+                    <p class="about__text" data-i18n="about.text2">
                     </p>
                     <p class="about__text" data-i18n="about.text3">
                         Neben meiner professionellen Tätigkeit entwickle ich leidenschaftlich Home Assistant
@@ -144,14 +143,14 @@
                         zu modernen Web-Anwendungen mit React und FastAPI.
                     </p>
                     <p class="about__text" data-i18n="about.text4">
-                        Zusätzlich engagiere ich mich als Dozent an der Volkshochschule (VHS), wo ich mein Wissen in
-                        IT-Themen und Programmierung an interessierte Lernende weitergebe. Diese Tätigkeit ermöglicht es
-                        mir, komplexe technische Konzepte verständlich zu vermitteln und gleichzeitig selbst
-                        kontinuierlich dazuzulernen.
                     </p>
                     <p class="about__text" data-i18n="about.text5">
-                        Ich bin stets bestrebt, durchdachte, skalierbare und benutzerfreundliche Lösungen zu entwickeln,
-                        die echte Probleme lösen und Prozesse effizienter gestalten.
+                    </p>
+                    <p class="about__text" data-i18n="about.text6">
+                    </p>
+                    <p class="about__text" data-i18n="about.text7">
+                    </p>
+                    <p class="about__text" data-i18n="about.text8">
                     </p>
                 </div>
             </div>
@@ -195,14 +194,14 @@
                     </div>
                     <div class="skills__data">
                         <div class="skills__names">
-                            <i class='bx bxl-python skills__icon'></i>
+                            <i class='bx bxl-python skills__icon' style="color: #3776ab;"></i>
                             <span class="skills__name" data-i18n="skills.skills.python">Python</span>
                         </div>
                         <div class="skills__bar skills__js">
 
                         </div>
                         <div>
-                            <span class="skills__percentage">65%</span>
+                            <span class="skills__percentage">40%</span>
                         </div>
                     </div>
                     <div class="skills__data">
@@ -219,19 +218,7 @@
                     </div>
                     <div class="skills__data">
                         <div class="skills__names">
-                            <i class='bx bxl-react skills__icon'></i>
-                            <span class="skills__name" data-i18n="skills.skills.react">React & TypeScript</span>
-                        </div>
-                        <div class="skills__bar skills__html">
-
-                        </div>
-                        <div>
-                            <span class="skills__percentage">60%</span>
-                        </div>
-                    </div>
-                    <div class="skills__data">
-                        <div class="skills__names">
-                            <i class='bx bxl-docker skills__icon'></i>
+                            <i class='bx bxl-docker skills__icon' style="color: #2496ed;"></i>
                             <span class="skills__name" data-i18n="skills.skills.docker">Docker & DevOps</span>
                         </div>
                         <div class="skills__bar skills__css">
@@ -256,11 +243,10 @@
                 </div>
 
                 <div>
-                    <div class="skills__img"
-                        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 1rem; padding: 2rem; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 300px;">
-                        <i class='bx bx-code-alt' style="font-size: 4rem; margin-bottom: 1rem;"></i>
-                        <h3 style="margin: 0.5rem 0;" data-i18n="skills.techStack.title">Technologie-Stack</h3>
-                        <p style="text-align: center; margin-top: 1rem;" data-i18n="skills.techStack.description">
+                    <div class="skills__img tech-stack-card">
+                        <i class='bx bx-code-alt tech-stack-icon'></i>
+                        <h3 class="tech-stack-title" data-i18n="skills.techStack.title">Technologie-Stack</h3>
+                        <p class="tech-stack-description" data-i18n="skills.techStack.description">
                             Full-Stack Entwicklung mit modernen Frameworks
                             und bewährten Enterprise-Technologien</p>
                     </div>
@@ -271,66 +257,102 @@
         <!--===== WORK =====-->
         <section class="work section" id="work">
             <h2 class="section-title" data-i18n="work.title">Projekte</h2>
-            <p style="text-align: center; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;"
-                data-i18n="work.description">
+            <p class="section-description" data-i18n="work.description">
                 Eine Auswahl meiner wichtigsten Projekte, die meine Expertise in verschiedenen Bereichen zeigen.
             </p>
 
             <div class="work__container bd-grid">
                 <div class="work__img">
-                    <a href="https://github.com/faneX-ID/faneX-ID" target="_blank"
-                        style="position: relative; display: block;">
-                        <div
-                            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 1rem; padding: 2rem; color: white; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-                            <i class='bx bx-shield-quarter' style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                            <h3 style="margin: 0.5rem 0; font-size: 1.5rem;" data-i18n="work.projects.fanexid.title">
-                                faneX-ID</h3>
-                            <p style="margin-top: 0.5rem; opacity: 0.9;" data-i18n="work.projects.fanexid.description">
-                                Identity Management System - Verbindet HR-Daten
-                                (SAP) mit IT-Infrastruktur (AD, Entra ID)</p>
-                        </div>
+                    <a href="https://github.com/faneX-ID/faneX-ID" target="_blank" class="project-card project-card-1">
+                        <i class='bx bx-shield-quarter project-icon'></i>
+                        <h3 class="project-title" data-i18n="work.projects.fanexid.title">faneX-ID</h3>
+                        <p class="project-description" data-i18n="work.projects.fanexid.description">
+                            Identity Management System - Verbindet HR-Daten
+                            (SAP) mit IT-Infrastruktur (AD, Entra ID)</p>
                     </a>
                 </div>
                 <div class="work__img">
-                    <a href="https://github.com/FaserF/AegisBot" target="_blank"
-                        style="position: relative; display: block;">
-                        <div
-                            style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 1rem; padding: 2rem; color: white; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-                            <i class='bx bx-bot' style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                            <h3 style="margin: 0.5rem 0; font-size: 1.5rem;" data-i18n="work.projects.aegisbot.title">
-                                AegisBot</h3>
-                            <p style="margin-top: 0.5rem; opacity: 0.9;" data-i18n="work.projects.aegisbot.description">
-                                Produktionsreifer Telegram-Moderation-Bot mit
-                                KI-gestützter Spam-Erkennung</p>
-                        </div>
+                    <a href="https://github.com/FaserF/AegisBot" target="_blank" class="project-card project-card-2">
+                        <i class='bx bx-bot project-icon'></i>
+                        <h3 class="project-title" data-i18n="work.projects.aegisbot.title">AegisBot</h3>
+                        <p class="project-description" data-i18n="work.projects.aegisbot.description">
+                            Produktionsreifer Telegram-Moderation-Bot mit
+                            KI-gestützter Spam-Erkennung</p>
                     </a>
                 </div>
                 <div class="work__img">
                     <a href="https://github.com/FaserF?tab=repositories&q=ha-&type=&language=&sort=" target="_blank"
-                        style="position: relative; display: block;">
-                        <div
-                            style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 1rem; padding: 2rem; color: white; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-                            <i class='bx bx-home-smile' style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                            <h3 style="margin: 0.5rem 0; font-size: 1.5rem;"
-                                data-i18n="work.projects.homeassistant.title">Home Assistant</h3>
-                            <p style="margin-top: 0.5rem; opacity: 0.9;"
-                                data-i18n="work.projects.homeassistant.description">Verschiedene Custom Integrations und
-                                Add-ons
-                                für Home Assistant</p>
-                        </div>
+                        class="project-card project-card-3">
+                        <i class='bx bx-home-smile project-icon'></i>
+                        <h3 class="project-title" data-i18n="work.projects.homeassistant.title">Home Assistant</h3>
+                        <p class="project-description" data-i18n="work.projects.homeassistant.description">
+                            Verschiedene Custom Integrations und Add-ons
+                            für Home Assistant</p>
                     </a>
                 </div>
                 <div class="work__img">
-                    <a href="https://github.com/FaserF" target="_blank" style="position: relative; display: block;">
-                        <div
-                            style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); border-radius: 1rem; padding: 2rem; color: white; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-                            <i class='bx bxl-github' style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                            <h3 style="margin: 0.5rem 0; font-size: 1.5rem;" data-i18n="work.projects.more.title">
-                                Weitere Projekte</h3>
-                            <p style="margin-top: 0.5rem; opacity: 0.9;" data-i18n="work.projects.more.description">Mehr
-                                Projekte auf GitHub entdecken</p>
-                        </div>
+                    <a href="https://github.com/FaserF/SwitchCraft" target="_blank" class="project-card project-card-4">
+                        <i class='bx bx-package project-icon'></i>
+                        <h3 class="project-title" data-i18n="work.projects.switchcraft.title">SwitchCraft</h3>
+                        <p class="project-description" data-i18n="work.projects.switchcraft.description">
+                            Umfassender Packaging-Assistent für IT-Profis -
+                            optimiert den gesamten Anwendungs-Packaging-Workflow</p>
                     </a>
+                </div>
+                <div class="work__img">
+                    <a href="https://github.com/FaserF/ShieldDNS" target="_blank" class="project-card project-card-1">
+                        <i class='bx bx-shield project-icon'></i>
+                        <h3 class="project-title" data-i18n="work.projects.shielddns.title">ShieldDNS</h3>
+                        <p class="project-description" data-i18n="work.projects.shielddns.description">
+                            Leichtgewichtiger, effizienter und datenschutzorientierter
+                            DNS-over-TLS (DoT) Proxy</p>
+                    </a>
+                </div>
+                <div class="work__img">
+                    <a href="https://github.com/FaserF" target="_blank" class="project-card project-card-2">
+                        <i class='bx bxl-github project-icon'></i>
+                        <h3 class="project-title" data-i18n="work.projects.more.title">Weitere Projekte</h3>
+                        <p class="project-description" data-i18n="work.projects.more.description">
+                            Mehr Projekte auf GitHub entdecken</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!--===== GITHUB PROJECTS =====-->
+        <section class="github-projects section" id="github-projects">
+            <h2 class="section-title" data-i18n="github.title">Alle GitHub Projekte</h2>
+            <p class="section-description" data-i18n="github.description">
+                Eine vollständige Übersicht aller meiner öffentlichen GitHub-Projekte, live und dynamisch geladen.
+            </p>
+
+            <div class="github-projects__container">
+                <div class="github-projects__filter">
+                    <input type="text" id="github-search" class="github-projects__search"
+                        placeholder="Projekte durchsuchen..." data-i18n-placeholder="github.searchPlaceholder">
+                    <div class="github-projects__filter-buttons">
+                        <button class="github-filter-btn active" data-filter="all"
+                            data-i18n="github.filterAll">Alle</button>
+                        <button class="github-filter-btn" data-filter="language"
+                            data-i18n="github.filterLanguage">Sprache</button>
+                        <button class="github-filter-btn" data-filter="updated"
+                            data-i18n="github.filterUpdated">Aktualisiert</button>
+                    </div>
+                </div>
+
+                <div class="github-projects__loading" id="github-loading">
+                    <i class='bx bx-loader-alt bx-spin'></i>
+                    <span data-i18n="github.loading">Lade Projekte...</span>
+                </div>
+
+                <div class="github-projects__grid" id="github-projects-grid">
+                    <!-- Projects will be loaded here dynamically -->
+                </div>
+
+                <div class="github-projects__error" id="github-error" style="display: none;">
+                    <i class='bx bx-error-circle'></i>
+                    <p data-i18n="github.error">Fehler beim Laden der Projekte. Bitte versuchen Sie es später erneut.
+                    </p>
                 </div>
             </div>
         </section>
@@ -339,9 +361,8 @@
         <section class="cv section" id="cv">
             <h2 class="section-title" data-i18n="cv.title">Lebenslauf</h2>
             <div class="cv__container bd-grid">
-                <div class="cv__data" style="text-align: center;">
-                    <p style="margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;"
-                        data-i18n="cv.description">
+                <div class="cv__data">
+                    <p data-i18n="cv.description">
                         Laden Sie meinen aktuellen Lebenslauf herunter, um mehr über meinen beruflichen Werdegang, meine
                         Qualifikationen und Erfahrungen zu erfahren.
                     </p>
@@ -357,30 +378,31 @@
             <h2 class="section-title" data-i18n="contact.title">Kontakt</h2>
 
             <div class="about__container bd-grid">
-                <div class="about__img" style="max-width: 100%;">
-                    <div
-                        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 1rem; padding: 3rem; color: white; min-height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; width: 100%; box-sizing: border-box;">
-                        <i class='bx bx-envelope' style="font-size: 4rem; margin-bottom: 1.5rem;"></i>
-                        <h3 style="margin: 1rem 0; font-size: 1.8rem;" data-i18n="contact.heading">Lassen Sie uns in
-                            Kontakt treten</h3>
-                        <p style="margin-top: 1rem; opacity: 0.9; line-height: 1.6;" data-i18n="contact.description">
+                <div class="about__img contact-visual">
+                    <div class="contact-card">
+                        <i class='bx bx-envelope contact-icon'></i>
+                        <h3 class="contact-heading" data-i18n="contact.heading">Lassen Sie uns in Kontakt treten</h3>
+                        <p class="contact-text" data-i18n="contact.description">
                             Ich freue mich über Anfragen zu Projekten, Kooperationen oder einfach über einen fachlichen
                             Austausch.
                         </p>
-                        <div style="margin-top: 2rem;">
+                        <div class="contact-social">
                             <a href="https://www.linkedin.com/in/fabiseitz/" target="_blank"
-                                style="color: white; margin: 0 1rem; font-size: 2rem;">
+                                class="contact-social-link">
                                 <i class='bx bxl-linkedin'></i>
                             </a>
-                            <a href="https://github.com/FaserF" target="_blank"
-                                style="color: white; margin: 0 1rem; font-size: 2rem;">
+                            <a href="https://github.com/FaserF" target="_blank" class="contact-social-link">
                                 <i class='bx bxl-github'></i>
+                            </a>
+                            <a href="https://community.home-assistant.io/u/faserf/summary" target="_blank"
+                                class="contact-social-link">
+                                <i class='bx bx-home-smile'></i>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div style="max-width: 100%;">
+                <div class="contact-form-wrapper">
                     <p class="about__text">
                         <strong data-i18n="contact.name">Fabian Seitz</strong><br>
                         <span data-i18n="contact.role">IT-Administrator & Entwickler</span>
@@ -428,8 +450,7 @@
                 <a href="datenschutzerklaerung.html" class="footer__link"
                     data-i18n="footer.privacy">Datenschutzerklärung</a>
             </p>
-            <p class="footer__copy">&#169; Fabian Seitz 2025 - &#169; bedimcode, for the <a
-                    href="https://github.com/bedimcode/portfolio-responsive-complete">Website template</a></p>
+            <p class="footer__copy">&#169; Fabian Seitz 2025</p>
         </footer>
 
         <!--===== SCROLL REVEAL =====-->
@@ -437,6 +458,7 @@
 
         <!--===== MAIN JS =====-->
         <script src="assets/js/i18n.js"></script>
+        <script src="assets/js/github-widget.js"></script>
         <script src="assets/js/main.js"></script>
         <script src="assets/js/serviceWorker.js"></script>
 </body>

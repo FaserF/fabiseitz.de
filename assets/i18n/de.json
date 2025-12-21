@@ -25,10 +25,13 @@
     "title": "Über mich",
     "subtitle": "Ich bin Fabian Seitz",
     "text1": "Als IT-Administrator und Entwickler mit umfassender Erfahrung in Microsoft-Administration, SAP Basis und Automatisierung entwickle ich innovative Lösungen für komplexe IT-Herausforderungen.",
-    "text2": "Meine Expertise umfasst die Entwicklung von Identity-Management-Systemen, die HR-Daten (SAP R3 HCM) nahtlos mit IT-Infrastruktur (Active Directory, Microsoft Entra ID) verbinden. Mit meinem Projekt faneX-ID habe ich eine zentrale Plattform geschaffen, die den gesamten Employee Lifecycle automatisiert verwaltet.",
-    "text3": "Neben meiner professionellen Tätigkeit entwickle ich leidenschaftlich Home Assistant Integrationen und Add-ons, die Smart-Home-Systeme erweitern und automatisieren. Meine Projekte reichen von PowerShell-Automatisierungsskripten über Python-basierte Systemintegrationen bis hin zu modernen Web-Anwendungen mit React und FastAPI.",
-    "text4": "Zusätzlich engagiere ich mich als Dozent an der Volkshochschule (VHS), wo ich mein Wissen in IT-Themen und Programmierung an interessierte Lernende weitergebe. Diese Tätigkeit ermöglicht es mir, komplexe technische Konzepte verständlich zu vermitteln und gleichzeitig selbst kontinuierlich dazuzulernen.",
-    "text5": "Ich bin stets bestrebt, durchdachte, skalierbare und benutzerfreundliche Lösungen zu entwickeln, die echte Probleme lösen und Prozesse effizienter gestalten."
+    "text2": "Meine Expertise umfasst die Entwicklung von Identity-Management-Systemen, die HR-Daten (SAP R3 HCM) nahtlos mit IT-Infrastruktur (Active Directory, Microsoft Entra ID) verbinden. Mit meinem Projekt faneX-ID habe ich die Idee und das vollständige Konzept für eine zentrale Plattform entwickelt, die den gesamten Employee Lifecycle automatisiert verwaltet. Die Idee und Architektur stammen zu 100% von mir, während die technische Umsetzung im Team erfolgt.",
+    "text3": "Neben meiner professionellen Tätigkeit entwickle ich leidenschaftlich Home Assistant Integrationen und Add-ons, die Smart-Home-Systeme erweitern und automatisieren. Meine Projekte reichen von PowerShell-Automatisierungsskripten über Python-basierte Systemintegrationen bis hin zu modernen Web-Anwendungen. Die vollständigen Konzepte und Architekturen für Projekte mit React und FastAPI stammen zu 100% von mir, während die technische Implementierung hauptsächlich im Team erfolgt.",
+    "text4": "Zusätzlich engagiere ich mich als IT-Ausbilder und Dozent an der Volkshochschule (VHS), wo ich mein Wissen in IT-Themen und Programmierung an interessierte Lernende weitergebe. Diese Tätigkeit ermöglicht es mir, komplexe technische Konzepte verständlich zu vermitteln und gleichzeitig selbst kontinuierlich dazuzulernen.",
+    "text5": "Mein Engagement geht über die berufliche Tätigkeit hinaus: Ich habe mich einige Jahre ehrenamtlich im Jugendzentrum meiner Gemeinde engagiert, wo ich junge Menschen in IT-Themen unterstützt und gefördert habe.",
+    "text6": "Die IT-Welt entwickelt sich stetig weiter, und ich halte Schritt: Ich beschäftige mich kontinuierlich mit neuen Technologien und Trends. Aktuell vertiefe ich mich intensiv in die Welt der Künstlichen Intelligenz (KI), um innovative Lösungen zu entwickeln und die Möglichkeiten dieser Technologie zu erkunden.",
+    "text7": "Besonders begeistert mich die Automatisierung: Ich liebe es, repetitive Aufgaben zu identifizieren und durch intelligente Skripte und Systeme zu automatisieren. Ob es um die Automatisierung von IT-Prozessen, Home Automation oder die Optimierung von Workflows geht – ich finde große Freude daran, effiziente Lösungen zu entwickeln, die Zeit sparen und Fehler reduzieren.",
+    "text8": "Ich bin stets bestrebt, durchdachte, skalierbare und benutzerfreundliche Lösungen zu entwickeln, die echte Probleme lösen und Prozesse effizienter gestalten."
   },
   "skills": {
     "title": "Fähigkeiten",
@@ -43,7 +46,6 @@
       "sap": "SAP Basis",
       "python": "Python",
       "powershell": "PowerShell",
-      "react": "React & TypeScript",
       "docker": "Docker & DevOps",
       "homeassistant": "Home Assistant"
     }
@@ -64,11 +66,30 @@
         "title": "Home Assistant",
         "description": "Verschiedene Custom Integrations und Add-ons für Home Assistant"
       },
+      "switchcraft": {
+        "title": "SwitchCraft",
+        "description": "Umfassender Packaging-Assistent für IT-Profis - optimiert den gesamten Anwendungs-Packaging-Workflow"
+      },
+      "shielddns": {
+        "title": "ShieldDNS",
+        "description": "Leichtgewichtiger, effizienter und datenschutzorientierter DNS-over-TLS (DoT) Proxy"
+      },
       "more": {
         "title": "Weitere Projekte",
         "description": "Mehr Projekte auf GitHub entdecken"
       }
     }
+  },
+  "github": {
+    "title": "Alle GitHub Projekte",
+    "description": "Eine vollständige Übersicht aller meiner öffentlichen GitHub-Projekte, live und dynamisch geladen.",
+    "searchPlaceholder": "Projekte durchsuchen...",
+    "filterAll": "Alle",
+    "filterLanguage": "Sprache",
+    "filterUpdated": "Aktualisiert",
+    "loading": "Lade Projekte...",
+    "error": "Fehler beim Laden der Projekte. Bitte versuchen Sie es später erneut.",
+    "noResults": "Keine Projekte gefunden"
   },
   "cv": {
     "title": "Lebenslauf",
@@ -102,9 +123,9 @@
       "title": "FaserF - Die Geschichte | Fabian Seitz"
     },
     "title": "Die Geschichte hinter FaserF",
-    "text1": "Als Kind wurde ich von meiner Familie und Freunden teilweise \"Faser\" genannt - ein liebevoller Spitzname, der mir gegeben wurde.",
+    "text1": "Als Kind wurde ich von meinen Freunden \"Faser\" genannt - ein witziger und lustiger Spitzname, der mir gegeben wurde.",
     "text2": "Das hintere \"F\" steht für meinen Vornamen Fabian, wodurch der Name FaserF entstand.",
-    "text3": "Dieser Name begleitet mich seit meiner Kindheit und ist zu meinem Online-Identitätsnamen geworden, den ich auf GitHub, in Projekten und in der Entwickler-Community verwende.",
+    "text3": "Der Name hat sich anschließend primär in der Gaming-Szene gehalten und ist dadurch zu einem festen Bestandteil meines Usertags im Internet geworden. Heute verwende ich ihn auf GitHub, in Projekten und in der Entwickler-Community.",
     "backButton": "Zurück zur Startseite"
   }
 }

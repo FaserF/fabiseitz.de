@@ -25,10 +25,13 @@
     "title": "About",
     "subtitle": "I'm Fabian Seitz",
     "text1": "As an IT Administrator and Developer with extensive experience in Microsoft Administration, SAP Basis and Automation, I develop innovative solutions for complex IT challenges.",
-    "text2": "My expertise includes developing Identity Management systems that seamlessly connect HR data (SAP R3 HCM) with IT infrastructure (Active Directory, Microsoft Entra ID). With my project faneX-ID, I have created a central platform that automatically manages the entire Employee Lifecycle.",
-    "text3": "In addition to my professional work, I passionately develop Home Assistant integrations and add-ons that extend and automate smart home systems. My projects range from PowerShell automation scripts to Python-based system integrations to modern web applications with React and FastAPI.",
-    "text4": "Additionally, I am engaged as a lecturer at the Adult Education Center (VHS), where I share my knowledge in IT topics and programming with interested learners. This activity allows me to convey complex technical concepts in an understandable way while continuously learning myself.",
-    "text5": "I am always committed to developing thoughtful, scalable and user-friendly solutions that solve real problems and make processes more efficient."
+    "text2": "My expertise includes developing Identity Management systems that seamlessly connect HR data (SAP R3 HCM) with IT infrastructure (Active Directory, Microsoft Entra ID). With my project faneX-ID, I developed the idea and complete concept for a central platform that automatically manages the entire Employee Lifecycle. The idea and architecture are 100% mine, while the technical implementation is done in a team.",
+    "text3": "In addition to my professional work, I passionately develop Home Assistant integrations and add-ons that extend and automate smart home systems. My projects range from PowerShell automation scripts to Python-based system integrations to modern web applications. The complete concepts and architectures for projects with React and FastAPI are 100% mine, while the technical implementation is mainly done in teams.",
+    "text4": "Additionally, I am engaged as an IT trainer and lecturer at the Adult Education Center (VHS), where I share my knowledge in IT topics and programming with interested learners. This activity allows me to convey complex technical concepts in an understandable way while continuously learning myself.",
+    "text5": "My commitment extends beyond professional work: I have volunteered for several years at the youth center in my community, where I supported and promoted young people in IT topics.",
+    "text6": "The IT world is constantly evolving, and I keep pace: I continuously engage with new technologies and trends. Currently, I am diving deeper into the world of Artificial Intelligence (AI) to develop innovative solutions and explore the possibilities of this technology.",
+    "text7": "I am particularly passionate about automation: I love identifying repetitive tasks and automating them through intelligent scripts and systems. Whether it's automating IT processes, home automation, or optimizing workflows – I find great joy in developing efficient solutions that save time and reduce errors.",
+    "text8": "I am always committed to developing thoughtful, scalable and user-friendly solutions that solve real problems and make processes more efficient."
   },
   "skills": {
     "title": "Skills",
@@ -43,7 +46,6 @@
       "sap": "SAP Basis",
       "python": "Python",
       "powershell": "PowerShell",
-      "react": "React & TypeScript",
       "docker": "Docker & DevOps",
       "homeassistant": "Home Assistant"
     }
@@ -64,11 +66,30 @@
         "title": "Home Assistant",
         "description": "Various Custom Integrations and Add-ons for Home Assistant"
       },
+      "switchcraft": {
+        "title": "SwitchCraft",
+        "description": "Comprehensive packaging assistant for IT professionals - streamlines the entire application packaging workflow"
+      },
+      "shielddns": {
+        "title": "ShieldDNS",
+        "description": "Lightweight, efficient and privacy-focused DNS-over-TLS (DoT) proxy"
+      },
       "more": {
         "title": "More Projects",
         "description": "Discover more projects on GitHub"
       }
     }
+  },
+  "github": {
+    "title": "All GitHub Projects",
+    "description": "A complete overview of all my public GitHub projects, loaded live and dynamically.",
+    "searchPlaceholder": "Search projects...",
+    "filterAll": "All",
+    "filterLanguage": "Language",
+    "filterUpdated": "Updated",
+    "loading": "Loading projects...",
+    "error": "Error loading projects. Please try again later.",
+    "noResults": "No projects found"
   },
   "cv": {
     "title": "CV",
@@ -102,9 +123,9 @@
       "title": "FaserF - The Story | Fabian Seitz"
     },
     "title": "The Story Behind FaserF",
-    "text1": "As a child, I was sometimes called \"Faser\" by my family and friends - a loving nickname that was given to me.",
+    "text1": "As a child, I was called \"Faser\" by my friends - a funny and humorous nickname that was given to me.",
     "text2": "The trailing \"F\" stands for my first name Fabian, which is how the name FaserF came about.",
-    "text3": "This name has accompanied me since my childhood and has become my online identity name, which I use on GitHub, in projects and in the developer community.",
+    "text3": "The name then primarily established itself in the gaming scene and thus became a fixed part of my user tag on the internet. Today I use it on GitHub, in projects and in the developer community.",
     "backButton": "Back to Homepage"
   }
 }

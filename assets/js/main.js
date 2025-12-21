@@ -56,12 +56,15 @@ sr.reveal('.skills__data, .work__img, .contact__input', { interval: 200 });
 
 /*===== DARK MODE TOGGLE =====*/
 const darkModeToggle = document.getElementById('dark-mode-toggle');
+const darkModeIcon = document.getElementById('dark-mode-icon');
 
 const updateToggleIcon = () => {
-    if (document.body.classList.contains('dark-mode')) {
-        darkModeToggle.textContent = '🌞'; // Sonnensymbol für Dark Mode
-    } else {
-        darkModeToggle.textContent = '🌙'; // Mondsymbol für Light Mode
+    if (darkModeIcon) {
+        if (document.body.classList.contains('dark-mode')) {
+            darkModeIcon.className = 'bx bx-sun'; // Sonne für Dark Mode
+        } else {
+            darkModeIcon.className = 'bx bx-moon'; // Mond für Light Mode
+        }
     }
 };
 
@@ -83,6 +86,9 @@ const disableDarkMode = () => {
     document.body.classList.remove('dark-mode');
     updateToggleIcon(); // Symbol aktualisieren
 };
+
+// Initial icon update
+updateToggleIcon();
 
 // Überprüfen, ob der Dark Mode in den Systemeinstellungen aktiviert ist
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
