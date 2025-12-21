@@ -20,16 +20,13 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: fabiseitz.de/package.json
+          cache-dependency-path: package.json
 
       - name: Install dependencies
-        working-directory: ./fabiseitz.de
         run: npm install
 
       - name: Run i18n tests
-        working-directory: ./fabiseitz.de
         run: npm run test:i18n
 
       - name: Run lint tests
-        working-directory: ./fabiseitz.de
         run: npm run lint
