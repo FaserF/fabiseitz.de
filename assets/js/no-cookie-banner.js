@@ -54,6 +54,9 @@ class NoCookieBanner {
 
         return `
             <div class="no-cookie-banner__content">
+                <button class="no-cookie-banner__close" aria-label="Close">
+                    <i class='bx bx-x'></i>
+                </button>
                 <div class="no-cookie-banner__icon">
                     <i class='bx bx-cookie'></i>
                 </div>
@@ -80,6 +83,7 @@ class NoCookieBanner {
     setupEventListeners(banner) {
         const acceptBtn = banner.querySelector('.no-cookie-banner__button--accept');
         const declineBtn = banner.querySelector('.no-cookie-banner__button--decline');
+        const closeBtn = banner.querySelector('.no-cookie-banner__close');
 
         acceptBtn?.addEventListener('click', () => {
             this.accept(banner);
@@ -87,6 +91,10 @@ class NoCookieBanner {
 
         declineBtn?.addEventListener('click', () => {
             this.decline(banner);
+        });
+
+        closeBtn?.addEventListener('click', () => {
+            this.decline(banner); // Same behavior as decline - just close it
         });
 
         // Apply i18n translations
@@ -122,7 +130,7 @@ class NoCookieBanner {
 }
 
 // Initialize when DOM is ready
-(function() {
+(function () {
     const init = () => {
         if (typeof window.noCookieBanner === 'undefined') {
             window.noCookieBanner = new NoCookieBanner();

@@ -1,8 +1,8 @@
 {
     "meta": {
         "title": "Fabian Seitz - FaserF",
-        "description": "Fabian Seitz - IT Administrator, Developer & Automation Expert. Specialized in Identity Management, Home Automation and System Integration. Developer of faneX-ID and other innovative projects.",
-        "keywords": "Fabian Seitz, IT Administrator, Developer, Identity Management, Home Assistant, SAP Basis, Microsoft Administration, Python, PowerShell, faneX-ID, AegisBot"
+        "description": "Fabian Seitz - IT Administrator & Automation Expert. Specialized in Identity Management, Home Automation and System Integration. PowerShell, Python and intelligent IT solutions.",
+        "keywords": "Fabian Seitz, IT Administrator, Automation, Identity Management, Home Assistant, SAP Basis, Microsoft Administration, Python, PowerShell, faneX-ID, AegisBot"
     },
     "nav": {
         "home": "Home",
@@ -16,8 +16,8 @@
         "name": "I'm",
         "nameHighlight": "Fabian",
         "surname": "Seitz",
-        "subtitle": "IT Administrator, Developer & Automation Expert",
-        "description": "Passionate developer focused on Identity Management, Home Automation and System Integration. I develop innovative solutions that connect HR data with IT infrastructure and automate processes.",
+        "subtitle": "IT Administrator & Automation Expert",
+        "description": "I automate IT processes, administer complex systems and create intelligent solutions that solve real problems. My passion: efficiency through automation.",
         "contactButton": "Get in Touch",
         "faserfLink": "Why FaserF?",
         "profilesLink": "Profiles",
@@ -29,8 +29,8 @@
         "subtitle": "I'm Fabian Seitz",
         "vhsNote": "Additionally, I am an <a href=\"vhs.html\" style=\"color: var(--first-color); text-decoration: underline;\">IT lecturer at the VHS</a>.",
         "text1": "As an IT Administrator and Developer with extensive experience in Microsoft Administration, SAP Basis and Automation, I develop innovative solutions for complex IT challenges.",
-        "text2": "My expertise includes developing Identity Management systems that seamlessly connect HR data from enterprise systems with IT infrastructure (Active Directory, Microsoft Entra ID). With my project faneX-ID, I developed the idea, architecture, and project concept for a central platform that automatically manages the entire Employee Lifecycle. The technical implementation is done in a team.",
-        "text3": "In addition to my professional work, I passionately develop Home Assistant integrations and add-ons that extend and automate smart home systems. My projects range from PowerShell automation scripts to Python-based system integrations to modern web applications. The complete concepts and architectures for projects with React and FastAPI are mine, while the technical implementation is done in teams.",
+        "text2": "My expertise includes designing Identity Management systems that seamlessly connect HR data from enterprise systems with IT infrastructure (Active Directory, Microsoft Entra ID). With my project faneX-ID, I developed the idea, architecture, and project concept for a central platform that automatically manages the entire Employee Lifecycle. The technical implementation is done in a team.",
+        "text3": "In addition to my professional work, I passionately develop Home Assistant integrations and add-ons that extend and automate smart home systems. My projects range from PowerShell automation scripts to Python-based system integrations to concepts for web applications. The ideas, concepts, and architectures are mine, while the frontend implementation is done in teams.",
         "text4": "Additionally, I am engaged as an IT lecturer at the <a href=\"vhs.html\" style=\"color: var(--first-color); text-decoration: underline;\">Adult Education Center (VHS)</a>, where I share my knowledge in IT topics and programming with interested learners. This activity allows me to convey complex technical concepts in an understandable way while continuously learning myself. <a href=\"vhs.html\" style=\"color: var(--first-color); text-decoration: underline;\">More information about my VHS individual lessons</a>.",
         "text5a": "My interest in technology began at a young age: I was fascinated by Android and custom ROMs early on and was very active on XDA Developers. There I actively participated in the community and learned a lot about Android development, custom ROMs, and system modifications.",
         "text5": "My commitment extends beyond professional work: I have volunteered for several years at the youth center in my community, where I supported and promoted young people in IT topics.",
@@ -468,7 +468,7 @@
         "subtitle": "Frequently asked questions about my IT individual lessons at the adult education center",
         "backButton": "Back to Homepage",
         "nav": {
-            "whyMe": "Why Well Suited",
+            "whyMe": "Qualification",
             "availability": "Availability",
             "faq": "FAQ"
         },
@@ -495,7 +495,7 @@
             }
         },
         "whyMe": {
-            "title": "Why I'm Well Suited",
+            "title": "My Qualification",
             "experience": {
                 "title": "10+ Years of Professional Experience",
                 "text": "Over a decade of practical experience in the IT industry with complex projects and systems."
@@ -562,7 +562,9 @@
                 "message": "Message / Course Request",
                 "messagePlaceholder": "Briefly describe your course request or ask questions...",
                 "submit": "Send Booking Request",
-                "submitting": "Sending..."
+                "submitting": "Sending...",
+                "selectedDates": "Selected Dates",
+                "calendarHint": "Please select your dates in the calendar above."
             }
         },
         "calendar": {

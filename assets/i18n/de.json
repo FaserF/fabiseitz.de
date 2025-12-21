@@ -1,8 +1,8 @@
 {
     "meta": {
         "title": "Fabian Seitz - FaserF",
-        "description": "Fabian Seitz - IT-Administrator, Entwickler & Automatisierungsexperte. Spezialisiert auf Identity Management, Home Automation und Systemintegration. Entwickler von faneX-ID und weiteren innovativen Projekten.",
-        "keywords": "Fabian Seitz, IT-Administrator, Entwickler, Identity Management, Home Assistant, SAP Basis, Microsoft Administration, Python, PowerShell, faneX-ID, AegisBot"
+        "description": "Fabian Seitz - IT-Administrator & Automatisierungsexperte. Spezialisiert auf Identity Management, Home Automation und Systemintegration. PowerShell, Python und intelligente IT-Lösungen.",
+        "keywords": "Fabian Seitz, IT-Administrator, Automatisierung, Identity Management, Home Assistant, SAP Basis, Microsoft Administration, Python, PowerShell, faneX-ID, AegisBot"
     },
     "nav": {
         "home": "Start",
@@ -16,8 +16,8 @@
         "name": "ich bin",
         "nameHighlight": "Fabian",
         "surname": "Seitz",
-        "subtitle": "IT-Administrator, Entwickler & Automatisierungsexperte",
-        "description": "Leidenschaftlicher Entwickler mit Fokus auf Identity Management, Home Automation und Systemintegration. Ich entwickle innovative Lösungen, die HR-Daten mit IT-Infrastruktur verbinden und Prozesse automatisieren.",
+        "subtitle": "IT-Administrator & Automatisierungsexperte",
+        "description": "Ich automatisiere IT-Prozesse, administriere komplexe Systeme und entwickle intelligente Lösungen, die echte Probleme lösen. Meine Leidenschaft: Effizienz durch Automatisierung.",
         "contactButton": "Kontakt aufnehmen",
         "faserfLink": "Warum FaserF?",
         "profilesLink": "Profile",
@@ -28,8 +28,8 @@
         "title": "Über mich",
         "subtitle": "Ich bin Fabian Seitz",
         "text1": "Als IT-Administrator und Entwickler mit umfassender Erfahrung in Microsoft-Administration, SAP Basis und Automatisierung entwickle ich innovative Lösungen für komplexe IT-Herausforderungen.",
-        "text2": "Meine Expertise umfasst die Entwicklung von Identity-Management-Systemen, die HR-Daten aus Enterprise-Systemen nahtlos mit IT-Infrastruktur (Active Directory, Microsoft Entra ID) verbinden. Mit meinem Projekt faneX-ID habe ich die Idee, Architektur und das Projektkonzept für eine zentrale Plattform entwickelt, die den gesamten Employee Lifecycle automatisiert verwaltet. Die technische Umsetzung erfolgt im Team.",
-        "text3": "Neben meiner professionellen Tätigkeit entwickle ich leidenschaftlich Home Assistant Integrationen und Add-ons, die Smart-Home-Systeme erweitern und automatisieren. Meine Projekte reichen von PowerShell-Automatisierungsskripten über Python-basierte Systemintegrationen bis hin zu modernen Web-Anwendungen. Die vollständigen Konzepte und Architekturen für Projekte mit React und FastAPI stammen von mir, die technische Implementierung erfolgt im Team.",
+        "text2": "Meine Expertise umfasst die Konzeption von Identity-Management-Systemen, die HR-Daten aus Enterprise-Systemen nahtlos mit IT-Infrastruktur (Active Directory, Microsoft Entra ID) verbinden. Mit meinem Projekt faneX-ID habe ich die Idee, Architektur und das Projektkonzept für eine zentrale Plattform entwickelt, die den gesamten Employee Lifecycle automatisiert verwaltet. Die technische Umsetzung erfolgt im Team.",
+        "text3": "Neben meiner professionellen Tätigkeit entwickle ich leidenschaftlich Home Assistant Integrationen und Add-ons, die Smart-Home-Systeme erweitern und automatisieren. Meine Projekte reichen von PowerShell-Automatisierungsskripten über Python-basierte Systemintegrationen bis hin zu Konzepten für Web-Anwendungen. Die Ideen, Konzepte und Architekturen stammen von mir, die Frontend-Implementierung erfolgt im Team.",
         "text4": "Zusätzlich engagiere ich mich als IT-Dozent an der Volkshochschule (VHS), wo ich mein Wissen in IT-Themen und Programmierung an interessierte Lernende weitergebe. Diese Tätigkeit ermöglicht es mir, komplexe technische Konzepte verständlich zu vermitteln und gleichzeitig selbst kontinuierlich dazuzulernen. <a href=\"vhs.html\" style=\"color: var(--first-color); text-decoration: underline;\">Mehr Informationen zu meinen VHS-Einzelstunden</a>.",
         "vhsNote": "Zusätzlich bin ich <a href=\"vhs.html\" style=\"color: var(--first-color); text-decoration: underline;\">IT-Dozent an der VHS</a>.",
         "text5a": "Mein Interesse an Technologie begann bereits in jungen Jahren: Ich war schon früh fasziniert von Android und Custom ROMs und daher sehr aktiv auf XDA Developers. Dort habe ich mich intensiv in der Community beteiligt und viel über Android-Entwicklung, Custom ROMs und System-Modifikationen gelernt.",
@@ -468,7 +468,7 @@
         "subtitle": "Häufig gestellte Fragen zu meinen IT-Einzelstunden an der Volkshochschule",
         "backButton": "Zurück zur Startseite",
         "nav": {
-            "whyMe": "Warum gut geeignet",
+            "whyMe": "Qualifikation",
             "availability": "Verfügbarkeit",
             "faq": "FAQ"
         },
@@ -495,7 +495,7 @@
             }
         },
         "whyMe": {
-            "title": "Warum ich gut geeignet bin",
+            "title": "Meine Qualifikation",
             "experience": {
                 "title": "10+ Jahre Berufserfahrung",
                 "text": "Über ein Jahrzehnt praktische Erfahrung in der IT-Branche mit komplexen Projekten und Systemen."
@@ -562,7 +562,9 @@
                 "message": "Nachricht / Kurswunsch",
                 "messagePlaceholder": "Beschreiben Sie kurz Ihren Kurswunsch oder stellen Sie Fragen...",
                 "submit": "Buchungsanfrage senden",
-                "submitting": "Wird gesendet..."
+                "submitting": "Wird gesendet...",
+                "selectedDates": "Ausgewählte Termine",
+                "calendarHint": "Bitte wählen Sie Ihre Termine im Kalender oben aus."
             }
         },
         "calendar": {

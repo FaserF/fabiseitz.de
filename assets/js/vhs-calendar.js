@@ -525,9 +525,15 @@
         const primaryDisplay = document.getElementById('vhs-primary-display');
         const alternativesDisplay = document.getElementById('vhs-alternatives-display');
 
+        // Helper function to parse date string YYYY-MM-DD as local date (not UTC)
+        const parseLocalDate = (dateStr) => {
+            const [year, month, day] = dateStr.split('-').map(Number);
+            return new Date(year, month - 1, day); // month is 0-indexed
+        };
+
         const updateDisplay = () => {
             if (primaryDate) {
-                const d = new Date(primaryDate);
+                const d = parseLocalDate(primaryDate);
                 primaryDisplay.textContent = d.toLocaleDateString(locale, { weekday: 'short', day: 'numeric', month: 'short' });
             } else {
                 primaryDisplay.textContent = '-';
@@ -535,7 +541,7 @@
 
             if (alternativeDates.length > 0) {
                 alternativesDisplay.textContent = alternativeDates.map(dateKey => {
-                    const d = new Date(dateKey);
+                    const d = parseLocalDate(dateKey);
                     return d.toLocaleDateString(locale, { weekday: 'short', day: 'numeric', month: 'short' });
                 }).join(', ');
             } else {
@@ -547,6 +553,38 @@
             const alternativesInput = document.getElementById('booking-alternative-dates');
             if (primaryInput) primaryInput.value = primaryDate || '';
             if (alternativesInput) alternativesInput.value = alternativeDates.join(',');
+
+            // Update booking form visible display
+            const bookingHint = document.getElementById('booking-calendar-hint');
+            const bookingSelectedDates = document.getElementById('booking-selected-dates');
+            const bookingPrimaryDisplay = document.getElementById('booking-primary-display');
+            const bookingAlternativesDisplay = document.getElementById('booking-alternatives-display');
+
+            if (primaryDate) {
+                // Hide hint, show selected dates
+                if (bookingHint) bookingHint.style.display = 'none';
+                if (bookingSelectedDates) bookingSelectedDates.style.display = 'block';
+
+                // Update booking form displays
+                if (bookingPrimaryDisplay) {
+                    const d = parseLocalDate(primaryDate);
+                    bookingPrimaryDisplay.textContent = d.toLocaleDateString(locale, { weekday: 'short', day: 'numeric', month: 'short' });
+                }
+                if (bookingAlternativesDisplay) {
+                    if (alternativeDates.length > 0) {
+                        bookingAlternativesDisplay.textContent = alternativeDates.map(dateKey => {
+                            const d = parseLocalDate(dateKey);
+                            return d.toLocaleDateString(locale, { weekday: 'short', day: 'numeric', month: 'short' });
+                        }).join(', ');
+                    } else {
+                        bookingAlternativesDisplay.textContent = '-';
+                    }
+                }
+            } else {
+                // Show hint, hide selected dates
+                if (bookingHint) bookingHint.style.display = 'block';
+                if (bookingSelectedDates) bookingSelectedDates.style.display = 'none';
+            }
         };
 
         const updateDayClasses = () => {

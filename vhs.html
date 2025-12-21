@@ -237,9 +237,22 @@
                             </div>
                             <div class="vhs__booking-field">
                                 <label data-i18n="vhs.booking.form.selectedDates">Ausgewählte Termine</label>
-                                <p class="vhs__booking-hint" data-i18n="vhs.booking.form.calendarHint">
-                                    Bitte wählen Sie Ihre Termine im Kalender oben aus.
-                                </p>
+                                <div class="vhs__booking-dates-display" id="booking-dates-display">
+                                    <p class="vhs__booking-hint" id="booking-calendar-hint"
+                                        data-i18n="vhs.booking.form.calendarHint">
+                                        Bitte wählen Sie Ihre Termine im Kalender oben aus.
+                                    </p>
+                                    <div class="vhs__selected-dates" id="booking-selected-dates" style="display: none;">
+                                        <div class="vhs__selected-primary">
+                                            <strong data-i18n="vhs.calendar.selectedPrimary">Wunschtermin:</strong>
+                                            <span id="booking-primary-display">-</span>
+                                        </div>
+                                        <div class="vhs__selected-alternatives">
+                                            <strong data-i18n="vhs.calendar.selectedAlternatives">Alternativen:</strong>
+                                            <span id="booking-alternatives-display">-</span>
+                                        </div>
+                                    </div>
+                                </div>
                                 <input type="hidden" id="booking-preferred-date" name="preferredDate" required>
                                 <input type="hidden" id="booking-alternative-dates" name="alternativeDates">
                             </div>
