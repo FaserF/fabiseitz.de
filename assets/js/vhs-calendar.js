@@ -3,7 +3,7 @@
  * Fetches Google Calendar events and filters for VHS availability
  */
 
-(function() {
+(function () {
     // VHS availability times (in 24h format)
     const VHS_AVAILABILITY = {
         weekdays: { start: '18:30', end: '21:00' }, // Mon-Thu
@@ -46,12 +46,12 @@
             // Option 1: Use Cloudflare Worker (recommended for production)
             // Option 2: Use a public CORS proxy (fallback, not recommended for production)
             // Option 3: Fetch from backend server
-            
+
             // Try using a CORS proxy
             // Using allorigins.win as a fallback CORS proxy
             const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
             const proxiedUrl = CORS_PROXY + encodeURIComponent(CALENDAR_ICAL_URL);
-            
+
             let response;
             try {
                 response = await fetch(proxiedUrl, {
