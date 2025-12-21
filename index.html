@@ -1,30 +1,18 @@
 <!DOCTYPE html>
-<html lang="de" data-i18n-lang>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Fabian Seitz - IT-Administrator, Entwickler & Automatisierungsexperte. Spezialisiert auf Identity Management, Home Automation und Systemintegration. Entwickler von faneX-ID und weiteren innovativen Projekten.">
-    <meta name="keywords"
-        content="Fabian Seitz, IT-Administrator, Entwickler, Identity Management, Home Assistant, SAP Basis, Microsoft Administration, Python, PowerShell, faneX-ID, AegisBot">
-    <meta name="author" content="Fabian Seitz">
-    <meta property="og:title" content="Fabian Seitz - IT-Administrator & Entwickler">
-    <meta property="og:description"
-        content="IT-Administrator, Entwickler & Automatisierungsexperte. Spezialisiert auf Identity Management, Home Automation und Systemintegration.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fabiseitz.de">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Fabian Seitz - IT-Administrator & Entwickler">
-    <meta name="twitter:description"
-        content="IT-Administrator, Entwickler & Automatisierungsexperte. Spezialisiert auf Identity Management, Home Automation und Systemintegration.">
+        content="Fabian Seitz - Full Stack Developer & Automation Expert. Specialized in Modern Web Apps, Python Automation, and IT Infrastructure.">
 
     <link rel="stylesheet" href="assets/css/styles.css">
 
     <!-- =====BOX ICONS===== -->
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
-    <title>Fabian Seitz - FaserF</title>
+    <title>Fabian Seitz - Full Stack Developer & Automation Expert</title>
 
     <link rel="icon" type="image/png" href="assets/img/favicon/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="assets/img/android-chrome-512x512.png" />
@@ -37,18 +25,9 @@
     <meta name="application-name" content="Fabi Seitz" />
 
     <!-- Verlinkung zur manifest.json mit weiteren Details -->
-    <link rel="manifest" href="site.webmanifest" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Load Turnstile only if not in file:// protocol -->
-    <script>
-        if (window.location.protocol !== 'file:') {
-            const turnstileScript = document.createElement('script');
-            turnstileScript.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
-            turnstileScript.async = true;
-            turnstileScript.defer = true;
-            document.head.appendChild(turnstileScript);
-        }
-    </script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="assets/js/loadContent.js" defer></script>
 </head>
 
@@ -57,33 +36,18 @@
     <header class="l-header">
         <nav class="nav bd-grid">
             <div>
-                <a href="#" class="nav__logo">Fabian / FaserF</a>
+                <a href="#" class="nav__logo">Fabian.DEV</a>
             </div>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
-                    <!-- Language Switcher -->
-                    <li class="nav__item" id="language-switcher">
-                        <button class="lang-switch" data-lang="de" title="Deutsch">
-                            <span class="flag-icon">🇩🇪</span>
-                        </button>
-                        <button class="lang-switch" data-lang="en" title="English">
-                            <span class="flag-icon">🇬🇧</span>
-                        </button>
-                    </li>
                     <!-- Dark Mode Toggle Button -->
-                    <li class="nav__item">
-                        <button id="dark-mode-toggle" class="dark-mode-toggle">
-                            <i class='bx bx-moon' id="dark-mode-icon"></i>
-                        </button>
-                    </li>
-                    <li class="nav__item"><a href="#home" class="nav__link active-link" data-i18n="nav.home">Start</a>
-                    </li>
-                    <li class="nav__item"><a href="#about" class="nav__link" data-i18n="nav.about">Über mich</a></li>
-                    <li class="nav__item"><a href="#skills" class="nav__link" data-i18n="nav.skills">Fähigkeiten</a>
-                    </li>
-                    <li class="nav__item"><a href="#work" class="nav__link" data-i18n="nav.work">Projekte</a></li>
-                    <li class="nav__item"><a href="#contact" class="nav__link" data-i18n="nav.contact">Kontakt</a></li>
+                    <button id="dark-mode-toggle" class="dark-mode-toggle">🌙</button>
+                    <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+                    <li class="nav__item"><a href="#work" class="nav__link">Projects</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
                 </ul>
             </div>
 
@@ -96,127 +60,54 @@
     <main class="l-main">
         <!--===== HOME =====-->
         <section class="home bd-grid" id="home">
-            <div class="home__container">
-                <div class="home__data">
-                    <h1 class="home__title"><span data-i18n="home.greeting">Hallo,</span><br><span
-                            data-i18n="home.name">Ich
-                            bin</span> <span class="home__title-color" data-i18n="home.nameHighlight">Fabian</span>
-                    </h1>
-                    <p class="home__subtitle" data-i18n="home.subtitle">IT-Administrator, Entwickler &
-                        Automatisierungsexperte</p>
-                    <p class="home__description" data-i18n="home.description">Leidenschaftlicher Entwickler mit Fokus
-                        auf
-                        Identity Management, Home Automation und Systemintegration. Ich entwickle innovative Lösungen,
-                        die
-                        HR-Daten mit IT-Infrastruktur verbinden und Prozesse automatisieren.</p>
-                    <a href="#contact" class="button" data-i18n="home.contactButton">Kontakt aufnehmen</a>
-                    <div class="home__links">
-                        <p class="home__faserf-link">
-                            <a href="faserf.html" data-i18n="home.faserfLink">Warum FaserF?</a>
-                        </p>
-                        <p class="home__profiles-link">
-                            <a href="profiles.html" data-i18n="home.profilesLink">Profile</a>
-                        </p>
-                        <p class="home__status-link">
-                            <a href="systems.html" data-i18n="home.statusLink">Systemstatus</a>
-                        </p>
-                    </div>
-                    <div class="home__social">
-                        <a href="https://www.linkedin.com/in/fabiseitz/" class="home__social-icon dark-mode-icon"><i
-                                class='bx bxl-linkedin'></i></a>
-                        <a href="https://github.com/FaserF" class="home__social-icon dark-mode-icon"><i
-                                class='bx bxl-github'></i></a>
-                        <a href="https://community.home-assistant.io/u/faserf/summary"
-                            class="home__social-icon dark-mode-icon"><i class='bx bx-home-smile'></i></a>
-                    </div>
-                </div>
+            <div class="home__data">
+                <h1 class="home__title">Hello,<br>I'm <span class="home__title-color">Fabian</span><br></h1>
+                <h2 class="home__subtitle">Full Stack Developer &<br>Automation Expert</h2>
+                <p class="home__description">
+                    I build modern, scalable web applications and automate complex IT workflows.
+                    From SAP Basis to React frontends, I bridge the gap between operations and development.
+                </p>
 
-                <div class="home__img">
-                    <div class="home__profile-container">
-                        <div class="home__profile-frame">
-                            <img src="assets/img/perfil.png" alt="Fabian Seitz" class="home__profile-img" />
-                        </div>
-                    </div>
+                <div class="home__buttons">
+                    <a href="#contact" class="button">Get in Touch</a>
+                    <a href="#work" class="button button--ghost">View Work</a>
+                </div>
+            </div>
+
+            <div class="home__social">
+                <a href="https://www.linkedin.com/in/fabiseitz/" target="_blank" class="home__social-icon"
+                    aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://github.com/FaserF" target="_blank" class="home__social-icon" aria-label="GitHub"><i
+                        class='bx bxl-github'></i></a>
+            </div>
+
+            <div class="home__img">
+                <div class="home__blob-container">
+                    <!-- 3D Avatar Image -->
+                    <img src="assets/img/hero_avatar_3d.png" class="home__blob-img" alt="Fabian Seitz Avatar">
                 </div>
             </div>
         </section>
 
         <!--===== ABOUT =====-->
         <section class="about section " id="about">
-            <h2 class="section-title" data-i18n="about.title">Über mich</h2>
+            <h2 class="section-title">About Me</h2>
 
             <div class="about__container bd-grid">
                 <div class="about__img">
-                    <img src="assets/img/linkedin-profile.jpg" alt="Fabian Seitz Profilbild">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQF8rs4h1VgqoQ/profile-displayphoto-shrink_800_800/B4DZNUyY9GHAAg-/0/1732294316784?e=1740009600&v=beta&t=c11-7NNHQEFoLVbqbcPhSuda7DnElv_Sy4l8bPDhahc"
+                        alt="Fabian Seitz Profile">
                 </div>
 
                 <div>
-                    <h2 class="about__subtitle" data-i18n="about.subtitle">Ich bin Fabian Seitz</h2>
-                    <p class="about__vhs-note" data-i18n-html="about.vhsNote">
-                        Zusätzlich bin ich <a href="vhs.html"
-                            style="color: var(--first-color); text-decoration: underline;">IT-Dozent an der VHS</a>.
-                    </p>
-                    <p class="about__text" data-i18n="about.text1">
-                        Als IT-Administrator und Entwickler mit umfassender Erfahrung in Microsoft-Administration, SAP
-                        Basis und Automatisierung entwickle ich innovative Lösungen für komplexe IT-Herausforderungen.
-                    </p>
-                    <p class="about__text" data-i18n="about.text2">
-                        Meine Expertise umfasst die Entwicklung von Identity-Management-Systemen, die HR-Daten aus
-                        Enterprise-Systemen nahtlos mit IT-Infrastruktur (Active Directory, Microsoft Entra ID)
-                        verbinden. Mit meinem Projekt faneX-ID habe ich die Idee, Architektur und das Projektkonzept für
-                        eine
-                        zentrale Plattform entwickelt, die den gesamten Employee Lifecycle automatisiert verwaltet.
-                        Die technische Umsetzung erfolgt im Team.
-                    </p>
-                    <p class="about__text" data-i18n="about.text3">
-                        Neben meiner professionellen Tätigkeit entwickle ich leidenschaftlich Home Assistant
-                        Integrationen und Add-ons, die Smart-Home-Systeme erweitern und automatisieren. Meine Projekte
-                        reichen von PowerShell-Automatisierungsskripten über Python-basierte Systemintegrationen bis hin
-                        zu modernen Web-Anwendungen mit React und FastAPI.
-                    </p>
-                    <p class="about__text" data-i18n-html="about.text4">
-                        Zusätzlich engagiere ich mich als IT-Dozent an der Volkshochschule (VHS), wo ich mein Wissen in
-                        IT-Themen und Programmierung an interessierte Lernende weitergebe. Diese Tätigkeit ermöglicht es
-                        mir, komplexe technische Konzepte verständlich zu vermitteln und gleichzeitig selbst
-                        kontinuierlich dazuzulernen. <a href="vhs.html"
-                            style="color: var(--first-color); text-decoration: underline;">Mehr Informationen zu meinen
-                            VHS-Einzelstunden</a>.
-                    </p>
-                    <p class="about__text" data-i18n="about.text5a">
-                        Mein Interesse an Technologie begann bereits in jungen Jahren: Ich war schon früh fasziniert von
-                        Android und Custom ROMs und daher sehr aktiv auf XDA Developers. Dort habe ich mich intensiv in
-                        der Community beteiligt und viel über Android-Entwicklung, Custom ROMs und System-Modifikationen
-                        gelernt.
-                    </p>
-                    <p class="about__text" data-i18n="about.text5">
-                        Mein Engagement geht über die berufliche Tätigkeit hinaus: Ich habe mich einige Jahre
-                        ehrenamtlich im Jugendzentrum meiner Gemeinde engagiert, wo ich junge Menschen in IT-Themen
-                        unterstützt und gefördert habe.
-                    </p>
-                    <p class="about__text" data-i18n="about.text6">
-                        Die IT-Welt entwickelt sich stetig weiter, und ich halte Schritt: Ich beschäftige mich
-                        kontinuierlich mit neuen Technologien und Trends. Aktuell vertiefe ich mich intensiv in die Welt
-                        der Künstlichen Intelligenz (KI), um innovative Lösungen zu entwickeln und die Möglichkeiten
-                        dieser Technologie zu erkunden.
-                    </p>
-                    <p class="about__text" data-i18n="about.text7">
-                        Besonders begeistert mich die Automatisierung: Ich liebe es, repetitive Aufgaben zu
-                        identifizieren und durch intelligente Skripte und Systeme zu automatisieren. Ob es um die
-                        Automatisierung von IT-Prozessen, Home Automation oder die Optimierung von Workflows geht - ich
-                        finde große Freude daran, effiziente Lösungen zu entwickeln, die Zeit sparen und Fehler
-                        reduzieren.
-                    </p>
-                    <p class="about__text" data-i18n="about.text8">
-                        Ich bin stets bestrebt, durchdachte, skalierbare und benutzerfreundliche Lösungen zu entwickeln,
-                        die echte Probleme lösen und Prozesse effizienter gestalten.
-                    </p>
-                    <p class="about__text" data-i18n="about.text9">
-                        Neben meiner beruflichen Tätigkeit bin ich Gründer und Administrator von beliebten inoffiziellen
-                        Telegram-Gruppen und -Channels. Meine größten Projekte sind die TCL Android TV Updates Community
-                        mit über 17.000 Mitgliedern in der Diskussionsgruppe und über 45.000 Abonnenten im News-Channel.
-                        Für die Verwaltung und Automatisierung dieser Communities habe ich die Idee für das
-                        AegisBot-Projekt entwickelt, das ich durch Testing, Debugging und kontinuierliche
-                        Weiterentwicklung vorantreibe.
+                    <h2 class="about__subtitle">Bridging Operations & Development</h2>
+                    <p class="about__text">
+                        I am a passionate IT professional from Germany with a deep background in **System
+                        Administration**, **SAP Basis**, and **DevOps**.
+                        <br><br>
+                        Beyond traditional administration, I love building modern software. Whether it's a sleek React
+                        frontend, a robust FastAPI backend, or a complex PowerShell automation script, I focus on
+                        creating efficient, user-centric solutions.
                     </p>
                 </div>
             </div>
@@ -224,235 +115,123 @@
 
         <!--===== SKILLS =====-->
         <section class="skills section" id="skills">
-            <h2 class="section-title" data-i18n="skills.title">Fähigkeiten</h2>
+            <h2 class="section-title">Technical Expertise</h2>
 
             <div class="skills__container bd-grid">
                 <div>
-                    <h2 class="skills__subtitle" data-i18n="skills.subtitle">Professionelle Fähigkeiten</h2>
-                    <p class="skills__text" data-i18n="skills.description">Meine Expertise umfasst IT-Administration,
-                        Systemintegration,
-                        Automatisierung und Full-Stack-Entwicklung. Ich kombiniere technisches Know-how mit praktischer
-                        Erfahrung in Enterprise-Umgebungen.</p>
-                    <div class="skills__data">
-                        <div class="skills__names">
-                            <i class='bx bxl-microsoft skills__icon'></i>
-                            <span class="skills__name" data-i18n="skills.skills.microsoft">Microsoft
-                                Administration</span>
-                        </div>
-                        <div class="skills__bar skills__html">
+                    <h2 class="skills__subtitle">My Tech Stack</h2>
+                    <p class="skills__text">A blend of enterprise infrastructure knowledge and modern development
+                        frameworks.</p>
 
-                        </div>
-                        <div>
-                            <span class="skills__percentage">95%</span>
-                        </div>
-                    </div>
-                    <div class="skills__data">
-                        <div class="skills__names">
-                            <i class='bx bxs-briefcase skills__icon'></i>
-                            <span class="skills__name" data-i18n="skills.skills.sap">SAP Basis</span>
-                        </div>
-                        <div class="skills__bar skills__css">
-
-                        </div>
-                        <div>
-                            <span class="skills__percentage">90%</span>
-                        </div>
-                    </div>
-                    <div class="skills__data">
-                        <div class="skills__names">
-                            <i class='bx bxl-python skills__icon' style="color: #3776ab;"></i>
-                            <span class="skills__name" data-i18n="skills.skills.python">Python</span>
-                        </div>
-                        <div class="skills__bar skills__js">
-
-                        </div>
-                        <div>
-                            <span class="skills__percentage">40%</span>
-                        </div>
-                    </div>
-                    <div class="skills__data">
-                        <div class="skills__names">
-                            <i class='bx bxs-terminal skills__icon'></i>
-                            <span class="skills__name" data-i18n="skills.skills.powershell">PowerShell</span>
-                        </div>
-                        <div class="skills__bar skills__ux">
-
-                        </div>
-                        <div>
-                            <span class="skills__percentage">80%</span>
-                        </div>
-                    </div>
-                    <div class="skills__data">
-                        <div class="skills__names">
-                            <i class='bx bxl-docker skills__icon' style="color: #2496ed;"></i>
-                            <span class="skills__name" data-i18n="skills.skills.docker">Docker & DevOps</span>
-                        </div>
-                        <div class="skills__bar skills__css">
-
-                        </div>
-                        <div>
-                            <span class="skills__percentage">70%</span>
-                        </div>
-                    </div>
-                    <div class="skills__data">
-                        <div class="skills__names">
-                            <i class='bx bx-home-smile skills__icon'></i>
-                            <span class="skills__name" data-i18n="skills.skills.homeassistant">Home Assistant</span>
-                        </div>
-                        <div class="skills__bar skills__js">
-
-                        </div>
-                        <div>
-                            <span class="skills__percentage">80%</span>
-                        </div>
-                    </div>
-                    <div class="skills__data">
-                        <div class="skills__names">
-                            <i class='bx bx-cloud skills__icon' style="color: #f38020;"></i>
-                            <span class="skills__name" data-i18n="skills.skills.cloudflare">Cloudflare</span>
-                        </div>
-                        <div class="skills__bar skills__js">
-
-                        </div>
-                        <div>
-                            <span class="skills__percentage">40%</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="skills__img tech-stack-card">
-                        <i class='bx bx-code-alt tech-stack-icon'></i>
-                        <h3 class="tech-stack-title" data-i18n="skills.techStack.title">Technologie-Stack</h3>
-                        <p class="tech-stack-description" data-i18n="skills.techStack.description">
-                            Full-Stack Entwicklung mit modernen Frameworks
-                            und bewährten Enterprise-Technologien</p>
+                    <div class="skills__tags">
+                        <span class="skill-tag"><i class='bx bxl-microsoft'></i> Microsoft Admin</span>
+                        <span class="skill-tag"><i class='bx bxs-data'></i> SAP Basis</span>
+                        <span class="skill-tag"><i class='bx bxs-terminal'></i> PowerShell</span>
+                        <span class="skill-tag"><i class='bx bxl-python'></i> Python</span>
+                        <span class="skill-tag"><i class='bx bxl-react'></i> React / Vite</span>
+                        <span class="skill-tag"><i class='bx bxl-docker'></i> Docker</span>
+                        <span class="skill-tag"><i class='bx bx-server'></i> FastAPI</span>
+                        <span class="skill-tag"><i class='bx bx-home-alt'></i> Home Assistant</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!--===== WORK =====-->
+        <!--===== WORK / PROJECTS =====-->
         <section class="work section" id="work">
-            <h2 class="section-title" data-i18n="work.title">Projekte</h2>
-            <p class="section-description" data-i18n="work.description">
-                Eine Auswahl meiner wichtigsten Projekte, die meine Expertise in verschiedenen Bereichen zeigen.
-            </p>
+            <h2 class="section-title">Featured Projects</h2>
 
             <div class="work__container bd-grid">
-                <div class="work__img">
-                    <a href="https://github.com/faneX-ID/faneX-ID" target="_blank" class="project-card project-card-1">
-                        <i class='bx bx-shield-quarter project-icon'></i>
-                        <h3 class="project-title" data-i18n="work.projects.fanexid.title">faneX-ID</h3>
-                        <p class="project-description" data-i18n="work.projects.fanexid.description">
-                            Identity Management System - Verbindet HR-Daten
-                            (SAP) mit IT-Infrastruktur (AD, Entra ID)</p>
-                    </a>
-                </div>
-                <div class="work__img">
-                    <a href="https://github.com/FaserF/aegisbot" target="_blank" class="project-card project-card-2">
-                        <i class='bx bx-bot project-icon'></i>
-                        <h3 class="project-title" data-i18n="work.projects.aegisbot.title">AegisBot</h3>
-                        <p class="project-description" data-i18n="work.projects.aegisbot.description">
-                            Produktionsreifer Telegram-Moderation-Bot mit
-                            KI-gestützter Spam-Erkennung</p>
-                    </a>
-                </div>
-                <div class="work__img">
-                    <a href="https://github.com/FaserF?tab=repositories&q=ha-&type=&language=&sort=" target="_blank"
-                        class="project-card project-card-3">
-                        <i class='bx bx-home-smile project-icon'></i>
-                        <h3 class="project-title" data-i18n="work.projects.homeassistant.title">Home Assistant</h3>
-                        <p class="project-description" data-i18n="work.projects.homeassistant.description">
-                            Verschiedene Custom Integrations und Add-ons
-                            für Home Assistant</p>
-                    </a>
-                </div>
-                <div class="work__img">
-                    <a href="https://github.com/FaserF/SwitchCraft" target="_blank" class="project-card project-card-4">
-                        <i class='bx bx-package project-icon'></i>
-                        <h3 class="project-title" data-i18n="work.projects.switchcraft.title">SwitchCraft</h3>
-                        <p class="project-description" data-i18n="work.projects.switchcraft.description">
-                            Umfassender Packaging-Assistent für IT-Profis -
-                            optimiert den gesamten Anwendungs-Packaging-Workflow</p>
-                    </a>
-                </div>
-                <div class="work__img">
-                    <a href="https://github.com/FaserF/ShieldDNS" target="_blank" class="project-card project-card-1">
-                        <i class='bx bx-shield project-icon'></i>
-                        <h3 class="project-title" data-i18n="work.projects.shielddns.title">ShieldDNS</h3>
-                        <p class="project-description" data-i18n="work.projects.shielddns.description">
-                            Leichtgewichtiger, effizienter und datenschutzorientierter
-                            DNS-over-TLS (DoT) Proxy</p>
-                    </a>
-                </div>
-                <div class="work__img">
-                    <a href="https://github.com/FaserF" target="_blank" class="project-card project-card-2">
-                        <i class='bx bxl-github project-icon'></i>
-                        <h3 class="project-title" data-i18n="work.projects.more.title">Weitere Projekte</h3>
-                        <p class="project-description" data-i18n="work.projects.more.description">
-                            Mehr Projekte auf GitHub entdecken</p>
-                    </a>
-                </div>
-            </div>
-        </section>
 
-        <!--===== GITHUB SECTION =====-->
-        <section class="github section" id="github">
-            <h2 class="section-title" data-i18n="githubPage.title">GitHub Projekte & Aktivitäten</h2>
-            <p class="section-description" data-i18n="githubPage.description">
-                Entdecke alle meine öffentlichen GitHub-Projekte, aktuelle Releases und Entwicklungsaktivitäten.
-            </p>
-            <div class="github__container bd-grid">
-                <div class="github__data">
-                    <div class="github__features">
-                        <div class="github__feature">
-                            <i class='bx bx-code-alt github__feature-icon'></i>
-                            <h3 class="github__feature-title" data-i18n="githubPage.feature1.title">Alle Projekte</h3>
-                            <p class="github__feature-description" data-i18n="githubPage.feature1.description">
-                                Vollständige Übersicht aller öffentlichen Repositories mit Filter- und Suchfunktion
-                            </p>
-                        </div>
-                        <div class="github__feature">
-                            <i class='bx bx-git-commit github__feature-icon'></i>
-                            <h3 class="github__feature-title" data-i18n="githubPage.feature2.title">Aktive Entwicklung
-                            </h3>
-                            <p class="github__feature-description" data-i18n="githubPage.feature2.description">
-                                Neue Releases, aktive Projekte und externe Beiträge zu Open-Source-Projekten
-                            </p>
-                        </div>
-                        <div class="github__feature">
-                            <i class='bx bx-stats github__feature-icon'></i>
-                            <h3 class="github__feature-title" data-i18n="githubPage.feature3.title">Live-Daten</h3>
-                            <p class="github__feature-description" data-i18n="githubPage.feature3.description">
-                                Alle Daten werden live von GitHub geladen und regelmäßig aktualisiert
-                            </p>
+                <!-- Project 1: Solumati -->
+                <div class="project-card">
+                    <div class="project-card__img-wrapper">
+                        <img src="assets/img/solumati_icon.png" alt="Solumati Logo" class="project-card__img">
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Solumati</h3>
+                        <span class="project-card__category">Modern Dating Platform</span>
+                        <p class="project-card__description">
+                            A secure, open-source dating platform built with React, FastAPI, and Docker. Features
+                            real-time encrypted chat, comprehensive admin panel, and native app support via TWA.
+                        </p>
+                        <div class="project-card__links">
+                            <a href="https://github.com/FaserF/Solumati" target="_blank"
+                                class="button button--small">GitHub</a>
                         </div>
                     </div>
-                    <a href="github.html" class="button" data-i18n="githubPage.viewButton">
-                        <i class='bx bxl-github'></i>
-                        GitHub Projekte ansehen
-                    </a>
                 </div>
+
+                <!-- Project 2: AegisBot -->
+                <div class="project-card">
+                    <div class="project-card__img-wrapper">
+                        <img src="assets/img/aegisbot_icon.png" alt="AegisBot Logo" class="project-card__img">
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">AegisBot</h3>
+                        <span class="project-card__category">AI Telegram Security</span>
+                        <p class="project-card__description">
+                            Production-ready moderation bot with AI intent analysis, real-time security dashboard, and
+                            multi-language support. Designed to protect modern Telegram communities.
+                        </p>
+                        <div class="project-card__links">
+                            <a href="https://github.com/FaserF/AegisBot" target="_blank"
+                                class="button button--small">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: SwitchCraft -->
+                <div class="project-card">
+                    <div class="project-card__img-wrapper">
+                        <img src="assets/img/switchcraft_icon.png" alt="SwitchCraft Logo" class="project-card__img">
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">SwitchCraft</h3>
+                        <span class="project-card__category">IT Packaging Assistant</span>
+                        <p class="project-card__description">
+                            Comprehensive packaging tool for IT professionals. Streamlines switch identification, Intune
+                            integration, and Winget deployments with a modular addon system.
+                        </p>
+                        <div class="project-card__links">
+                            <a href="https://github.com/FaserF/SwitchCraft" target="_blank"
+                                class="button button--small">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: faneX-ID -->
+                <div class="project-card">
+                    <div class="project-card__img-wrapper">
+                        <img src="assets/img/fanex_id_icon.png" alt="faneX-ID Logo" class="project-card__img">
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">faneX-ID</h3>
+                        <span class="project-card__category">Identity Management</span>
+                        <p class="project-card__description">
+                            Centralized bridge between HR (SAP R3) and IT (AD/EntraID). Manages employee lifecycles,
+                            access control, and integrates with on-prem infrastructure.
+                        </p>
+                        <div class="project-card__links">
+                            <a href="https://github.com/FaserF/faneX-ID" target="_blank"
+                                class="button button--small">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
         <!--===== CV =====-->
         <section class="cv section" id="cv">
-            <h2 class="section-title" data-i18n="cv.title">Lebenslauf</h2>
-            <p class="section-description" data-i18n="cv.descriptionShort">
-                Erfahre mehr über meinen beruflichen Werdegang, meine Qualifikationen und Erfahrungen.
-            </p>
+            <h2 class="section-title">Resume</h2>
             <div class="cv__container bd-grid">
                 <div class="cv__data">
-                    <p data-i18n="cv.descriptionLong">
-                        Mein vollständiger Lebenslauf mit detaillierten Informationen zu meiner Berufserfahrung,
-                        Ausbildung, Kompetenzen und zusätzlichen Tätigkeiten.
+                    <p class="about__text" style="text-align: center; margin-bottom: 2rem;">
+                        Want to know more about my professional journey?
                     </p>
-                    <a href="cv.html" class="button" data-i18n="cv.view">
-                        <i class='bx bx-file-blank'></i>
-                        Lebenslauf ansehen
-                    </a>
+                    <a href="https://drive.google.com/file/d/1s9ilNzloyvxcCFsp6hJVWVoiN92jHYVQ/view?usp=drive_link"
+                        target="_blank" class="button">Download CV</a>
                 </div>
             </div>
         </section>
@@ -460,314 +239,56 @@
         <!--===== CONTACT =====-->
 
         <section class="contact section" id="contact">
-            <h2 class="section-title" data-i18n="contact.title">Kontakt</h2>
+            <h2 class="section-title">Contact Me</h2>
 
-            <div class="about__container bd-grid">
-                <div class="about__img contact-visual">
-                    <div class="contact-card">
-                        <i class='bx bx-envelope contact-icon'></i>
-                        <h3 class="contact-heading" data-i18n="contact.heading">Lass uns in Kontakt treten</h3>
-                        <p class="contact-text" data-i18n="contact.description">
-                            Ich freue mich über Anfragen zu Projekten, Kooperationen oder einfach über einen fachlichen
-                            Austausch.
-                        </p>
-                        <div class="contact-social">
-                            <a href="https://www.linkedin.com/in/fabiseitz/" target="_blank"
-                                class="contact-social-link">
-                                <i class='bx bxl-linkedin'></i>
-                            </a>
-                            <a href="https://github.com/FaserF" target="_blank" class="contact-social-link">
-                                <i class='bx bxl-github'></i>
-                            </a>
-                            <a href="https://community.home-assistant.io/u/faserf/summary" target="_blank"
-                                class="contact-social-link">
-                                <i class='bx bx-home-smile'></i>
-                            </a>
-                        </div>
-                    </div>
+            <div class="contact__container bd-grid">
+                <div class="about__img">
+                    <img src="assets/img/about.jpg" alt="Contact Image">
                 </div>
 
-                <div class="contact-form-wrapper">
-                    <p class="about__text">
-                        <strong data-i18n="contact.name">Fabian Seitz</strong>
-                    </p>
-                    <br>
-                    <p class="about__text">
-                        <strong data-i18n="contact.contactWays">Kontaktmöglichkeiten:</strong><br>
-                        <span data-i18n="contact.email">E-Mail:</span> <a href="mailto:info@fabiseitz.de"
-                            style="color: var(--first-color);">info@fabiseitz.de</a>
-                    </p>
-                    <p class="about__text">
-                        <br>
-                        <span data-i18n="contact.alternative">Alternativ kannst du mich auch über das Kontaktformular
-                            erreichen:</span>
-                    </p>
-                    <br>
+                <div>
+                    <div class="contact__info">
+                        <h3 class="contact__subtitle">Get in touch</h3>
+                        <span class="contact__text">I'm always open to discussing new projects, creative ideas or
+                            opportunities to be part of your visions.</span>
+
+                        <div class="contact__data">
+                            <span class="contact__icon"><i class='bx bx-mail-send'></i></span>
+                            <span class="contact__content">info@fabiseitz.de</span>
+                        </div>
+                    </div>
+
                     <form action="https://contacttomail.fabiseitz.de/" method="POST" enctype="multipart/form-data"
                         class="contact__form">
-                        <label for="firstname" data-i18n="contact.form.firstName">Vorname:</label>
-                        <input type="text" id="firstname" name="firstname" required class="contact__input"><br>
+                        <div class="contact__inputs">
+                            <input type="text" id="firstname" name="firstname" placeholder="First Name" required
+                                class="contact__input">
+                            <input type="text" id="lastname" name="lastname" placeholder="Last Name" required
+                                class="contact__input">
+                        </div>
 
-                        <label for="lastname" data-i18n="contact.form.lastName">Nachname:</label>
-                        <input type="text" id="lastname" name="lastname" required class="contact__input"><br>
+                        <input type="email" id="mail" name="mail" placeholder="Email Address" required
+                            class="contact__input">
 
-                        <label for="mail" data-i18n="contact.form.email">E-Mail:</label>
-                        <input type="email" id="mail" name="mail" required class="contact__input"><br>
+                        <textarea name="description" id="description" cols="0" rows="8" placeholder="Your Message"
+                            class="contact__input"></textarea>
 
-                        <label for="description" data-i18n="contact.form.reason">Kontaktgrund:</label>
-                        <textarea name="description" id="description" cols="0" rows="10" class="contact__input"
-                            data-i18n-placeholder="contact.form.placeholder"></textarea>
-
-                        <div class="cf-turnstile" data-sitekey="0x4AAAAAAA9lks76dT58IBoF" id="turnstile-widget"></div>
-                        <button type="submit" class="contact__button button"
-                            data-i18n="contact.form.submit">Absenden</button>
+                        <div class="cf-turnstile" data-sitekey="0x4AAAAAAA9lks76dT58IBoF"></div>
+                        <button type="submit" class="contact__button button">Send Message</button>
                     </form>
                 </div>
             </div>
         </section>
 
-        <!--===== TELEGRAM COMMUNITIES =====-->
-        <section class="telegram section" id="telegram">
-            <h2 class="section-title" data-i18n="telegram.title">Telegram Communities</h2>
-            <p class="section-description" data-i18n="telegram.description">
-                Gründer und Administrator von großen IT-Communities auf Telegram
-            </p>
+        <!--===== FOOTER =====-->
+        <footer></footer>
 
-            <div class="telegram__container bd-grid">
-                <!-- Telegram Channel Widget -->
-                <div class="telegram-widget">
-                    <div class="telegram-widget__header">
-                        <i class='bx bxl-telegram telegram-widget__icon'></i>
-                        <h3 class="telegram-widget__title" data-i18n="telegram.channel.title">TCL Android TV Updates
-                        </h3>
-                        <p class="telegram-widget__subtitle" data-i18n="telegram.channel.subtitle">News Channel</p>
-                    </div>
-                    <div class="telegram-widget__content">
-                        <div id="telegram-channel-widget-container">
-                            <iframe id="telegram-channel-widget" frameborder="0" scrolling="no"
-                                class="telegram-widget__iframe" title="Telegram Channel Widget"
-                                style="display: none;"></iframe>
-                            <div id="telegram-channel-fallback" class="telegram-widget__fallback">
-                                <i class='bx bxl-telegram'></i>
-                                <p data-i18n="telegram.fallback">Telegram Widget wird nur über HTTP/HTTPS angezeigt.</p>
-                            </div>
-                        </div>
-                        <div class="telegram-widget__stats">
-                            <p class="telegram-widget__stat" data-i18n="telegram.channel.members">Über 45.000 Abonnenten
-                            </p>
-                        </div>
-                        <div class="telegram-widget__link">
-                            <a href="https://t.me/tclupdates" target="_blank" rel="noopener noreferrer" class="button"
-                                data-i18n="telegram.channel.visit">
-                                Channel besuchen
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        <!--===== SCROLL REVEAL =====-->
+        <script src="https://unpkg.com/scrollreveal"></script>
 
-                <!-- Telegram Group Widget -->
-                <div class="telegram-widget">
-                    <div class="telegram-widget__header">
-                        <i class='bx bxl-telegram telegram-widget__icon'></i>
-                        <h3 class="telegram-widget__title" data-i18n="telegram.group.title">TCL Android TV Discussion
-                        </h3>
-                        <p class="telegram-widget__subtitle" data-i18n="telegram.group.subtitle">Diskussionsgruppe</p>
-                    </div>
-                    <div class="telegram-widget__content">
-                        <div id="telegram-group-widget-container">
-                            <iframe id="telegram-group-widget" frameborder="0" scrolling="no"
-                                class="telegram-widget__iframe" title="Telegram Group Widget"
-                                style="display: none;"></iframe>
-                            <div id="telegram-group-fallback" class="telegram-widget__fallback">
-                                <i class='bx bxl-telegram'></i>
-                                <p data-i18n="telegram.fallback">Telegram Widget wird nur über HTTP/HTTPS angezeigt.</p>
-                            </div>
-                        </div>
-                        <div class="telegram-widget__stats">
-                            <p class="telegram-widget__stat" data-i18n="telegram.group.members">Über 17.000 Mitglieder
-                            </p>
-                        </div>
-                        <div class="telegram-widget__link">
-                            <a href="https://t.me/tclupdates_discussion" target="_blank" rel="noopener noreferrer"
-                                class="button" data-i18n="telegram.group.visit">
-                                Gruppe besuchen
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="telegram__project">
-                <div class="telegram-project-card">
-                    <i class='bx bx-bot telegram-project-icon'></i>
-                    <h3 class="telegram-project-title" data-i18n="telegram.project.title">AegisBot</h3>
-                    <p class="telegram-project-description" data-i18n="telegram.project.description">
-                        Für die Verwaltung und Automatisierung meiner Telegram-Communities habe ich die Idee für das
-                        AegisBot-Projekt entwickelt und treibe es durch Testing, Debugging und kontinuierliche
-                        Weiterentwicklung voran. Ein leistungsstarker Bot für Community-Management, Moderation und
-                        Automatisierung.
-                    </p>
-                    <a href="https://github.com/FaserF/aegisbot" target="_blank" rel="noopener noreferrer"
-                        class="button button--ghost" data-i18n="telegram.project.view">
-                        Projekt auf GitHub ansehen
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!--===== FOOTER =====-->
-    <footer class="footer">
-        <div class="footer__container bd-grid">
-            <div class="footer__content">
-                <div class="footer__brand">
-                    <h3 class="footer__title">Fabian Seitz</h3>
-                    <p class="footer__subtitle" data-i18n="footer.subtitle">IT-Infrastructure & Security Specialist
-                    </p>
-                </div>
-
-                <div class="footer__links">
-                    <div class="footer__links-group">
-                        <h4 class="footer__links-title" data-i18n="footer.links.legal">Rechtliches</h4>
-                        <ul class="footer__links-list">
-                            <li>
-                                <a href="impressum.html" class="footer__link" data-i18n="footer.imprint">
-                                    <i class='bx bx-file-blank'></i>
-                                    <span>Impressum</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="datenschutzerklaerung.html" class="footer__link" data-i18n="footer.privacy">
-                                    <i class='bx bx-shield-quarter'></i>
-                                    <span>Datenschutzerklärung</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__links-group">
-                        <h4 class="footer__links-title" data-i18n="footer.links.resources">Ressourcen</h4>
-                        <ul class="footer__links-list">
-                            <li>
-                                <a href="https://github.com/FaserF/fabiseitz.de" target="_blank"
-                                    rel="noopener noreferrer" class="footer__link" data-i18n="footer.sourceCode">
-                                    <i class='bx bx-code-alt'></i>
-                                    <span>Sourcecode</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer__bottom">
-                <div class="footer__divider"></div>
-                <p class="footer__copy">&#169; 2025 Fabian Seitz. <span data-i18n="footer.rights">Alle Rechte
-                        vorbehalten.</span></p>
-                <div class="footer__notes">
-                    <p class="footer__ai-note" data-i18n="footer.aiNote">
-                        <i class='bx bx-bot'></i>
-                        Diese Website wurde mit KI erstellt, die Ideen stammen jedoch von mir.
-                    </p>
-                    <p class="footer__cloudflare" data-i18n="footer.cloudflare">
-                        <i class='bx bx-cloud'></i>
-                        Diese Website nutzt Cloudflare für Sicherheit, Performance und globale Verfügbarkeit.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!--===== SCROLL REVEAL =====-->
-    <script src="https://unpkg.com/scrollreveal"></script>
-
-    <!--===== MAIN JS =====-->
-    <script src="assets/js/i18n.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script>
-        // Load no-cookie-banner.js with error handling for ad blockers
-        try {
-            const script = document.createElement('script');
-            script.src = 'assets/js/no-cookie-banner.js';
-            script.onerror = function () {
-                // Silently fail if blocked by ad blocker - don't log to console
-                // This is expected behavior when ad blockers are active
-            };
-            // Suppress network errors in console
-            script.addEventListener('error', function (e) {
-                e.stopPropagation();
-            }, true);
-            document.body.appendChild(script);
-        } catch (e) {
-            // Silently fail - expected when ad blockers interfere
-        }
-    </script>
-    <script src="assets/js/serviceWorker.js"></script>
-    <script>
-        // Hide Turnstile widget if in file:// protocol
-        document.addEventListener('DOMContentLoaded', function () {
-            if (window.location.protocol === 'file:') {
-                const turnstileWidget = document.getElementById('turnstile-widget');
-                if (turnstileWidget) {
-                    turnstileWidget.style.display = 'none';
-                }
-            }
-
-            // Load Telegram widgets only on http/https (not file://)
-            // NOTE: Telegram widgets have CSP restrictions (frame-ancestors https://web.telegram.org)
-            // This means they can only be embedded on web.telegram.org, not on other domains.
-            // The widgets will be blocked by the browser, so we show a fallback instead.
-            const telegramChannelWidget = document.getElementById('telegram-channel-widget');
-            const telegramChannelFallback = document.getElementById('telegram-channel-fallback');
-            const telegramGroupWidget = document.getElementById('telegram-group-widget');
-            const telegramGroupFallback = document.getElementById('telegram-group-fallback');
-
-            // Due to Telegram's CSP policy, widgets cannot be embedded on external domains.
-            // Always show fallback with link to Telegram.
-            if (telegramChannelWidget && telegramChannelFallback) {
-                telegramChannelWidget.style.display = 'none';
-                telegramChannelFallback.style.display = 'flex';
-            }
-            if (telegramGroupWidget && telegramGroupFallback) {
-                telegramGroupWidget.style.display = 'none';
-                telegramGroupFallback.style.display = 'flex';
-            }
-
-            // Optional: Try to load widgets anyway (will fail due to CSP, but might work in some browsers)
-            // This is commented out to avoid console errors. Uncomment if you want to attempt loading:
-            /*
-            if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
-                // Load Telegram Channel Widget with error handling
-                if (telegramChannelWidget && telegramChannelFallback) {
-                    telegramChannelWidget.onerror = function () {
-                        // CSP violations are expected - Telegram widgets have restrictions
-                        this.style.display = 'none';
-                        if (telegramChannelFallback) {
-                            telegramChannelFallback.style.display = 'flex';
-                        }
-                    };
-                    telegramChannelWidget.src = 'https://t.me/widget/widgetchannel?username=tclupdates';
-                    telegramChannelWidget.style.display = 'block';
-                    telegramChannelFallback.style.display = 'none';
-                }
-
-                // Load Telegram Group Widget with error handling
-                if (telegramGroupWidget && telegramGroupFallback) {
-                    telegramGroupWidget.onerror = function () {
-                        // CSP violations are expected - Telegram widgets have restrictions
-                        this.style.display = 'none';
-                        if (telegramGroupFallback) {
-                            telegramGroupFallback.style.display = 'flex';
-                        }
-                    };
-                    telegramGroupWidget.src = 'https://t.me/widget/widgetgroup?username=tclupdates_discussion';
-                    telegramGroupWidget.style.display = 'block';
-                    telegramGroupFallback.style.display = 'none';
-                }
-            }
-            */
-        });
-    </script>
+        <!--===== MAIN JS =====-->
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/serviceWorker.js"></script>
 </body>
 
 </html>
