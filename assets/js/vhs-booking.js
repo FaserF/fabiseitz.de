@@ -37,26 +37,62 @@
 
             // Submit to Graph API endpoint (same as contact form)
             const contactUrl = window.SITE_CONFIG?.endpoints?.contactForm || 'https://contacttomail.fabiseitz.de/';
-            const response = await fetch(contactUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    firstname: formData.get('name')?.split(' ')[0] || '',
-                    lastname: formData.get('name')?.split(' ').slice(1).join(' ') || '',
-                    mail: formData.get('email') || '',
-                    phone: formData.get('phone') || '',
-                    message: formData.get('message') || '',
-                    preferredDate: formData.get('preferredDate') || '', // Keep for email text
-                    preferredTime: formData.get('preferredTime') || '', // Keep for email text
-                    // New fields for Auto-Booking
-                    startDate: calculateStartTimestamp(formData.get('preferredDate'), formData.get('preferredTime')),
-                    endDate: calculateEndTimestamp(formData.get('preferredDate'), formData.get('preferredTime')),
-                    subject: 'VHS Booking: ' + (formData.get('name') || 'Unknown') // Booking Title
-                })
-            });
+
+            const payload = {
+                firstname: formData.get('name')?.split(' ')[0] || '',
+                lastname: formData.get('name')?.split(' ').slice(1).join(' ') || '',
+                mail: formData.get('email') || '',
+                phone: formData.get('phone') || '',
+                message: formData.get('message') || '',
+                preferredDate: formData.get('preferredDate') || '',
+                preferredTime: formData.get('preferredTime') || '',
+                startDate: calculateStartTimestamp(formData.get('preferredDate'), formData.get('preferredTime')),
+                endDate: calculateEndTimestamp(formData.get('preferredDate'), formData.get('preferredTime')),
+                subject: 'VHS Booking: ' + (formData.get('name') || 'Unknown')
+            };
+
+            // Helper to try fetch with optional proxy
+            const trySubmit = async (url, useProxy = false) => {
+                const fetchUrl = useProxy ? 'https://corsproxy.io/?' + encodeURIComponent(url) : url;
+
+                // IMPORTANT: When using corsproxy.io for POST, we must follow their specific pattern if needed,
+                // but standard header proxying usually works for simple JSON APIs.
+                // However, corsproxy.io might NOT support POST bodies correctly in all cases or strips headers.
+                // An alternative is to just try direct, and if it fails, warn user.
+                // BUT: User specifically has CORS error.
+
+                // Let's try direct first.
+                console.log(`Submitting to ${fetchUrl} (Proxy: ${useProxy})`);
+
+                const response = await fetch(fetchUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) throw new Error(`Status ${response.status}`);
+                return response;
+            };
+
+            let response;
+            try {
+                // 1. Try Direct
+                response = await trySubmit(contactUrl, false);
+            } catch (directErr) {
+                console.warn('Direct submission failed, trying proxy...', directErr);
+                try {
+                    // 2. Try Proxy
+                    // Note: 'corsproxy.io' supports POST? Documentation says yes for some, but let's test.
+                    // If this fails, we really are out of luck without a backend fix.
+                    response = await trySubmit(contactUrl, true);
+                } catch (proxyErr) {
+                    console.error('All submission attempts failed', proxyErr);
+                    throw proxyErr; // Throw original or proxy error to trigger catch block below
+                }
+            }
 
             if (response.ok) {
                 // Show success message

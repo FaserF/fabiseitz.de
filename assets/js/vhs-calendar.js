@@ -109,111 +109,97 @@
 
     /**
      * Load calendar events from Google Calendar iCal feed
-     *
-     * IMPORTANT: Google Calendar iCal feeds don't support CORS from browsers.
-     * We must use a CORS proxy to fetch the calendar data.
+     * Uses multiple CORS proxies with fallback strategy
      */
     const loadCalendarEvents = async () => {
-        try {
-            // Use CORS proxy immediately - Google Calendar doesn't support direct browser access
-            // Using allorigins.win as a CORS proxy
-            // TODO: Replace with your own Cloudflare Worker or backend proxy for production
-            // Use configured proxy or fallback to allorigins (public proxy)
-            // Note: The 'api' endpoint logic in config.js is prepared for your own Cloudflare worker.
-            // If you haven't set up 'api.fabiseitz.de' yet, this might fail unless you create it or change config.js.
-            // For now, we will prefer the helper IF it is in Beta mode (testing), but fallback to AllOrigins for Prod to ensure stability until you deploy the prod worker.
-            // Actually, user requested "Use beta... fallback normal".
-            // Normal was AllOrigins.
-            // So: logic below tries SITE_CONFIG endpoint if we are in Beta, but if that fails? No, we can't easily failover on fetch.
-            // We will assume if user follows instructions, they set up the worker.
+        // Validation: Check if SITE_CONFIG exists
+        const configProxy = window.SITE_CONFIG?.endpoints?.calendarProxy;
 
-            // However, to be safe during transition:
-            // If on Beta/Local, use SITE_CONFIG.endpoints.calendarProxy (which points to api/beta.api)
-            // If on Prod, use SITE_CONFIG... wait, if Prod worker isn't set up yet, site breaks.
-            // Use fallback to AllOrigins for now if SITE_CONFIG isn't present or we want to force legacy.
+        // Define proxy candidates in order of preference
+        // 1. Own backend/worker (most reliable if set up)
+        // 2. corsproxy.io (fast, reliable public proxy)
+        // 3. allorigins.win (backup public proxy)
+        const proxies = [
+            configProxy,
+            'https://corsproxy.io/?',
+            'https://api.allorigins.win/raw?url='
+        ].filter(Boolean); // Remove null/undefined
 
-            const getProxyUrl = () => {
-                if (window.SITE_CONFIG && window.SITE_CONFIG.isBeta) {
-                    return window.SITE_CONFIG.endpoints.calendarProxy;
-                }
-                // For Production, until you confirm 'api.fabiseitz.de' is live, we stick to AllOrigins?
-                // User asked "Mach ein CNAME...". They are setting it up.
-                // But "Fallback always to how it was".
-                // "How it was" = AllOrigins.
-                // So: Prod -> AllOrigins. Beta -> Beta Worker.
-                return 'https://api.allorigins.win/raw?url=';
-            };
+        console.log(`VHS Calendar: Attempting to load with ${proxies.length} proxy candidates`);
 
-            const CORS_PROXY = getProxyUrl();
-            const proxiedUrl = CORS_PROXY + encodeURIComponent(CALENDAR_ICAL_URL);
-
-            console.log('Fetching calendar via CORS proxy...');
-
-            // Show loading state
-            const widgetContainer = document.getElementById('vhs-calendar-widget');
-            if (widgetContainer) {
-                widgetContainer.innerHTML = `
-                    <div style="text-align: center; padding: 4rem; color: var(--color-text-secondary);">
-                        <i class='bx bx-loader-alt bx-spin' style="font-size: 3rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
-                        <p>${window.i18n?.t('vhs.calendar.loading', 'Lade Kalenderdaten...')}</p>
-                    </div>
-                `;
-            }
-
-            // Create abort controller for timeout (fallback for browsers without AbortSignal.timeout)
+        // Helper to try a single proxy
+        const tryFetch = async (proxyBaseUrl) => {
+            const proxiedUrl = proxyBaseUrl + encodeURIComponent(CALENDAR_ICAL_URL);
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+            const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 second timeout per proxy
 
-            let response;
             try {
-                response = await fetch(proxiedUrl, {
+                const response = await fetch(proxiedUrl, {
                     method: 'GET',
                     mode: 'cors',
                     credentials: 'omit',
-                    headers: {
-                        'Accept': 'text/calendar, text/plain, */*'
-                    },
+                    headers: { 'Accept': 'text/calendar, text/plain, */*' },
                     signal: controller.signal
                 });
-
                 clearTimeout(timeoutId);
-            } catch (fetchError) {
+
+                if (!response.ok) throw new Error(`Status ${response.status}`);
+                const text = await response.text();
+                if (!text || !text.includes('BEGIN:VCALENDAR')) throw new Error('Invalid iCal data');
+
+                return text;
+            } catch (error) {
                 clearTimeout(timeoutId);
-                console.error('Error fetching calendar via proxy:', fetchError);
-
-                // Check if it's a timeout/abort
-                if (fetchError.name === 'AbortError' || fetchError.name === 'TimeoutError') {
-                    throw new Error('CORS_ERROR: Calendar fetch timed out. Please try again later or contact directly.');
-                }
-
-                // Check if it's a network error
-                if (fetchError.message.includes('Failed to fetch') ||
-                    fetchError.message.includes('NetworkError') ||
-                    fetchError.message.includes('CORS')) {
-                    throw new Error('CORS_ERROR: Network error. Calendar proxy may be unavailable. Please contact directly for appointments.');
-                }
-
-                throw new Error('CORS_ERROR: Calendar requires backend proxy. Please contact directly for appointments.');
+                throw error;
             }
+        };
 
-            if (!response.ok) {
-                throw new Error(`Failed to fetch calendar: ${response.status} ${response.statusText}`);
+        // Show loading state
+        const widgetContainer = document.getElementById('vhs-calendar-widget');
+        if (widgetContainer) {
+            widgetContainer.innerHTML = `
+                <div style="text-align: center; padding: 4rem; color: var(--color-text-secondary);">
+                    <i class='bx bx-loader-alt bx-spin' style="font-size: 3rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
+                    <p>${window.i18n?.t('vhs.calendar.loading', 'Lade Kalenderdaten...')}</p>
+                    <small style="opacity: 0.7; display: block; margin-top: 0.5rem;" id="vhs-loading-status"></small>
+                </div>
+            `;
+        }
+
+        const updateLoadingStatus = (msg) => {
+            const el = document.getElementById('vhs-loading-status');
+            if (el) el.textContent = msg;
+        };
+
+        // Iterate through proxies
+        let icalText = null;
+        for (const proxy of proxies) {
+            try {
+                // Skip if it tries to use same proxy twice (unlikely but possible if config duplicates)
+                console.log(`VHS Calendar: Trying proxy ${proxy}...`);
+                // updateLoadingStatus(`Verbinde via ${new URL(proxy).hostname}...`); // Optional details
+
+                icalText = await tryFetch(proxy);
+                console.log(`VHS Calendar: Success with ${proxy}`);
+                break; // Success!
+            } catch (err) {
+                console.warn(`VHS Calendar: Failed with ${proxy}`, err);
+                // Continue to next proxy
             }
+        }
 
-            const icalText = await response.text();
-            calendarEvents = parseICal(icalText);
-
-            // Filter for VHS availability slots
-            availableSlots = calculateAvailableSlots(calendarEvents);
-
-            // Render calendar widget
-            renderCalendarWidget();
-
-            // Update form fields
-            updateFormFields();
-        } catch (error) {
-            console.error('Error loading calendar:', error);
-            // Show fallback message for all errors
+        if (icalText) {
+            try {
+                calendarEvents = parseICal(icalText);
+                availableSlots = calculateAvailableSlots(calendarEvents);
+                renderCalendarWidget();
+                updateFormFields();
+            } catch (parseErr) {
+                console.error('VHS Calendar: Parsing error', parseErr);
+                showFallbackMessage();
+            }
+        } else {
+            console.error('VHS Calendar: All proxies failed.');
             showFallbackMessage();
         }
     };

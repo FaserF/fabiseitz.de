@@ -397,3 +397,4 @@ if (typeof window.I18n === 'undefined') {
             }
         }, 100);
     }
+}
