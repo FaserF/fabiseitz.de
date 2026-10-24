@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Empfehlungen &amp; Partnerlinks — Fabian Seitz</title>
+  <meta name="robots" content="noindex, nofollow">
+  <script>
+    (function () {
+      var map = {
+        tr: "https://refnocode.trade.re/bcnklq6w",
+        traderepublic: "https://refnocode.trade.re/bcnklq6w",
+        finanzfluss: "https://www.finanzfluss.de/copilot/",
+        ledger: "https://shop.ledger.com",
+        audible: "https://www.amazon.de/hz/audible/mlp",
+        sponsor: "https://github.com/sponsors/FaserF"
+      };
+      var params = new URLSearchParams(window.location.search);
+      var slug = (params.get("to") || window.location.hash.replace("#", "") || "").toLowerCase();
+      if (map[slug]) {
+        window.location.replace(map[slug]);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <h1>Empfehlungen &amp; Tools — Fabian Seitz</h1>
+  <ul>
+    <li><a href="https://refnocode.trade.re/bcnklq6w">Trade Republic (Zinsen &amp; kostenlose ETF-Sparpläne)</a></li>
+    <li><a href="https://www.finanzfluss.de/copilot/">Finanzfluss Copilot</a></li>
+    <li><a href="https://github.com/sponsors/FaserF">GitHub Sponsors (@FaserF)</a></li>
+    <li><a href="https://www.amazon.de/hz/audible/mlp">Audible Hörbücher</a></li>
+    <li><a href="https://shop.ledger.com">Ledger Hardware Wallet</a></li>
+  </ul>
+</body>
+</html>
