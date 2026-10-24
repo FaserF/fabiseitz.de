@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <title>Empfehlungen &amp; Partnerlinks — Fabian Seitz</title>
+  <title>Empfehlungen, Smart-Home-Hardware &amp; Partnerlinks — Fabian Seitz</title>
   <meta name="robots" content="noindex, nofollow">
   <script>
     (function () {
@@ -12,7 +12,14 @@
         finanzfluss: "https://www.finanzfluss.de/copilot/",
         ledger: "https://shop.ledger.com",
         audible: "https://www.amazon.de/hz/audible/mlp",
-        sponsor: "https://github.com/sponsors/FaserF"
+        sponsor: "https://github.com/sponsors/FaserF",
+        "ha-hardware": "https://www.home-assistant.io/green/",
+        "ha-router": "https://www.home-assistant.io/integrations/openwrt/",
+        "ha-shelly": "https://www.home-assistant.io/integrations/shelly/",
+        "ha-tasmota": "https://www.home-assistant.io/integrations/tasmota/",
+        "ha-zigbee": "https://www.home-assistant.io/connectzbt1/",
+        "ha-plugs": "https://www.home-assistant.io/integrations/#energy",
+        "ha-vacuum": "https://www.home-assistant.io/integrations/#vacuum"
       };
       var params = new URLSearchParams(window.location.search);
       var slug = (params.get("to") || window.location.hash.replace("#", "") || "").toLowerCase();
@@ -23,13 +30,16 @@
   </script>
 </head>
 <body>
-  <h1>Empfehlungen &amp; Tools — Fabian Seitz</h1>
+  <h1>Empfehlungen, HACS Hardware &amp; Tools — Fabian Seitz</h1>
   <ul>
     <li><a href="https://refnocode.trade.re/bcnklq6w">Trade Republic (Zinsen &amp; kostenlose ETF-Sparpläne)</a></li>
     <li><a href="https://www.finanzfluss.de/copilot/">Finanzfluss Copilot</a></li>
+    <li><a href="https://www.home-assistant.io/green/">Home Assistant Green / Yellow Hardware</a></li>
+    <li><a href="https://www.home-assistant.io/connectzbt1/">Home Assistant Connect ZBT-1 (Zigbee / Thread)</a></li>
+    <li><a href="https://www.home-assistant.io/integrations/openwrt/">OpenWrt Router &amp; Netzwerk-Hardware</a></li>
+    <li><a href="https://www.home-assistant.io/integrations/shelly/">Shelly 3EM &amp; Smart Energy Relais</a></li>
+    <li><a href="https://www.home-assistant.io/integrations/tasmota/">Tasmota Smart Plugs &amp; Sensoren</a></li>
     <li><a href="https://github.com/sponsors/FaserF">GitHub Sponsors (@FaserF)</a></li>
-    <li><a href="https://www.amazon.de/hz/audible/mlp">Audible Hörbücher</a></li>
-    <li><a href="https://shop.ledger.com">Ledger Hardware Wallet</a></li>
   </ul>
 </body>
 </html>
