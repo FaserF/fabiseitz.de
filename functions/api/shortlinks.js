@@ -1,0 +1,123 @@
+// Cloudflare Pages Function - Shortlinks JSON Directory API
+// Provides link metadata, categories, and targets
+
+const SHORTLINKS = [
+  {
+    slug: 'tr',
+    aliases: ['traderepublic'],
+    title: 'Trade Republic',
+    description: 'Kostenlose ETF-Sparpläne & Zinsen auf Cash-Guthaben',
+    category: 'Finanzen',
+    icon: 'bx-trending-up',
+    target: 'https://refnocode.trade.re/bcnklq6w',
+  },
+  {
+    slug: 'finanzfluss',
+    aliases: [],
+    title: 'Finanzfluss Copilot',
+    description: 'Portfolio-Tracking, Performance-Analyse & Vermögensübersicht',
+    category: 'Finanzen',
+    icon: 'bx-pie-chart-alt-2',
+    target: 'https://www.finanzfluss.de/copilot/',
+  },
+  {
+    slug: 'ledger',
+    aliases: [],
+    title: 'Ledger Hardware Wallet',
+    description: 'Sichere Offline-Verwahrung für Krypto-Assets & Web3',
+    category: 'Security',
+    icon: 'bx-shield-quarter',
+    target: 'https://shop.ledger.com',
+  },
+  {
+    slug: 'audible',
+    aliases: [],
+    title: 'Audible Hörbücher',
+    description: 'Tausende Hörbücher, Podcasts & Audio-Features im Abo',
+    category: 'Medien',
+    icon: 'bx-headphone',
+    target: 'https://www.amazon.de/hz/audible/mlp',
+  },
+  {
+    slug: 'sponsor',
+    aliases: [],
+    title: 'GitHub Sponsors (@FaserF)',
+    description: 'Unterstützung für Open-Source HACS-Integrationen, Tools & Bots',
+    category: 'Open Source',
+    icon: 'bx-heart',
+    target: 'https://github.com/sponsors/FaserF',
+  },
+  {
+    slug: 'ha-hardware',
+    aliases: [],
+    title: 'Home Assistant Green / Yellow',
+    description: 'Offizielle Hardware-Appliances für den 100% lokalen Smart-Home Betrieb',
+    category: 'Smart Home',
+    icon: 'bx-chip',
+    target: 'https://www.home-assistant.io/green/',
+  },
+  {
+    slug: 'ha-zigbee',
+    aliases: [],
+    title: 'Home Assistant Connect ZBT-1',
+    description: 'Offizieller Zigbee 3.0 & Thread/Matter Multiprotokoll USB-Koordinator',
+    category: 'Smart Home',
+    icon: 'bx-broadcast',
+    target: 'https://www.home-assistant.io/connectzbt1/',
+  },
+  {
+    slug: 'ha-router',
+    aliases: [],
+    title: 'OpenWrt Hardware & Router',
+    description: 'Empfohlene Netzwerk-Hardware für VLANs, Firewall & ha-openwrt',
+    category: 'Netzwerk',
+    icon: 'bx-wifi',
+    target: 'https://www.home-assistant.io/integrations/openwrt/',
+  },
+  {
+    slug: 'ha-shelly',
+    aliases: [],
+    title: 'Shelly Smart Energy & Relais',
+    description: 'Shelly Pro/Plus/3EM Relais & Strommessung mit nativer HA Integration',
+    category: 'Smart Home',
+    icon: 'bx-zap',
+    target: 'https://www.home-assistant.io/integrations/shelly/',
+  },
+  {
+    slug: 'ha-tasmota',
+    aliases: [],
+    title: 'Tasmota Smart Plugs',
+    description: 'Vollständig lokale WLAN-Steckdosen ohne Cloud-Zwang',
+    category: 'Smart Home',
+    icon: 'bx-plug',
+    target: 'https://www.home-assistant.io/integrations/tasmota/',
+  },
+  {
+    slug: 'ha-plugs',
+    aliases: [],
+    title: 'Tuya/Matter Smart Plugs',
+    description: 'Energie-Monitoring Steckdosen für Balkonkraftwerke & Verbraucher',
+    category: 'Smart Home',
+    icon: 'bx-bolt-circle',
+    target: 'https://www.home-assistant.io/integrations/#energy',
+  },
+  {
+    slug: 'ha-vacuum',
+    aliases: [],
+    title: 'Valetudo Saugroboter',
+    description: 'Cloud-freie Saugroboter mit lokaler Map-Steuerung in Home Assistant',
+    category: 'Smart Home',
+    icon: 'bx-navigation',
+    target: 'https://www.home-assistant.io/integrations/#vacuum',
+  },
+];
+
+export async function onRequestGet() {
+  return new Response(JSON.stringify({ shortlinks: SHORTLINKS, total: SHORTLINKS.length }, null, 2), {
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600',
+      'Access-Control-Allow-Origin': '*',
+    },
+  });
+}
