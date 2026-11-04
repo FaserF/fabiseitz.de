@@ -1,0 +1,17 @@
+# ----------------------------------------------------
+# fabiseitz.de Shortlinks & Redirects (Cloudflare Pages)
+# Fast 302 Edge Redirects for fabiseitz.de/go/*
+# ----------------------------------------------------
+/go/tr            https://refnocode.trade.re/bcnklq6w  302
+/go/traderepublic https://refnocode.trade.re/bcnklq6w  302
+/go/finanzfluss   https://www.finanzfluss.de/copilot/  302
+/go/ledger        https://shop.ledger.com              302
+/go/audible       https://www.amazon.de/hz/audible/mlp 302
+/go/sponsor       https://github.com/sponsors/FaserF   302
+/go/ha-hardware   https://www.home-assistant.io/green/ 302
+/go/ha-router     https://www.home-assistant.io/integrations/openwrt/ 302
+/go/ha-shelly     https://www.home-assistant.io/integrations/shelly/  302
+/go/ha-tasmota    https://www.home-assistant.io/integrations/tasmota/ 302
+/go/ha-zigbee     https://www.home-assistant.io/connectzbt1/          302
+/go/ha-plugs      https://www.home-assistant.io/integrations/#energy  302
+/go/ha-vacuum     https://www.home-assistant.io/integrations/#vacuum  302
